@@ -102,9 +102,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </div>
 
-            <div class="quick-routes-container" style="margin-top: 30px; padding-top: 20px; position: relative; z-index: 9999;"></div>
+            
+            <div id="price-result" class="price-result-box" style="display: none;">
+                <div class="result-content">
+                    <p>
+                        <span data-lang="res_dist">Mesafe</span>: <span id="dist-val" style="color:#fff">0 km</span> | 
+                        <span data-lang="res_dur">Süre</span>: <span id="dur-val" style="color:#fff">0 dk</span>
+                    </p>
+                    <h3 id="show-price">0€</h3>
+                    <p class="route-info" id="show-route">...</p>
+                </div>
+                <button class="whatsapp-book-btn" onclick="bookNow()">
+                    <i class="fab fa-whatsapp"></i> <span data-lang="btn_book">REZERVASYON YAP</span>
+                </button>
+            </div>
+            <div class="quick-routes-container" style="margin-top: 0px; padding-top: 20px; position: relative; z-index: 9999;"></div>
     
-    <p style="font-size: 0.9rem; color: #888; margin-bottom: 35px; font-weight: 300;">veya popüler rotalardan seçin:</p>
+    <p style="font-size: 0.9rem; color: #888; margin-bottom: 0px; font-weight: 300;">veya popüler rotalardan seçin:</p>
     
     <div class="quick-cards-grid">
         <div class="quick-card" onclick="quickBook('Esenboğa Havalimanı -> Çankaya/Merkez')">
@@ -136,19 +150,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </div>
 
-            <div id="price-result" class="price-result-box" style="display: none;">
-                <div class="result-content">
-                    <p>
-                        <span data-lang="res_dist">Mesafe</span>: <span id="dist-val" style="color:#fff">0 km</span> | 
-                        <span data-lang="res_dur">Süre</span>: <span id="dur-val" style="color:#fff">0 dk</span>
-                    </p>
-                    <h3 id="show-price">0€</h3>
-                    <p class="route-info" id="show-route">...</p>
-                </div>
-                <button class="whatsapp-book-btn" onclick="bookNow()">
-                    <i class="fab fa-whatsapp"></i> <span data-lang="btn_book">REZERVASYON YAP</span>
-                </button>
-            </div>
         </div>
     </section>
 
