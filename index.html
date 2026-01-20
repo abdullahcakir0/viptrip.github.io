@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-     <!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WDD5Q2S9');</script>
 <!-- End Google Tag Manager -->
+ 
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="3PoFpqe9AVmSTA3jkwHuih2CBRpjdERAu12wkKInn9E" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Ankara VIP Transfer ve Şoförlü Araç Kiralama. Esenboğa Havalimanı'ndan Çankaya, Kızılay ve tüm bölgelere protokol kalitesinde ulaşım.">
     <meta name="keywords" content="ankara vip transfer, esenboğa transfer, ankara şoförlü araç, protokol taşımacılığı, ankara vito kiralama">
@@ -24,10 +24,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
+
+    <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDD5Q2S9"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
     <header>
         <div class="logo">VIPTRIP<span class="dot">.</span></div>
         
@@ -87,6 +89,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <div class="input-group">
                     <label><i class="fas fa-shuttle-van"></i> <span data-lang="label_vehicle">Araç Tipi</span></label>
+                    <div class="input-group-row" style="display: flex; gap: 10px; width: 100%; margin-bottom: 10px;">
+    <div class="input-group" style="flex: 1;">
+        <label><i class="fas fa-calendar-alt"></i> Tarih</label>
+        <input type="date" id="date-input" style="width: 100%; padding: 10px; border: none; outline: none;">
+    </div>
+    <div class="input-group" style="flex: 1;">
+        <label><i class="fas fa-clock"></i> Saat</label>
+        <input type="time" id="time-input" style="width: 100%; padding: 10px; border: none; outline: none;">
+    </div>
+</div>
                     <select id="vehicle-type">
                         <option value="vito">Vito VIP (1-6 Kişi)</option>
                         <option value="sprinter">Sprinter VIP (7-13 Kişi)</option>
