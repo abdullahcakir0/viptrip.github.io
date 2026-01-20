@@ -408,18 +408,30 @@ function updateResultUI() {
     document.querySelector('.whatsapp-book-btn').innerHTML = `<i class="fab fa-whatsapp"></i> ${t.btn_book}`;
 }
 
+/* =========================================
+   GÜNCELLENMİŞ WHATSAPP REZERVASYON BUTONU
+   ========================================= */
 function bookNow() {
     const t = translations[currentLang];
+    
+    // Tarih ve Saati kutulardan çek
+    const dateVal = document.getElementById("date-input").value || "Belirtilmedi";
+    const timeVal = document.getElementById("time-input").value || "Belirtilmedi";
+
+    // Mesajı oluştur
     const message = `
 *${t.wa_msg}*
 ---------------------------
 📍 *${t.wa_route}:* ${calculationData.pickup} -> ${calculationData.dropoff}
+📅 *Tarih:* ${dateVal}
+🕒 *Saat:* ${timeVal}
 📏 *${t.res_dist}:* ${calculationData.distance} km
 🚐 *${t.wa_vehicle}:* ${calculationData.vehicle}
 💶 *${t.wa_price}:* ${calculationData.price}€
 ---------------------------
 ❓ *${t.wa_ask}*`.trim();
 
+    // WhatsApp'ı aç
     window.open(`https://wa.me/${CONFIG.whatsappPhone}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
