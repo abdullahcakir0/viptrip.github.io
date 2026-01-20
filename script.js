@@ -489,3 +489,18 @@ document.querySelectorAll('.faq-question').forEach(button => {
         }
     });
 });
+
+/* =========================================
+   6. HIZLI ROTA KARTLARI (Quick Book)
+   ========================================= */
+function quickBook(packageName) {
+    // 1. Mesajı Hazırla
+    const message = `*MERHABA VIPTRIP* 🔔%0A%0A` +
+                    `Aşağıdaki hızlı paketiniz için fiyat ve müsaitlik öğrenmek istiyorum:%0A` +
+                    `🚀 *Seçilen Paket:* ${packageName}%0A%0A` +
+                    `Müsait misiniz?`;
+
+    // 2. WhatsApp'ı Aç
+    const url = `https://wa.me/${CONFIG.whatsappPhone}?text=${message}`;
+    window.open(url, '_blank').focus();
+}
