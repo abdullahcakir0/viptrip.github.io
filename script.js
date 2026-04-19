@@ -2,13 +2,11 @@
    1. AYARLAR VE SABİTLER
    ========================================= */
 const CONFIG = {
-    pricePerKm_Vito: 1.8,     
-    pricePerKm_Sprinter: 2.5, 
-    basePrice: 20,            // Ankara'da açılış biraz daha düşük olabilir
-    whatsappPhone: "905534669518" 
+    pricePerKm: 75,           // Km başına 75₺ sabit fiyat
+    whatsappPhone: "905453359706"
 };
 
-let currentLang = 'tr'; 
+let currentLang = 'tr';
 let calculationData = {
     price: 0,
     distance: 0,
@@ -34,7 +32,7 @@ const translations = {
         label_vehicle: "Araç Tipi",
         btn_calc: "HESAPLA",
         btn_book: "REZERVASYON YAP",
-        
+
         step_1_title: "Rotanı Seç",
         step_1_desc: "Esenboğa veya şehir içi rotanı belirle.",
         step_2_title: "Rezervasyon Yap",
@@ -49,17 +47,17 @@ const translations = {
         vito_desc: "Maybach dizayn, gizlilik camı, toplantı düzeni.",
         sprinter_desc: "Heyetler ve geniş aileler için protokol aracı.",
         sclass_desc: "Yabancı misafirler ve özel günler için zirve nokta.",
-        
+
         blog_title: `ANKARA <span class="gold-text">REHBERİ</span>`,
         blog_desc: "Başkentte iş, yaşam ve tarih rehberi.",
         btn_read: "Devamını Oku",
-        
+
         footer_desc: "Ankara'nın lider protokol ve VIP transfer firması. Operasyonlarımız Ayka Travel güvencesiyle yürütülmektedir.",
         footer_quick: "Hızlı Erişim",
         footer_routes: "Popüler Rotalar",
         footer_contact: "İletişim & Ofis",
         footer_rights: "Tüm hakları saklıdır.",
-        
+
         placeholder_pickup: "Örn: Esenboğa Havalimanı...",
         placeholder_dropoff: "Örn: Sheraton Ankara...",
         loading: "Hesaplanıyor...",
@@ -101,17 +99,17 @@ const translations = {
         vito_desc: "Maybach design, privacy glass, meeting layout.",
         sprinter_desc: "Protocol vehicle for delegations and large groups.",
         sclass_desc: "The peak point for foreign guests and special occasions.",
-        
+
         blog_title: `ANKARA <span class="gold-text">GUIDE</span>`,
         blog_desc: "Business, life, and history guide in the Capital.",
         btn_read: "Read More",
-        
+
         footer_desc: "Ankara's leading protocol and VIP transfer company. Operations powered by Ayka Travel.",
         footer_quick: "Quick Links",
         footer_routes: "Popular Routes",
         footer_contact: "Contact & Office",
         footer_rights: "All rights reserved.",
-        
+
         placeholder_pickup: "Ex: Esenboğa Airport...",
         placeholder_dropoff: "Ex: Sheraton Ankara...",
         loading: "Calculating...",
@@ -153,17 +151,17 @@ const translations = {
         vito_desc: "Maybach-Design, Sichtschutzglas, Meeting-Layout.",
         sprinter_desc: "Protokollfahrzeug für Delegationen.",
         sclass_desc: "Der Höhepunkt für ausländische Gäste.",
-        
+
         blog_title: `ANKARA <span class="gold-text">FÜHRER</span>`,
         blog_desc: "Geschäfts-, Lebens- und Geschichtsführer in der Hauptstadt.",
         btn_read: "Weiterlesen",
-        
+
         footer_desc: "Ankaras führendes Protokoll- und VIP-Transferunternehmen. Powered by Ayka Travel.",
         footer_quick: "Schnelllinks",
         footer_routes: "Beliebte Routen",
         footer_contact: "Kontakt & Büro",
         footer_rights: "Alle Rechte vorbehalten.",
-        
+
         placeholder_pickup: "z.B. Flughafen Esenboğa...",
         placeholder_dropoff: "z.B. Sheraton Ankara...",
         loading: "Berechnung...",
@@ -205,17 +203,17 @@ const translations = {
         vito_desc: "Дизайн Maybach, конфиденциальность, условия для встреч.",
         sprinter_desc: "Протокольный автомобиль для делегаций.",
         sclass_desc: "Пик комфорта для иностранных гостей.",
-        
+
         blog_title: `ГИД ПО <span class="gold-text">АНКАРЕ</span>`,
         blog_desc: "Бизнес, жизнь и история столицы.",
         btn_read: "Читать далее",
-        
+
         footer_desc: "Ведущая компания протокольного и VIP-трансфера в Анкаре. Powered by Ayka Travel.",
         footer_quick: "Ссылки",
         footer_routes: "Популярные маршруты",
         footer_contact: "Офис",
         footer_rights: "Все права защищены.",
-        
+
         placeholder_pickup: "Напр: Аэропорт Эсенбога...",
         placeholder_dropoff: "Напр: Sheraton Ankara...",
         loading: "Вычисление...",
@@ -258,15 +256,15 @@ function positionList(input, list) {
 }
 
 async function searchAddress(query, listId, inputId, coordsId) {
-    if (query.length < 3) return; 
+    if (query.length < 3) return;
 
     const input = document.getElementById(inputId);
     const list = document.getElementById(listId);
-    
+
     // --> KRİTİK HAMLE: Listeyi konumlandır ve göster <--
     positionList(input, list);
     list.style.display = "block";
-    
+
     list.innerHTML = '<li style="color:#888; padding:15px; background:#fff;"><i class="fas fa-circle-notch fa-spin"></i> Aranıyor...</li>';
 
     // HTTPS ve TR Filtreli Arama
@@ -276,8 +274,8 @@ async function searchAddress(query, listId, inputId, coordsId) {
         const response = await fetch(url);
         if (!response.ok) throw new Error("Hata");
         const data = await response.json();
-        
-        list.innerHTML = ""; 
+
+        list.innerHTML = "";
 
         if (data.length === 0) {
             list.innerHTML = `<li style="cursor:default; color:#999; padding:15px; background:#fff;">Sonuç bulunamadı</li>`;
@@ -293,11 +291,11 @@ async function searchAddress(query, listId, inputId, coordsId) {
             else if (displayName.toLowerCase().includes('otel')) icon = 'fa-hotel';
 
             item.innerHTML = `<i class="fas ${icon}" style="color:#D4AF37; margin-right:10px;"></i> ${displayName}`;
-            
+
             // Tıklama Olayı
-            item.onclick = function() {
-                document.getElementById(inputId).value = displayName; 
-                document.getElementById(coordsId).value = place.lon + "," + place.lat; 
+            item.onclick = function () {
+                document.getElementById(inputId).value = displayName;
+                document.getElementById(coordsId).value = place.lon + "," + place.lat;
                 list.style.display = "none"; // Seçince gizle
             };
             list.appendChild(item);
@@ -312,9 +310,9 @@ async function searchAddress(query, listId, inputId, coordsId) {
 ['pickup', 'dropoff'].forEach(type => {
     const input = document.getElementById(`${type}-input`);
     const list = document.getElementById(`${type}-suggestions`);
-    
+
     if (input) {
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             clearTimeout(typingTimer);
             const val = this.value;
             typingTimer = setTimeout(() => {
@@ -323,13 +321,13 @@ async function searchAddress(query, listId, inputId, coordsId) {
         });
 
         // Sayfa kaydırılırsa veya pencere boyutu değişirse listeyi kapat (Kayma olmasın diye)
-        window.addEventListener('resize', () => { if(list) list.style.display = 'none'; });
-        window.addEventListener('scroll', () => { if(list) list.style.display = 'none'; });
+        window.addEventListener('resize', () => { if (list) list.style.display = 'none'; });
+        window.addEventListener('scroll', () => { if (list) list.style.display = 'none'; });
 
         // Dışarı tıklayınca kapat
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target !== input && e.target !== list) {
-                if(list) list.style.display = 'none';
+                if (list) list.style.display = 'none';
             }
         });
     }
@@ -341,7 +339,7 @@ async function searchAddress(query, listId, inputId, coordsId) {
 async function calculateDistancePrice() {
     const pickupCoords = document.getElementById('pickup-coords').value;
     const dropoffCoords = document.getElementById('dropoff-coords').value;
-    const vehicleType = document.getElementById('vehicle-type').value; 
+    const vehicleType = document.getElementById('vehicle-type').value;
     const btnSpan = document.querySelector('button[onclick="calculateDistancePrice()"] span');
 
     if (!pickupCoords || !dropoffCoords) {
@@ -368,9 +366,8 @@ async function calculateDistancePrice() {
         const distanceKm = (distanceMeters / 1000).toFixed(1);
         const durationMin = Math.round(data.routes[0].duration / 60);
 
-        let rate = (vehicleType === 'sprinter') ? CONFIG.pricePerKm_Sprinter : CONFIG.pricePerKm_Vito;
-        let price = (distanceKm * rate) + CONFIG.basePrice;
-        price = Math.ceil(price / 5) * 5; 
+        let price = distanceKm * CONFIG.pricePerKm;
+        price = Math.ceil(price / 10) * 10; // 10'un katına yuvarla
 
         calculationData = {
             price: price,
@@ -396,42 +393,30 @@ function updateResultUI() {
     const t = translations[currentLang];
 
     resultBox.style.display = 'flex';
-    document.getElementById('show-price').innerText = calculationData.price + "€";
-    
+    document.getElementById('show-price').innerText = calculationData.price + "₺";
+
     const infoHTML = `
         ${t.res_dist}: <b>${calculationData.distance} km</b> | 
         ${t.res_dur}: <b>${calculationData.duration} dk/min</b>
     `;
-    
+
     document.querySelector('.result-content p').innerHTML = infoHTML;
     document.getElementById('show-route').innerText = `${calculationData.pickup} -> ${calculationData.dropoff}`;
     document.querySelector('.whatsapp-book-btn').innerHTML = `<i class="fab fa-whatsapp"></i> ${t.btn_book}`;
 }
 
-/* =========================================
-   GÜNCELLENMİŞ WHATSAPP REZERVASYON BUTONU
-   ========================================= */
 function bookNow() {
     const t = translations[currentLang];
-    
-    // Tarih ve Saati kutulardan çek
-    const dateVal = document.getElementById("date-input").value || "Belirtilmedi";
-    const timeVal = document.getElementById("time-input").value || "Belirtilmedi";
-
-    // Mesajı oluştur
     const message = `
 *${t.wa_msg}*
 ---------------------------
 📍 *${t.wa_route}:* ${calculationData.pickup} -> ${calculationData.dropoff}
-📅 *Tarih:* ${dateVal}
-🕒 *Saat:* ${timeVal}
 📏 *${t.res_dist}:* ${calculationData.distance} km
 🚐 *${t.wa_vehicle}:* ${calculationData.vehicle}
-💶 *${t.wa_price}:* ${calculationData.price}€
+💰 *${t.wa_price}:* ${calculationData.price}₺
 ---------------------------
 ❓ *${t.wa_ask}*`.trim();
 
-    // WhatsApp'ı aç
     window.open(`https://wa.me/${CONFIG.whatsappPhone}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
@@ -454,8 +439,8 @@ function changeLanguage(lang) {
 
     const pInput = document.getElementById('pickup-input');
     const dInput = document.getElementById('dropoff-input');
-    if(pInput) pInput.placeholder = t.placeholder_pickup;
-    if(dInput) dInput.placeholder = t.placeholder_dropoff;
+    if (pInput) pInput.placeholder = t.placeholder_pickup;
+    if (dInput) dInput.placeholder = t.placeholder_dropoff;
 
     if (document.getElementById('price-result').style.display === 'flex') updateResultUI();
 }
@@ -469,7 +454,7 @@ function closeMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const userLang = navigator.language || navigator.userLanguage; 
+    const userLang = navigator.language || navigator.userLanguage;
     if (userLang.includes('en')) changeLanguage('en');
     else if (userLang.includes('de')) changeLanguage('de');
     else if (userLang.includes('ru')) changeLanguage('ru');
@@ -477,14 +462,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     AOS.init({ once: true, offset: 100 });
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const header = document.querySelector('header');
+        const isMobile = window.innerWidth <= 768;
         if (window.scrollY > 50) {
             header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
-            header.style.padding = '15px 50px';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.padding = isMobile ? '12px 20px' : '15px 50px';
         } else {
             header.style.backgroundColor = 'transparent';
-            header.style.padding = '30px 50px';
+            header.style.backdropFilter = 'none';
+            header.style.padding = isMobile ? '20px' : '30px 50px';
         }
     });
 });
@@ -501,3 +489,18 @@ document.querySelectorAll('.faq-question').forEach(button => {
         }
     });
 });
+
+/* =========================================
+   6. HIZLI ROTA KARTLARI (Quick Book)
+   ========================================= */
+function quickBook(packageName) {
+    // 1. Mesajı Hazırla
+    const message = `*MERHABA VIPTRIP* 🔔%0A%0A` +
+        `Aşağıdaki hızlı paketiniz için fiyat ve müsaitlik öğrenmek istiyorum:%0A` +
+        `🚀 *Seçilen Paket:* ${packageName}%0A%0A` +
+        `Müsait misiniz?`;
+
+    // 2. WhatsApp'ı Aç
+    const url = `https://wa.me/${CONFIG.whatsappPhone}?text=${message}`;
+    window.open(url, '_blank').focus();
+}
