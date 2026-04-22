@@ -28,6 +28,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog.css">
     <link rel="icon" type="image/jpeg" href="assets/img/vito.jpeg">
 
     <script type="application/ld+json">
@@ -108,158 +109,22 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <header>
-        <div class="logo">VIPTRIP<span class="dot">.</span></div>
-
-        <div class="mobile-toggle" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars"></i>
+    <header class="blog-header">
+        <a href="/" class="logo">VIPTRIP<span class="dot">.</span></a>
+        <div class="blog-menu-toggle" onclick="document.querySelector('.header-nav').classList.add('active'); document.querySelector('.blog-nav-overlay').classList.add('active');">
+            <span></span><span></span><span></span>
         </div>
-
-        <nav class="nav-menu">
-            <button class="nav-close-btn" onclick="closeMenu()">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <!-- Hizmetler Dropdown -->
-            <div class="nav-dropdown">
-                <a href="#araclar" onclick="closeMenu()" class="nav-link-parent">Hizmetler <i class="fas fa-chevron-down dd-arrow"></i></a>
-                <div class="dropdown-panel">
-                    <a href="vip-gelin-arabasi" class="dd-item">
-                        <i class="fas fa-ring dd-icon"></i>
-                        <div>
-                            <span class="dd-title">VIP Gelin Arabası</span>
-                            <span class="dd-desc">Şoför, yakıt, süsleme dahil paketler</span>
-                        </div>
-                    </a>
-                    <a href="soforlu-arac-kiralama" class="dd-item">
-                        <i class="fas fa-key dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Şoförlü Araç Kiralama</span>
-                            <span class="dd-desc">Saatlik & günlük VIP araç tahsis</span>
-                        </div>
-                    </a>
-                    <a href="#araclar" onclick="closeMenu()" class="dd-item">
-                        <i class="fas fa-car dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Araç Filosu</span>
-                            <span class="dd-desc">Mercedes Vito, S-Class, Sprinter</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Transfer Dropdown -->
-            <div class="nav-dropdown">
-                <a href="#transfer" onclick="closeMenu()" class="nav-link-parent">Transfer <i class="fas fa-chevron-down dd-arrow"></i></a>
-                <div class="dropdown-panel">
-                    <a href="ankara-vip-transfer" class="dd-item">
-                        <i class="fas fa-city dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Ankara VIP Transfer</span>
-                            <span class="dd-desc">Şehir içi özel transfer</span>
-                        </div>
-                    </a>
-                    <a href="esenboga-havalimani-transfer" class="dd-item">
-                        <i class="fas fa-plane-arrival dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Esenboğa Havalimanı</span>
-                            <span class="dd-desc">CIP karşılama & uçuş takibi</span>
-                        </div>
-                    </a>
-                    <a href="sehirlerarasi-vip-transfer" class="dd-item">
-                        <i class="fas fa-road dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Şehirlerarası Transfer</span>
-                            <span class="dd-desc">İstanbul, Kapadokya, Antalya...</span>
-                        </div>
-                    </a>
-                    <a href="kurumsal-transfer" class="dd-item">
-                        <i class="fas fa-landmark dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Kurumsal Transfer</span>
-                            <span class="dd-desc">Protokol & diplomatik hizmet</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Bölgeler Dropdown -->
-            <div class="nav-dropdown">
-                <a href="javascript:void(0)" class="nav-link-parent">Bölgeler <i class="fas fa-chevron-down dd-arrow"></i></a>
-                <div class="dropdown-panel">
-                    <a href="ankara-kapadokya-transfer" class="dd-item">
-                        <i class="fas fa-mountain dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Kapadokya Transfer</span>
-                            <span class="dd-desc">Nevşehir & Kapadokya Turu</span>
-                        </div>
-                    </a>
-                    <a href="ankara-bolu-transfer" class="dd-item">
-                        <i class="fas fa-tree dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Bolu & Abant Transfer</span>
-                            <span class="dd-desc">Doğa turizmi VIP ulaşım</span>
-                        </div>
-                    </a>
-                    <a href="ankara-istanbul-transfer" class="dd-item">
-                        <i class="fas fa-city dd-icon"></i>
-                        <div>
-                            <span class="dd-title">İstanbul Transfer</span>
-                            <span class="dd-desc">Şehirlerarası özel ulaşım</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Rehber Dropdown -->
-            <div class="nav-dropdown">
-                <a href="#blog" onclick="closeMenu()" class="nav-link-parent">Rehber <i class="fas fa-chevron-down dd-arrow"></i></a>
-                <div class="dropdown-panel">
-                    <a href="blog" class="dd-item">
-                        <i class="fas fa-blog dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Tüm Blog Yazıları</span>
-                            <span class="dd-desc">Sektörel haber ve rehberler</span>
-                        </div>
-                    </a>
-                    <a href="blog-anitkabir" class="dd-item">
-                        <i class="fas fa-monument dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Anıtkabir Ziyareti</span>
-                            <span class="dd-desc">Ulaşım ve ziyaret rehberi</span>
-                        </div>
-                    </a>
-                    <a href="blog-cankaya-yasam" class="dd-item">
-                        <i class="fas fa-utensils dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Çankaya & Atakule</span>
-                            <span class="dd-desc">Restoran ve yaşam rehberi</span>
-                        </div>
-                    </a>
-                    <a href="blog-esenboga-ulasim" class="dd-item">
-                        <i class="fas fa-route dd-icon"></i>
-                        <div>
-                            <span class="dd-title">Esenboğa Ulaşım Rehberi</span>
-                            <span class="dd-desc">Havalimanı ulaşım seçenekleri</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="lang-switch">
-                <a href="javascript:void(0)" onclick="changeLanguage('tr')">TR</a>
-                <span class="sep">|</span>
-                <a href="javascript:void(0)" onclick="changeLanguage('en')">EN</a>
-                <span class="sep">|</span>
-                <a href="javascript:void(0)" onclick="changeLanguage('de')">DE</a>
-                <span class="sep">|</span>
-                <a href="javascript:void(0)" onclick="changeLanguage('ru')">RU</a>
-            </div>
-
-            <a href="#iletisim" class="contact-btn" onclick="closeMenu()" data-lang="menu_contact">İletişim</a>
+        <nav class="header-nav">
+            <button class="blog-nav-close" onclick="document.querySelector('.header-nav').classList.remove('active'); document.querySelector('.blog-nav-overlay').classList.remove('active');"><i class="fas fa-times"></i></button>
+            <a href="/">Ana Sayfa</a>
+            <a href="ankara-vip-transfer">VIP Transfer</a>
+            <a href="vip-gelin-arabasi">Gelin Arabası</a>
+            <a href="ankara-bolu-transfer">Bölgeler</a>
+            <a href="blog">Blog</a>
+            <a href="/#transfer" class="btn-header-cta">Transfer Ayarla</a>
         </nav>
-        <div class="nav-overlay" onclick="closeMenu()"></div>
     </header>
+    <div class="blog-nav-overlay" onclick="document.querySelector('.header-nav').classList.remove('active'); this.classList.remove('active');"></div>
 
     <section class="vip-hero" id="home">
         <div class="video-overlay"></div>
