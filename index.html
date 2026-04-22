@@ -116,9 +116,135 @@
         </div>
 
         <nav class="nav-menu">
-            <a href="#araclar" onclick="closeMenu()" data-lang="menu_fleet">Filo</a>
-            <a href="#transfer" onclick="closeMenu()" data-lang="menu_transfer">Transfer</a>
-            <a href="#blog" onclick="closeMenu()" data-lang="menu_blog">Ankara Rehberi</a>
+            <button class="nav-close-btn" onclick="closeMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Hizmetler Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#araclar" onclick="closeMenu()" class="nav-link-parent">Hizmetler <i class="fas fa-chevron-down dd-arrow"></i></a>
+                <div class="dropdown-panel">
+                    <a href="vip-gelin-arabasi" class="dd-item">
+                        <i class="fas fa-ring dd-icon"></i>
+                        <div>
+                            <span class="dd-title">VIP Gelin Arabası</span>
+                            <span class="dd-desc">Şoför, yakıt, süsleme dahil paketler</span>
+                        </div>
+                    </a>
+                    <a href="soforlu-arac-kiralama" class="dd-item">
+                        <i class="fas fa-key dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Şoförlü Araç Kiralama</span>
+                            <span class="dd-desc">Saatlik & günlük VIP araç tahsis</span>
+                        </div>
+                    </a>
+                    <a href="#araclar" onclick="closeMenu()" class="dd-item">
+                        <i class="fas fa-car dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Araç Filosu</span>
+                            <span class="dd-desc">Mercedes Vito, S-Class, Sprinter</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Transfer Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#transfer" onclick="closeMenu()" class="nav-link-parent">Transfer <i class="fas fa-chevron-down dd-arrow"></i></a>
+                <div class="dropdown-panel">
+                    <a href="ankara-vip-transfer" class="dd-item">
+                        <i class="fas fa-city dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Ankara VIP Transfer</span>
+                            <span class="dd-desc">Şehir içi özel transfer</span>
+                        </div>
+                    </a>
+                    <a href="esenboga-havalimani-transfer" class="dd-item">
+                        <i class="fas fa-plane-arrival dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Esenboğa Havalimanı</span>
+                            <span class="dd-desc">CIP karşılama & uçuş takibi</span>
+                        </div>
+                    </a>
+                    <a href="sehirlerarasi-vip-transfer" class="dd-item">
+                        <i class="fas fa-road dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Şehirlerarası Transfer</span>
+                            <span class="dd-desc">İstanbul, Kapadokya, Antalya...</span>
+                        </div>
+                    </a>
+                    <a href="kurumsal-transfer" class="dd-item">
+                        <i class="fas fa-landmark dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Kurumsal Transfer</span>
+                            <span class="dd-desc">Protokol & diplomatik hizmet</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bölgeler Dropdown -->
+            <div class="nav-dropdown">
+                <a href="javascript:void(0)" class="nav-link-parent">Bölgeler <i class="fas fa-chevron-down dd-arrow"></i></a>
+                <div class="dropdown-panel">
+                    <a href="ankara-kapadokya-transfer" class="dd-item">
+                        <i class="fas fa-mountain dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Kapadokya Transfer</span>
+                            <span class="dd-desc">Nevşehir & Kapadokya Turu</span>
+                        </div>
+                    </a>
+                    <a href="ankara-bolu-transfer" class="dd-item">
+                        <i class="fas fa-tree dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Bolu & Abant Transfer</span>
+                            <span class="dd-desc">Doğa turizmi VIP ulaşım</span>
+                        </div>
+                    </a>
+                    <a href="ankara-istanbul-transfer" class="dd-item">
+                        <i class="fas fa-city dd-icon"></i>
+                        <div>
+                            <span class="dd-title">İstanbul Transfer</span>
+                            <span class="dd-desc">Şehirlerarası özel ulaşım</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Rehber Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#blog" onclick="closeMenu()" class="nav-link-parent">Rehber <i class="fas fa-chevron-down dd-arrow"></i></a>
+                <div class="dropdown-panel">
+                    <a href="blog" class="dd-item">
+                        <i class="fas fa-blog dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Tüm Blog Yazıları</span>
+                            <span class="dd-desc">Sektörel haber ve rehberler</span>
+                        </div>
+                    </a>
+                    <a href="blog-anitkabir" class="dd-item">
+                        <i class="fas fa-monument dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Anıtkabir Ziyareti</span>
+                            <span class="dd-desc">Ulaşım ve ziyaret rehberi</span>
+                        </div>
+                    </a>
+                    <a href="blog-cankaya-yasam" class="dd-item">
+                        <i class="fas fa-utensils dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Çankaya & Atakule</span>
+                            <span class="dd-desc">Restoran ve yaşam rehberi</span>
+                        </div>
+                    </a>
+                    <a href="blog-esenboga-ulasim" class="dd-item">
+                        <i class="fas fa-route dd-icon"></i>
+                        <div>
+                            <span class="dd-title">Esenboğa Ulaşım Rehberi</span>
+                            <span class="dd-desc">Havalimanı ulaşım seçenekleri</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
             <div class="lang-switch">
                 <a href="javascript:void(0)" onclick="changeLanguage('tr')">TR</a>
@@ -132,6 +258,7 @@
 
             <a href="#iletisim" class="contact-btn" onclick="closeMenu()" data-lang="menu_contact">İletişim</a>
         </nav>
+        <div class="nav-overlay" onclick="closeMenu()"></div>
     </header>
 
     <section class="vip-hero" id="home">
@@ -338,48 +465,60 @@
     <section class="blog-section" id="blog">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2 data-lang="blog_title">ANKARA <span class="gold-text">REHBERİ</span></h2>
-                <p data-lang="blog_desc">Başkentte iş, yaşam ve tarih rehberi.</p>
+                <h2 data-lang="blog_title">HİZMETLER & <span class="gold-text">REHBER</span></h2>
+                <p data-lang="blog_desc">VIP transfer, gelin arabası ve Ankara rehberi.</p>
+            </div>
+
+            <!-- Kategori Filtreleri -->
+            <div class="blog-categories" data-aos="fade-up" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:40px;">
+                <a href="vip-gelin-arabasi" class="cat-btn active" style="background:#D4AF37; color:#000; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #D4AF37;">💐 Gelin Arabası</a>
+                <a href="ankara-vip-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">🚐 VIP Transfer</a>
+                <a href="esenboga-havalimani-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">✈️ Havalimanı</a>
+                <a href="sehirlerarasi-vip-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">🛣️ Şehirlerarası</a>
+                <a href="kurumsal-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">🏛️ Kurumsal</a>
+                <a href="soforlu-arac-kiralama" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">🔑 Kiralama</a>
             </div>
 
             <div class="blog-grid">
+                <!-- VIP Gelin Arabası -->
                 <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="blog-img">
-                        <img src="assets/img/anitkabir.jpg" alt="Anıtkabir Ankara">
-                        <span class="category">Tarih</span>
+                        <img src="assets/img/gelin-arabasi-hero.png" alt="Ankara VIP Gelin Arabası Kiralama">
+                        <span class="category">Düğün</span>
                     </div>
                     <div class="blog-content">
-                        <h3>Anıtkabir Ziyareti</h3>
-                        <p>Ankara'nın kalbi Anıtkabir'e ulaşım ve ziyaret saatleri hakkında detaylı bilgiler.</p>
-                        <a href="blog-anitkabir.html" class="read-more"><span data-lang="btn_read">Devamını Oku</span>
+                        <h3>VIP Gelin Arabası</h3>
+                        <p>Şoför, yakıt ve süsleme dahil düğün aracı paketleri. 9.000₺'den başlayan fiyatlar.</p>
+                        <a href="vip-gelin-arabasi" class="read-more"><span data-lang="btn_read">Detaylı Bilgi</span>
                             <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
 
+                <!-- Ankara VIP Transfer -->
                 <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="blog-img">
-                        <img src="assets/img/atakule.jpg" alt="Atakule Çankaya">
-                        <span class="category">Yaşam</span>
+                        <img src="assets/img/vito-dis-on.jpg" alt="Ankara VIP Transfer Hizmeti">
+                        <span class="category">Transfer</span>
                     </div>
                     <div class="blog-content">
-                        <h3>Çankaya & Atakule</h3>
-                        <p>Başkentin en prestijli bölgesi Çankaya'da iş yemekleri için en iyi restoranlar.</p>
-                        <a href="blog-cankaya-yasam.html" class="read-more"><span data-lang="btn_read">Devamını
-                                Oku</span> <i class="fas fa-arrow-right"></i></a>
+                        <h3>Ankara VIP Transfer</h3>
+                        <p>Şehir içi, havalimanı ve şehirlerarası tüm transferleriniz için VIP çözüm.</p>
+                        <a href="ankara-vip-transfer" class="read-more"><span data-lang="btn_read">Detaylı Bilgi</span>
+                            <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
 
+                <!-- Esenboğa Transfer -->
                 <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop"
-                            alt="Esenboğa Transfer">
-                        <span class="category">Rehber</span>
+                        <img src="assets/img/vito-kapi-acik.jpg" alt="Esenboğa Havalimanı VIP Transfer">
+                        <span class="category">Havalimanı</span>
                     </div>
                     <div class="blog-content">
-                        <h3>Esenboğa'dan Şehre Ulaşım</h3>
-                        <p>Havalimanından Kızılay, Bakanlıklar ve elçiliklere ulaşımın en hızlı yolları.</p>
-                        <a href="blog-esenboga-ulasim.html" class="read-more"><span data-lang="btn_read">Devamını
-                                Oku</span> <i class="fas fa-arrow-right"></i></a>
+                        <h3>Esenboğa Havalimanı Transfer</h3>
+                        <p>CIP karşılama, uçuş takibi ve isim tabelası ile VIP havalimanı transferi.</p>
+                        <a href="esenboga-havalimani-transfer" class="read-more"><span data-lang="btn_read">Detaylı Bilgi</span>
+                            <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
             </div>
@@ -421,13 +560,18 @@
 
     <section class="locations-section" style="background:#000; padding:50px 0; border-top:1px solid #222;">
         <div class="container">
-            <h4 style="color:#D4AF37; margin-bottom:20px; text-align:center;">Hizmet Verdiğimiz Diğer Bölgeler</h4>
+            <h4 style="color:#D4AF37; margin-bottom:20px; text-align:center;">Hizmetlerimiz & Güzergahlar</h4>
             <div class="location-links" style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px;">
-                <a href="#" class="loc-tag">İstanbul VIP Transfer</a>
-                <a href="#" class="loc-tag">Bodrum Transfer</a>
-                <a href="#" class="loc-tag">Antalya Transfer</a>
-                <a href="#" class="loc-tag">Kapadokya Transfer</a>
-                <a href="#" class="loc-tag">Sapanca Transfer</a>
+                <a href="ankara-vip-transfer" class="loc-tag">Ankara VIP Transfer</a>
+                <a href="vip-gelin-arabasi" class="loc-tag">VIP Gelin Arabası</a>
+                <a href="esenboga-havalimani-transfer" class="loc-tag">Esenboğa Transfer</a>
+                <a href="kurumsal-transfer" class="loc-tag">Kurumsal Transfer</a>
+                <a href="soforlu-arac-kiralama" class="loc-tag">Şoförlü Araç Kiralama</a>
+                <a href="sehirlerarasi-vip-transfer" class="loc-tag">İstanbul Transfer</a>
+                <a href="sehirlerarasi-vip-transfer" class="loc-tag">Kapadokya Transfer</a>
+                <a href="sehirlerarasi-vip-transfer" class="loc-tag">Antalya Transfer</a>
+                <a href="sehirlerarasi-vip-transfer" class="loc-tag">Bodrum Transfer</a>
+                <a href="sehirlerarasi-vip-transfer" class="loc-tag">Bolu / Abant Transfer</a>
             </div>
         </div>
     </section>
@@ -473,7 +617,11 @@
                     <li><a href="#home">Ana Sayfa</a></li>
                     <li><a href="#araclar">Araç Filosu</a></li>
                     <li><a href="#transfer">Fiyat Hesapla</a></li>
-                    <li><a href="#blog">Ankara Rehberi</a></li>
+                    <li><a href="vip-gelin-arabasi">VIP Gelin Arabası</a></li>
+                    <li><a href="ankara-vip-transfer">Ankara VIP Transfer</a></li>
+                    <li><a href="esenboga-havalimani-transfer">Esenboğa Transfer</a></li>
+                    <li><a href="kurumsal-transfer">Kurumsal Transfer</a></li>
+                    <li><a href="soforlu-arac-kiralama">Şoförlü Araç Kiralama</a></li>
                 </ul>
             </div>
 

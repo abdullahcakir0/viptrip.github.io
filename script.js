@@ -48,8 +48,8 @@ const translations = {
         sprinter_desc: "Heyetler ve geniş aileler için protokol aracı.",
         sclass_desc: "Yabancı misafirler ve özel günler için zirve nokta.",
 
-        blog_title: `ANKARA <span class="gold-text">REHBERİ</span>`,
-        blog_desc: "Başkentte iş, yaşam ve tarih rehberi.",
+        blog_title: `HİZMETLER & <span class="gold-text">REHBER</span>`,
+        blog_desc: "VIP transfer, gelin arabası ve Ankara rehberi.",
         btn_read: "Devamını Oku",
 
         footer_desc: "Ankara'nın lider protokol ve VIP transfer firması. Operasyonlarımız Ayka Travel güvencesiyle yürütülmektedir.",
@@ -100,7 +100,7 @@ const translations = {
         sprinter_desc: "Protocol vehicle for delegations and large groups.",
         sclass_desc: "The peak point for foreign guests and special occasions.",
 
-        blog_title: `ANKARA <span class="gold-text">GUIDE</span>`,
+        blog_title: `SERVICES & <span class="gold-text">GUIDE</span>`,
         blog_desc: "Business, life, and history guide in the Capital.",
         btn_read: "Read More",
 
@@ -152,7 +152,7 @@ const translations = {
         sprinter_desc: "Protokollfahrzeug für Delegationen.",
         sclass_desc: "Der Höhepunkt für ausländische Gäste.",
 
-        blog_title: `ANKARA <span class="gold-text">FÜHRER</span>`,
+        blog_title: `DIENSTE & <span class="gold-text">REISEFÜHRER</span>`,
         blog_desc: "Geschäfts-, Lebens- und Geschichtsführer in der Hauptstadt.",
         btn_read: "Weiterlesen",
 
@@ -204,7 +204,7 @@ const translations = {
         sprinter_desc: "Протокольный автомобиль для делегаций.",
         sclass_desc: "Пик комфорта для иностранных гостей.",
 
-        blog_title: `ГИД ПО <span class="gold-text">АНКАРЕ</span>`,
+        blog_title: `УСЛУГИ И <span class="gold-text">ГАЙД</span>`,
         blog_desc: "Бизнес, жизнь и история столицы.",
         btn_read: "Читать далее",
 
@@ -447,10 +447,14 @@ function changeLanguage(lang) {
 
 function toggleMobileMenu() {
     document.querySelector('.nav-menu').classList.toggle('active');
+    const overlay = document.querySelector('.nav-overlay');
+    if (overlay) overlay.classList.toggle('active');
 }
 
 function closeMenu() {
     document.querySelector('.nav-menu').classList.remove('active');
+    const overlay = document.querySelector('.nav-overlay');
+    if (overlay) overlay.classList.remove('active');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
