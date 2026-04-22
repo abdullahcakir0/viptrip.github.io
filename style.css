@@ -2097,7 +2097,7 @@ form,
         flex-direction: column;
         gap: 5px;
         cursor: pointer;
-        z-index: 10002;
+        z-index: 1000;
         padding: 8px;
     }
 
