@@ -2045,6 +2045,7 @@ form,
 
     .blog-header {
         padding: 12px 20px;
+        backdrop-filter: none;
     }
 
     .blog-header .header-nav {
@@ -2142,7 +2143,7 @@ form,
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.6);
-        z-index: 10000;
+        z-index: 999;
         backdrop-filter: blur(3px);
     }
 
