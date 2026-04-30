@@ -12,7 +12,7 @@ def generate_geo_page(slug, city, title_suffix, description, keyword_city, hero_
     html = html.replace("Ankara VIP Transfer Hizmeti | Şoförlü Lüks Araç - VipTrip", f"Ankara {city} Transfer | {title_suffix} - VipTrip")
     html = html.replace("Ankara VIP transfer hizmeti. Mercedes Vito, Sprinter ve S-Class ile şehir içi, havalimanı ve şehirlerarası özel transfer. 7/24 profesyonel şoförlü araç hizmeti.", description)
     html = html.replace("ankara vip transfer, ankara özel transfer, ankara lüks transfer, vip transfer ankara, ankara şoförlü araç, ankara transfer hizmeti", f"ankara {keyword_city} transfer, {keyword_city} vip transfer, ankara {keyword_city} lüks ulaşım, ankara {keyword_city} şoförlü araç")
-    html = html.replace('href="https://www.viptrip.com.tr/ankara-vip-transfer"', f'href="https://www.viptrip.com.tr/{slug}"')
+    html = html.replace('href="https://viptrip.com.tr/ankara-vip-transfer"', f'href="https://viptrip.com.tr/{slug}"')
     html = html.replace('content="Ankara VIP Transfer Hizmeti | VipTrip"', f'content="Ankara {city} Transfer | VipTrip"')
     
     # Hero replacements
