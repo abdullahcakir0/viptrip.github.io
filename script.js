@@ -508,3 +508,58 @@ function quickBook(packageName) {
     const url = `https://wa.me/${CONFIG.whatsappPhone}?text=${message}`;
     window.open(url, '_blank').focus();
 }
+
+/* =========================================
+   ERKEN REZERVASYON MODAL (GELİN ARABASI)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const resModal = document.getElementById('reservationModal');
+    const closeResModal = document.getElementById('closeReservationModal');
+    const resForm = document.getElementById('reservationForm');
+    const resFloatBtn = document.getElementById('earlyResFloatBtn');
+
+    if (resModal && closeResModal && resForm) {
+        // Open modal on floating button click
+        if (resFloatBtn) {
+            resFloatBtn.addEventListener('click', () => {
+                resModal.classList.add('active');
+            });
+        }
+
+        // Close modal on 'X' click
+        closeResModal.addEventListener('click', () => {
+            resModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        resModal.addEventListener('click', (e) => {
+            if (e.target === resModal) {
+                resModal.classList.remove('active');
+            }
+        });
+
+        // Automatically open modal after 10 seconds if not opened before
+        if (!sessionStorage.getItem('resModalShown')) {
+            setTimeout(() => {
+                resModal.classList.add('active');
+                sessionStorage.setItem('resModalShown', 'true');
+            }, 10000);
+        }
+
+        // Form submit
+        resForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('resName').value;
+            const phone = document.getElementById('resPhone').value;
+            const date = document.getElementById('resDate').value;
+            const vehicle = document.getElementById('resVehicle').value;
+
+            const text = `Merhaba, Gelin Arabası için erken rezervasyon formundan ulaşıyorum.\n\nİsim: ${name}\nTelefon: ${phone}\nTarih: ${date}\nAraç: ${vehicle}\n\nMüsaitlik ve fiyat bilgisi alabilir miyim?`;
+            
+            const whatsappUrl = `https://wa.me/905453359706?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+            resModal.classList.remove('active');
+        });
+    }
+});
+

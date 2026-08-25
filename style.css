@@ -2279,3 +2279,150 @@ form,
     }
 }
 
+
+
+/* =========================================
+   ERKEN REZERVASYON MODAL (GELİN ARABASI)
+   ========================================= */
+.reservation-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+.reservation-modal-overlay.active {
+    display: flex;
+    animation: fadeInModal 0.4s ease forwards;
+}
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.reservation-modal-content {
+    background: #111;
+    border: 1px solid #D4AF37;
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUpModal 0.4s ease 0.1s forwards;
+}
+@keyframes slideUpModal {
+    to { transform: translateY(0); opacity: 1; }
+}
+.reservation-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.reservation-modal-close:hover {
+    color: #D4AF37;
+}
+.reservation-modal-title {
+    color: #D4AF37;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+.reservation-modal-content .form-group {
+    margin-bottom: 15px;
+}
+.reservation-modal-content .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ddd;
+    font-size: 0.9rem;
+}
+.reservation-modal-content .form-group input,
+.reservation-modal-content .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: inherit;
+}
+.reservation-modal-content .form-group input:focus,
+.reservation-modal-content .form-group select:focus {
+    border-color: #D4AF37;
+    outline: none;
+}
+.reservation-btn {
+    width: 100%;
+    padding: 14px;
+    background: #D4AF37;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.reservation-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* Erken Rezervasyon Floating Button (Bottom Left) */
+.early-res-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: #D4AF37;
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 999;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s;
+    animation: bounce 2s infinite;
+}
+.early-res-float:hover {
+    background: #fff;
+    transform: scale(1.05);
+    animation: none;
+}
+.early-res-float i {
+    font-size: 1.2rem;
+}
+@media (max-width: 768px) {
+    .early-res-float {
+        bottom: 85px;
+        left: 20px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    .early-res-float span {
+        display: none; /* Hide text on mobile to save space */
+    }
+}
+

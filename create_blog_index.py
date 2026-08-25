@@ -24,7 +24,10 @@ blogs = [
     {"slug": "blog-vip-araclarda-hangi-donanimlar-var", "title": "VIP Araçlarda Hangi Donanımlar Bulunur?", "desc": "Gerçek bir VIP transfer aracının sahip olması gereken özellikler, teknoloji ve konfor donanımları."},
     {"slug": "blog-kurumsal-transfer-anlasmasi", "title": "Şirketler İçin Kurumsal Transfer Anlaşmasının Faydaları", "desc": "Firmalar için aylık faturalandırma ve kurumsal VIP taşımacılık anlaşmalarının avantajları."},
     {"slug": "blog-ankara-vip-aracla-gezilecek-yerler", "title": "Ankara'da VİP Araçla Gezilecek En İyi 5 Yer", "desc": "Şehri ilk kez ziyaret edenler için Anıtkabir, Ankara Kalesi, Atakule ve müzeleri kapsayan şoförlü tur rotası."},
-    {"slug": "blog-havalimani-transfer-erken-rezervasyon", "title": "Havalimanı Transferinde Neden Erken Rezervasyon Yapılmalı?", "desc": "Son dakika stresi yaşamamak ve en uygun VIP aracı garantilemek için erken rezervasyonun önemi."}
+    {"slug": "blog-havalimani-transfer-erken-rezervasyon", "title": "Havalimanı Transferinde Neden Erken Rezervasyon Yapılmalı?", "desc": "Son dakika stresi yaşamamak ve en uygun VIP aracı garantilemek için erken rezervasyonun önemi."},
+    {"slug": "blog-vip-gelin-arabasi-kiralama", "title": "VIP Gelin Arabası Kiralama: Özel Gününüzde Zirve Konfor", "desc": "Hayatınızın en mutlu gününde sıradanlığın dışına çıkın. VIP gelin arabası kiralama hizmetinin benzersiz avantajları ve detayları."},
+    {"slug": "blog-ankara-vip-transfer-farklari", "title": "Ankara VIP Transfer ile Standart Ulaşım Arasındaki Farklar", "desc": "Ankara VIP transfer hizmetinin özellikleri, iş seyahatlerindeki yeri ve neden gitgide daha çok tercih edildiği hakkında detaylar."},
+    {"slug": "blog-ankara-transfer-rehberi-2026", "title": "Ankara Transfer Rehberi 2026: En Çok Tercih Edilen Rotalar", "desc": "Esenboğa, Çankaya, İncek ve daha fazlası... Ankara içi transferlerde popüler rotalar ve ulaşım tüyoları."}
 ]
 
 # Create HTML content
