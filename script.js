@@ -563,3 +563,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+
+/* =========================================
+   PROMO MODAL (ANA SAYFA GELİN ARABASI)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const promoModal = document.getElementById('promoModal');
+    const closePromoModal = document.getElementById('closePromoModal');
+
+    if (promoModal && closePromoModal) {
+        // Close modal on 'X' click
+        closePromoModal.addEventListener('click', () => {
+            promoModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        promoModal.addEventListener('click', (e) => {
+            if (e.target === promoModal) {
+                promoModal.classList.remove('active');
+            }
+        });
+
+        // Automatically open modal after 5 seconds if not opened in this session
+        if (!sessionStorage.getItem('promoModalShown')) {
+            setTimeout(() => {
+                promoModal.classList.add('active');
+                sessionStorage.setItem('promoModalShown', 'true');
+            }, 5000);
+        }
+    }
+});
+
