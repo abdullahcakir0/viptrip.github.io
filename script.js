@@ -512,6 +512,32 @@ function quickBook(packageName) {
 
 document.addEventListener('DOMContentLoaded', () => {
     if(document.querySelector('.insta-swiper')) {
+        
+        window.instaGlobalMuted = false;
+        
+        const muteBtn = document.querySelector('.insta-mute-btn');
+        const muteIcon = document.querySelector('.insta-mute-btn i');
+        
+        muteBtn.addEventListener('click', () => {
+            window.instaGlobalMuted = !window.instaGlobalMuted;
+            if (window.instaGlobalMuted) {
+                muteIcon.classList.remove('fa-volume-up');
+                muteIcon.classList.add('fa-volume-mute');
+            } else {
+                muteIcon.classList.remove('fa-volume-mute');
+                muteIcon.classList.add('fa-volume-up');
+            }
+            
+            // Apply to active video immediately
+            if (swiper && swiper.slides) {
+                const activeSlide = swiper.slides[swiper.activeIndex];
+                if (activeSlide) {
+                    const video = activeSlide.querySelector('video');
+                    if (video) video.muted = window.instaGlobalMuted;
+                }
+            }
+        });
+
         const swiper = new Swiper('.insta-swiper', {
             grabCursor: true,
             centeredSlides: true,
@@ -528,9 +554,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const activeSlide = this.slides[this.activeIndex];
                     const video = activeSlide.querySelector('video');
                     if(video) {
-                        video.muted = false;
+                        video.muted = window.instaGlobalMuted;
                         video.play().catch(e => {
-                            console.log("Autoplay blocked, muting...", e);
                             video.muted = true;
                             video.play();
                         });
@@ -545,11 +570,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const video = activeSlide.querySelector('video');
                     if(video) {
                         video.currentTime = 0;
-                        video.muted = false; // Try with sound on slide change
+                        video.muted = window.instaGlobalMuted;
                         const playPromise = video.play();
                         if (playPromise !== undefined) {
                             playPromise.catch(e => {
-                                console.log("Play failed, retrying muted...", e);
                                 video.muted = true;
                                 video.play();
                             });
