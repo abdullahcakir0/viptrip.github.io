@@ -643,33 +643,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if(document.querySelector('.insta-swiper')) {
-        
-        
-
-        
-                    }
-                },
-                slideChangeTransitionEnd: function () {
-                    this.slides.forEach(slide => {
-                        const video = slide.querySelector('video');
-                        if (video) video.pause();
-                    });
-                    const activeSlide = this.slides[this.activeIndex];
-                    const video = activeSlide.querySelector('video');
-                    if(video) {
-                        video.currentTime = 0;
-                        video.muted = window.instaGlobalMuted;
-                        const playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(e => {
-                                video.muted = true;
-                                video.play();
-                            });
-                        }
-                    }
-                }
-            }
-        });
-    }
 });
