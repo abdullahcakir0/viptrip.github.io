@@ -47,7 +47,22 @@ blogs = [
     {"slug": "blog-ankara-bodrum-vip-transfer", "title": "Ankara Bodrum Kesintisiz Lüks VIP Ulaşım", "desc": "Ankara Bodrum Kesintisiz Lüks VIP Ulaşım. Ankara vip transfer, esenboğa vip transfer, şehirler arası vip transfer ve şof..."},
     {"slug": "blog-ankara-eskisehir-vip-transfer", "title": "Ankara Eskişehir Günübirlik VIP Transfer", "desc": "Ankara Eskişehir Günübirlik VIP Transfer. Ankara vip transfer, esenboğa vip transfer, şehirler arası vip transfer ve şof..."},
     {"slug": "blog-ankara-konya-vip-transfer", "title": "Ankara Konya Şoförlü VIP Araç Hizmeti", "desc": "Ankara Konya Şoförlü VIP Araç Hizmeti. Ankara vip transfer, esenboğa vip transfer, şehirler arası vip transfer ve şoförl..."},
-    {"slug": "blog-sehirlerarasi-soforlu-arac-kiralama", "title": "Şehirler Arası Şoförlü Araç Kiralama Avantajları", "desc": "Şehirler Arası Şoförlü Araç Kiralama Avantajları. Ankara vip transfer, esenboğa vip transfer, şehirler arası vip transfe..."}
+    {"slug": "blog-sehirlerarasi-soforlu-arac-kiralama", "title": "Şehirler Arası Şoförlü Araç Kiralama Avantajları", "desc": "Şehirler Arası Şoförlü Araç Kiralama Avantajları. Ankara vip transfer, esenboğa vip transfer, şehirler arası vip transfe..."},
+    {"slug": "blog-ankara-kartalkaya-vip-transfer", "title": "Ankara Kartalkaya Kayak Merkezi VIP Transfer", "desc": "Kartalkaya kayak tatiliniz için VIP ulaşım çözümleri."},
+    {"slug": "blog-ankara-erciyes-vip-transfer", "title": "Ankara Erciyes Şoförlü Araç Kiralama ve Transfer", "desc": "Erciyes kış turizmi için konforlu şoförlü VIP araç kiralama."},
+    {"slug": "blog-ankara-fethiye-vip-transfer", "title": "Ankara Fethiye Lüks Transfer Hizmetleri", "desc": "Ankara'dan Fethiye ve Ölüdeniz'e direkt lüks transfer."},
+    {"slug": "blog-ankara-marmaris-vip-transfer", "title": "Ankara Marmaris VIP Vito Kiralama", "desc": "Marmaris tatiliniz için geniş ve lüks Mercedes Vito kiralama."},
+    {"slug": "blog-ankara-kongre-fuar-transfer", "title": "Ankara Kongre ve Fuar VIP Transfer Organizasyonu", "desc": "Kurumsal kongre ve fuar etkinlikleri için VIP transfer ve taşıma."},
+    {"slug": "blog-ankara-saglik-turizmi-transfer", "title": "Ankara Sağlık Turizmi Hastane VIP Transfer", "desc": "Sağlık turizmi kapsamında hastane ve kliniklere özel VIP ulaşım."},
+    {"slug": "blog-ankara-uluslararasi-heyet-transfer", "title": "Uluslararası Heyet ve Protokol VIP Transfer Ankara", "desc": "Protokol kurallarına uygun, yabancı heyetler için VIP transfer."},
+    {"slug": "blog-ankara-elcilik-konsolosluk-transfer", "title": "Ankara Büyükelçilik ve Konsolosluk VIP Ulaşım", "desc": "Diplomatik misyonlar ve konsolosluklar için güvenli lüks transfer."},
+    {"slug": "blog-ankara-sanatci-oyuncu-transfer", "title": "Sanatçı, Oyuncu ve VİP Konuk Transfer Hizmetleri", "desc": "Sanat dünyası ve VIP konuklar için gizlilik odaklı lüks transfer."},
+    {"slug": "blog-ankara-spor-kafilesi-transfer", "title": "Spor Kulüpleri ve Kafile VIP Transfer Ankara", "desc": "Sporcular ve yönetim kadrosu için lüks VIP minibüs ve araçlar."},
+    {"slug": "blog-ankara-gunubirlik-turlar-transfer", "title": "Ankara Çıkışlı Günübirlik VIP Tur Transferleri", "desc": "Ailenizle veya grubunuzla özel günübirlik lüks tur ulaşımı."},
+    {"slug": "blog-ankara-yht-gar-vip-transfer", "title": "Ankara YHT Gar VIP Karşılama ve Transfer", "desc": "Yüksek Hızlı Tren garında isimle karşılama ve VIP transfer."},
+    {"slug": "blog-esenboga-otel-vip-transfer", "title": "Esenboğa Havalimanı Lüks Otel Transferleri", "desc": "Esenboğa'dan Ankara'nın 5 yıldızlı otellerine direkt lüks transfer."},
+    {"slug": "blog-ankara-vip-minibus-kiralama", "title": "Ankara VIP Minibüs Kiralama Şoförlü", "desc": "Geniş gruplar için şoförlü VIP minibüs kiralama hizmeti."},
+    {"slug": "blog-ankara-uzun-donem-soforlu-arac", "title": "Ankara Uzun Dönem Şoförlü VIP Araç Kiralama", "desc": "Kurumlar ve yöneticiler için aylık ve uzun dönem şoförlü VIP araç."}
 ]
 
 # Create HTML content
