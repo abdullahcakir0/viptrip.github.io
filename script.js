@@ -544,6 +544,8 @@ document.addEventListener('DOMContentLoaded', () => {
             slidesPerView: 'auto',
             spaceBetween: 20,
             loop: true,
+            observer: true,
+            observeParents: true,
             loopedSlides: 6,
             navigation: {
                 nextEl: '.insta-next',

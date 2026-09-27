@@ -578,12 +578,7 @@ nav.nav-menu a:hover {
     font-weight: 700;
 }
 
-.instagram-feed-wrapper {
-    min-height: 300px;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 10px;
-}
+.instagram-feed-wrapper { width: 100%; position: relative; overflow: hidden; }
 
 /* --- FOOTER --- */
 footer {
@@ -2386,12 +2381,4 @@ form,
     .insta-prev, .insta-next { display: none !important; }
 }
 
-.instagram-feed-wrapper {
-    width: 100vw !important;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    overflow: hidden;
-}
+.instagram-feed-wrapper { width: 100%; position: relative; overflow: hidden; }
