@@ -2385,3 +2385,13 @@ form,
     }
     .insta-prev, .insta-next { display: none !important; }
 }
+
+.instagram-feed-wrapper {
+    width: 100vw !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+}
