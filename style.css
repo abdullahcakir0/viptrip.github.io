@@ -267,7 +267,7 @@ nav.nav-menu a:hover {
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    color: #333;
+    color: #fff;
     width: 100%;
 }
 
@@ -407,7 +407,7 @@ nav.nav-menu a:hover {
 }
 
 .process-arrow {
-    color: #333;
+    color: #fff;
     font-size: 1.5rem;
 }
 
@@ -715,7 +715,7 @@ select {
     border-radius: 8px;
     font-family: 'Montserrat';
     font-weight: 600;
-    color: #333;
+    color: #fff;
     -webkit-appearance: none;
     appearance: none;
 }
@@ -1078,7 +1078,7 @@ form,
     padding: 15px;
     border-bottom: 1px solid #eee;
     background: #fff;
-    color: #333;
+    color: #fff;
     font-size: 0.95rem;
     cursor: pointer;
     text-align: left;
@@ -1832,7 +1832,7 @@ form,
 }
 
 .blog-faq .faq-item:hover {
-    border-color: #333;
+    border-color: #fff;
 }
 
 .blog-faq .faq-question {
@@ -2282,7 +2282,7 @@ form,
 /* Instagram Widget Styles */
 .insta-section {
     padding: 60px 0;
-    background: #fdfdfd;
+    background: #0a0a0a;
     overflow: hidden;
 }
 
@@ -2338,7 +2338,7 @@ form,
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     text-align: center;
-    color: #333;
+    color: #fff;
 }
 
 .insta-info .insta-title {

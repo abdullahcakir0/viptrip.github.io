@@ -529,9 +529,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextEl: '.insta-next',
                 prevEl: '.insta-prev',
             },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
+            /* autoplay: { delay: 3000, disableOnInteraction: false, }, */
+            on: {
+                init: function () {
+                    const activeSlide = this.slides[this.activeIndex];
+                    const video = activeSlide.querySelector('video');
+                    if(video) {
+                        video.play().catch(e=>console.log(e));
+                    }
+                },
+                slideChangeTransitionEnd: function () {
+                    this.slides.forEach(slide => {
+                        const video = slide.querySelector('video');
+                        if (video) video.pause();
+                    });
+                    const activeSlide = this.slides[this.activeIndex];
+                    const video = activeSlide.querySelector('video');
+                    if(video) {
+                        video.currentTime = 0;
+                        video.play().catch(e=>console.log(e));
+                    }
+                }
             }
         });
     }
