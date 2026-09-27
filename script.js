@@ -458,6 +458,72 @@ function closeMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    let instaMuted = true;
+    if(document.querySelector('.insta-swiper')) {
+        const instaSwiper = new Swiper('.insta-swiper', {
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            spaceBetween: 0,
+            loop: true,
+            loopedSlides: 6,
+            speed: 600,
+            navigation: {
+                nextEl: '.insta-btn-next',
+                prevEl: '.insta-btn-prev',
+            },
+            on: {
+                init: function () {
+                    const activeSlide = this.slides[this.activeIndex];
+                    if(activeSlide) {
+                        const video = activeSlide.querySelector('video');
+                        if (video) {
+                            video.muted = instaMuted;
+                            video.play().catch(e => console.log("Autoplay block on init"));
+                        }
+                    }
+                },
+                slideChangeTransitionStart: function () {
+                    this.slides.forEach(slide => {
+                        const video = slide.querySelector('video');
+                        if (video) {
+                            video.pause();
+                            video.currentTime = 0;
+                        }
+                    });
+                },
+                slideChangeTransitionEnd: function () {
+                    const activeSlide = this.slides[this.activeIndex];
+                    if(activeSlide) {
+                        const video = activeSlide.querySelector('video');
+                        if (video) {
+                            video.muted = instaMuted;
+                            video.play().catch(e => console.log("Autoplay block on change"));
+                        }
+                    }
+                }
+            }
+        });
+
+        const muteToggle = document.getElementById('instaMuteToggle');
+        if(muteToggle) {
+            muteToggle.addEventListener('click', function() {
+                instaMuted = !instaMuted;
+                const icon = this.querySelector('i');
+                if(instaMuted) {
+                    icon.className = 'fas fa-volume-mute';
+                } else {
+                    icon.className = 'fas fa-volume-up';
+                }
+                const activeVideo = document.querySelector('.swiper-slide-active video');
+                if(activeVideo) {
+                    activeVideo.muted = instaMuted;
+                }
+            });
+        }
+    }
+
     const userLang = navigator.language || navigator.userLanguage;
     if (userLang.includes('en')) changeLanguage('en');
     else if (userLang.includes('de')) changeLanguage('de');
@@ -511,56 +577,77 @@ function quickBook(packageName) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    if(document.querySelector('.insta-swiper')) {
-        
-        window.instaGlobalMuted = false;
-        
-        const muteBtn = document.querySelector('.insta-mute-btn');
-        const muteIcon = document.querySelector('.insta-mute-btn i');
-        
-        muteBtn.addEventListener('click', () => {
-            window.instaGlobalMuted = !window.instaGlobalMuted;
-            if (window.instaGlobalMuted) {
-                muteIcon.classList.remove('fa-volume-up');
-                muteIcon.classList.add('fa-volume-mute');
-            } else {
-                muteIcon.classList.remove('fa-volume-mute');
-                muteIcon.classList.add('fa-volume-up');
-            }
-            
-            // Apply to active video immediately
-            if (swiper && swiper.slides) {
-                const activeSlide = swiper.slides[swiper.activeIndex];
-                if (activeSlide) {
-                    const video = activeSlide.querySelector('video');
-                    if (video) video.muted = window.instaGlobalMuted;
-                }
-            }
-        });
 
-        const swiper = new Swiper('.insta-swiper', {
+    let instaMuted = true;
+    if(document.querySelector('.insta-swiper')) {
+        const instaSwiper = new Swiper('.insta-swiper', {
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
-            spaceBetween: 20,
+            spaceBetween: 0,
             loop: true,
-            observer: true,
-            observeParents: true,
             loopedSlides: 6,
+            speed: 600,
             navigation: {
-                nextEl: '.insta-next',
-                prevEl: '.insta-prev',
+                nextEl: '.insta-btn-next',
+                prevEl: '.insta-btn-prev',
             },
             on: {
                 init: function () {
                     const activeSlide = this.slides[this.activeIndex];
-                    const video = activeSlide.querySelector('video');
-                    if(video) {
-                        video.muted = window.instaGlobalMuted;
-                        video.play().catch(e => {
-                            video.muted = true;
-                            video.play();
-                        });
+                    if(activeSlide) {
+                        const video = activeSlide.querySelector('video');
+                        if (video) {
+                            video.muted = instaMuted;
+                            video.play().catch(e => console.log("Autoplay block on init"));
+                        }
+                    }
+                },
+                slideChangeTransitionStart: function () {
+                    this.slides.forEach(slide => {
+                        const video = slide.querySelector('video');
+                        if (video) {
+                            video.pause();
+                            video.currentTime = 0;
+                        }
+                    });
+                },
+                slideChangeTransitionEnd: function () {
+                    const activeSlide = this.slides[this.activeIndex];
+                    if(activeSlide) {
+                        const video = activeSlide.querySelector('video');
+                        if (video) {
+                            video.muted = instaMuted;
+                            video.play().catch(e => console.log("Autoplay block on change"));
+                        }
+                    }
+                }
+            }
+        });
+
+        const muteToggle = document.getElementById('instaMuteToggle');
+        if(muteToggle) {
+            muteToggle.addEventListener('click', function() {
+                instaMuted = !instaMuted;
+                const icon = this.querySelector('i');
+                if(instaMuted) {
+                    icon.className = 'fas fa-volume-mute';
+                } else {
+                    icon.className = 'fas fa-volume-up';
+                }
+                const activeVideo = document.querySelector('.swiper-slide-active video');
+                if(activeVideo) {
+                    activeVideo.muted = instaMuted;
+                }
+            });
+        }
+    }
+
+    if(document.querySelector('.insta-swiper')) {
+        
+        
+
+        
                     }
                 },
                 slideChangeTransitionEnd: function () {
