@@ -509,3 +509,30 @@ function quickBook(packageName) {
     window.open(url, '_blank').focus();
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    if(document.querySelector('.insta-swiper')) {
+        const swiper = new Swiper('.insta-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2,
+                slideShadows: true,
+            },
+            navigation: {
+                nextEl: '.insta-next',
+                prevEl: '.insta-prev',
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }
+        });
+    }
+});
