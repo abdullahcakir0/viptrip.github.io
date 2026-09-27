@@ -459,15 +459,27 @@ function closeMenu() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Instagram Static Grid Video Mute Toggles
+    // Reliable Video Mute Toggles for Static Grid
     document.querySelectorAll('.mute-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            
             const video = this.closest('.insta-grid-item').querySelector('video');
             const icon = this.querySelector('i');
             
             if(video.muted) {
+                // Mute all other videos first
+                document.querySelectorAll('.insta-grid-item video').forEach(v => {
+                    v.muted = true;
+                });
+                document.querySelectorAll('.mute-btn i').forEach(i => {
+                    i.className = 'fas fa-volume-mute';
+                });
+                
+                // Unmute this one and ensure it's playing
                 video.muted = false;
+                video.play().catch(err => console.log("Play interrupted:", err));
                 icon.className = 'fas fa-volume-up';
             } else {
                 video.muted = true;
@@ -475,6 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
 
 
     let instaMuted = true;
@@ -595,23 +608,6 @@ function quickBook(packageName) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Instagram Static Grid Video Mute Toggles
-    document.querySelectorAll('.mute-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const video = this.closest('.insta-grid-item').querySelector('video');
-            const icon = this.querySelector('i');
-            
-            if(video.muted) {
-                video.muted = false;
-                icon.className = 'fas fa-volume-up';
-            } else {
-                video.muted = true;
-                icon.className = 'fas fa-volume-mute';
-            }
-        });
-    });
 
 
     let instaMuted = true;
