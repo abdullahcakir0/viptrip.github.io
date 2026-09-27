@@ -513,29 +513,26 @@ function quickBook(packageName) {
 document.addEventListener('DOMContentLoaded', () => {
     if(document.querySelector('.insta-swiper')) {
         const swiper = new Swiper('.insta-swiper', {
-            effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
+            spaceBetween: 20,
             loop: true,
-            coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 2,
-                slideShadows: true,
-            },
             navigation: {
                 nextEl: '.insta-next',
                 prevEl: '.insta-prev',
             },
-            /* autoplay: { delay: 3000, disableOnInteraction: false, }, */
             on: {
                 init: function () {
                     const activeSlide = this.slides[this.activeIndex];
                     const video = activeSlide.querySelector('video');
                     if(video) {
-                        video.play().catch(e=>console.log(e));
+                        video.muted = false;
+                        video.play().catch(e => {
+                            console.log("Autoplay blocked, muting...", e);
+                            video.muted = true;
+                            video.play();
+                        });
                     }
                 },
                 slideChangeTransitionEnd: function () {
@@ -547,7 +544,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const video = activeSlide.querySelector('video');
                     if(video) {
                         video.currentTime = 0;
-                        video.play().catch(e=>console.log(e));
+                        video.muted = false; // Try with sound on slide change
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(e => {
+                                console.log("Play failed, retrying muted...", e);
+                                video.muted = true;
+                                video.play();
+                            });
+                        }
                     }
                 }
             }
