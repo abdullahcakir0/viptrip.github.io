@@ -459,6 +459,24 @@ function closeMenu() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Instagram Static Grid Video Mute Toggles
+    document.querySelectorAll('.mute-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const video = this.closest('.insta-grid-item').querySelector('video');
+            const icon = this.querySelector('i');
+            
+            if(video.muted) {
+                video.muted = false;
+                icon.className = 'fas fa-volume-up';
+            } else {
+                video.muted = true;
+                icon.className = 'fas fa-volume-mute';
+            }
+        });
+    });
+
+
     let instaMuted = true;
     if(document.querySelector('.insta-swiper')) {
         const instaSwiper = new Swiper('.insta-swiper', {
@@ -577,6 +595,24 @@ function quickBook(packageName) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Instagram Static Grid Video Mute Toggles
+    document.querySelectorAll('.mute-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const video = this.closest('.insta-grid-item').querySelector('video');
+            const icon = this.querySelector('i');
+            
+            if(video.muted) {
+                video.muted = false;
+                icon.className = 'fas fa-volume-up';
+            } else {
+                video.muted = true;
+                icon.className = 'fas fa-volume-mute';
+            }
+        });
+    });
+
 
     let instaMuted = true;
     if(document.querySelector('.insta-swiper')) {
