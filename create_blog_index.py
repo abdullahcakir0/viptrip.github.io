@@ -119,8 +119,15 @@ html = """<!DOCTYPE html>
 """
 
 for i, blog in enumerate(blogs):
-    # Just a placeholder image logic based on index
-    img_src = "assets/img/vito.jpeg" if i % 3 == 0 else ("assets/img/sprinter.jpeg" if i % 3 == 1 else "assets/img/sclass.jpeg")
+    img_src = "assets/img/vito.jpeg"
+    filepath = os.path.join(directory, f"{blog['slug']}.html")
+    if os.path.exists(filepath):
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+            import re
+            match = re.search(r'<img src="(assets/img/[^"]+)"[^>]*class="hero-bg"', content)
+            if match:
+                img_src = match.group(1)
     
     html += f"""
                 <a href="{blog['slug']}" class="related-card" style="text-decoration:none;">
