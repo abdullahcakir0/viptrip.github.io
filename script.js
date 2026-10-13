@@ -2,7 +2,10 @@
    1. AYARLAR VE SABİTLER
    ========================================= */
 const CONFIG = {
-    pricePerKm: 75,           // Km başına 75₺ sabit fiyat
+    pricePerKm: 75,           // Km başına 75₺ sabit fiyat (Mercedes Vito)
+    pricePerKmSprinter: 105,  // Km başına 105₺ (Mercedes Sprinter)
+    minPriceVito: 1250,       // Şehir içi taban VIP açılış fiyatı
+    minPriceSprinter: 1750,   // Sprinter taban açılış fiyatı
     whatsappPhone: "905453359706"
 };
 
@@ -59,15 +62,15 @@ const translations = {
         footer_rights: "Tüm hakları saklıdır.",
 
         placeholder_pickup: "Örn: Esenboğa Havalimanı...",
-        placeholder_dropoff: "Örn: Sheraton Ankara...",
+        placeholder_dropoff: "Örn: Sheraton Ankara, Çankaya...",
         loading: "Hesaplanıyor...",
-        error_route: "Rota hesaplanamadı. Lütfen listeden seçiniz.",
-        error_fill: "Lütfen tüm alanları doldurunuz.",
+        error_route: "Rota hesaplanamadı. Lütfen kontrol ediniz.",
+        error_fill: "Lütfen nereden ve nereye gideceğinizi belirtiniz.",
         res_dist: "Mesafe",
-        res_dur: "Süre",
+        res_dur: "Tahmini Süre",
         res_total: "Tahmini Tutar",
-        wa_msg: "Merhaba, Ankara transfer hizmeti için rezervasyon yapmak istiyorum.",
-        wa_route: "Rota",
+        wa_msg: "Merhaba, VIP transfer rezervasyonu yapmak istiyorum.",
+        wa_route: "Güzergah",
         wa_vehicle: "Araç",
         wa_price: "Fiyat",
         wa_ask: "Müsaitlik durumunuz nedir?"
@@ -114,11 +117,11 @@ const translations = {
         placeholder_dropoff: "Ex: Sheraton Ankara...",
         loading: "Calculating...",
         error_route: "Route could not be calculated.",
-        error_fill: "Please fill in all fields.",
+        error_fill: "Please enter pick-up and drop-off locations.",
         res_dist: "Distance",
-        res_dur: "Duration",
+        res_dur: "Est. Duration",
         res_total: "Estimated Price",
-        wa_msg: "Hello, I would like to book a transfer in Ankara.",
+        wa_msg: "Hello, I would like to book a VIP transfer in Ankara.",
         wa_route: "Route",
         wa_vehicle: "Vehicle",
         wa_price: "Price",
@@ -166,11 +169,11 @@ const translations = {
         placeholder_dropoff: "z.B. Sheraton Ankara...",
         loading: "Berechnung...",
         error_route: "Route konnte nicht berechnet werden.",
-        error_fill: "Bitte füllen Sie alle Felder aus.",
+        error_fill: "Bitte geben Sie Start- und Zielort ein.",
         res_dist: "Entfernung",
-        res_dur: "Dauer",
+        res_dur: "Geschätzte Dauer",
         res_total: "Geschätzter Preis",
-        wa_msg: "Hallo, ich möchte einen Transfer in Ankara buchen.",
+        wa_msg: "Hallo, ich möchte einen VIP-Transfer in Ankara buchen.",
         wa_route: "Route",
         wa_vehicle: "Fahrzeug",
         wa_price: "Preis",
@@ -218,11 +221,11 @@ const translations = {
         placeholder_dropoff: "Напр: Sheraton Ankara...",
         loading: "Вычисление...",
         error_route: "Маршрут не может быть рассчитан.",
-        error_fill: "Пожалуйста, заполните все поля.",
+        error_fill: "Пожалуйста, заполните пункты отправления и назначения.",
         res_dist: "Расстояние",
-        res_dur: "Время",
+        res_dur: "Примерное время",
         res_total: "Цена",
-        wa_msg: "Здравствуйте, я хочу забронировать трансфер в Анкаре.",
+        wa_msg: "Здравствуйте, я хочу забронировать VIP-трансфер в Анкаре.",
         wa_route: "Маршрут",
         wa_vehicle: "Авто",
         wa_price: "Цена",
@@ -231,187 +234,603 @@ const translations = {
 };
 
 /* =========================================
-   3. GARANTİ ADRES ARAMA (IŞINLAMA YÖNTEMİ)
+   3. POPÜLER VIP LOKASYON VERİ TABANI
    ========================================= */
-let typingTimer;
+const ANKARA_LOCATIONS = [
+    // Havalimanı & Ulaşım Merkezleri
+    {
+        name: "Esenboğa Havalimanı (ESB)",
+        aliases: ["esenboga", "esenboğa", "havalimani", "havalimanı", "airport", "esb"],
+        coords: "32.9950,40.1281",
+        icon: "fa-plane"
+    },
+    {
+        name: "Ankara YHT Garı (Merkez)",
+        aliases: ["yht", "yht garı", "ankara garı", "tren garı", "gar", "hızlı tren"],
+        coords: "32.8447,39.9362",
+        icon: "fa-train"
+    },
+    {
+        name: "AŞTİ Otobüs Terminali",
+        aliases: ["asti", "aşti", "otogar", "terminal"],
+        coords: "32.8128,39.9172",
+        icon: "fa-bus"
+    },
+    {
+        name: "Eryaman YHT Garı",
+        aliases: ["eryaman yht", "eryaman gar"],
+        coords: "32.6517,39.9675",
+        icon: "fa-train"
+    },
 
-// Listeyi Input'un altına ışınlayan fonksiyon
-function positionList(input, list) {
-    // 1. Listeyi "body" etiketine taşı (Hapisten kurtar)
-    if (list.parentNode !== document.body) {
-        document.body.appendChild(list);
+    // Çankaya & Protokol & Merkez
+    {
+        name: "Çankaya / Tunalı Hilmi",
+        aliases: ["cankaya", "çankaya", "tunali", "tunalı", "tunalı hilmi", "kavaklıdere", "kavaklidere"],
+        coords: "32.8597,39.8974",
+        icon: "fa-map-pin"
+    },
+    {
+        name: "Kızılay / Bakanlıklar / TBMM",
+        aliases: ["kizilay", "kızılay", "bakanliklar", "bakanlıklar", "tbmm", "meclis", "sıhhiye", "sihhiye"],
+        coords: "32.8543,39.9208",
+        icon: "fa-landmark"
+    },
+    {
+        name: "Gaziosmanpaşa (GOP) / Filistin Cad.",
+        aliases: ["gop", "gaziosmanpasa", "gaziosmanpaşa", "filistin", "ugur mumcu", "uğur mumcu"],
+        coords: "32.8710,39.8965",
+        icon: "fa-map-pin"
+    },
+    {
+        name: "Çukurambar / Söğütözü (İş Merkezleri)",
+        aliases: ["cukurambar", "çukurambar", "sogutozu", "söğütözü", "armada", "next level", "the paragon"],
+        coords: "32.8122,39.9075",
+        icon: "fa-briefcase"
+    },
+    {
+        name: "İncek / Beytepe / Alacaatlı",
+        aliases: ["incek", "i̇ncek", "beytepe", "alacaatli", "alacaatlı", "incek loft"],
+        coords: "32.7214,39.8452",
+        icon: "fa-home"
+    },
+    {
+        name: "Çayyolu / Ümitköy / Yaşamkent",
+        aliases: ["cayyolu", "çayyolu", "umitkoy", "ümitköy", "yasamkent", "yaşamkent", "mesa koru"],
+        coords: "32.7058,39.8872",
+        icon: "fa-map-pin"
+    },
+    {
+        name: "Bilkent / ODTÜ / Hacettepe",
+        aliases: ["bilkent", "odtu", "odtü", "hacettepe", "angora"],
+        coords: "32.7533,39.8732",
+        icon: "fa-graduation-cap"
+    },
+    {
+        name: "Gölbaşı / Mogan Gölü",
+        aliases: ["golbasi", "gölbaşı", "mogan", "eymir"],
+        coords: "32.8083,39.7915",
+        icon: "fa-water"
+    },
+    {
+        name: "Yenimahalle / Batıkent / Eryaman",
+        aliases: ["yenimahalle", "batikent", "batıkent", "eryaman", "göksu", "goksu"],
+        coords: "32.7314,39.9647",
+        icon: "fa-map-pin"
+    },
+    {
+        name: "Ostim / İvedik OSB",
+        aliases: ["ostim", "ivedik", "osb", "sanayi"],
+        coords: "32.7505,39.9722",
+        icon: "fa-industry"
+    },
+    {
+        name: "Keçiören / Etlik Şehir Hastanesi",
+        aliases: ["kecioren", "keçiören", "etlik", "etlik sehir hastanesi", "etlik şehir hastanesi"],
+        coords: "32.8252,39.9714",
+        icon: "fa-hospital"
+    },
+    {
+        name: "Bilkent Şehir Hastanesi",
+        aliases: ["bilkent sehir hastanesi", "bilkent şehir hastanesi", "şehir hastanesi"],
+        coords: "32.7745,39.8970",
+        icon: "fa-hospital"
+    },
+    {
+        name: "Etimesgut / Bağlıca / Elvankent",
+        aliases: ["etimesgut", "baglica", "bağlıca", "elvankent"],
+        coords: "32.6841,39.9492",
+        icon: "fa-map-pin"
+    },
+    {
+        name: "Sincan / Yenikent",
+        aliases: ["sincan", "yenikent"],
+        coords: "32.5855,39.9614",
+        icon: "fa-map-pin"
+    },
+    {
+        name: "Ulus / Altındağ / Ankara Kalesi",
+        aliases: ["ulus", "altindag", "altındağ", "kale", "ankara kalesi", "hamamönü", "hamamonu"],
+        coords: "32.8644,39.9419",
+        icon: "fa-landmark"
+    },
+
+    // 5 Yıldızlı Lüks Oteller
+    {
+        name: "Sheraton Hotel Ankara (GOP)",
+        aliases: ["sheraton", "sheraton ankara", "sheraton otel"],
+        coords: "32.8660,39.8943",
+        icon: "fa-hotel"
+    },
+    {
+        name: "JW Marriott Hotel Ankara (Söğütözü)",
+        aliases: ["jw marriott", "marriott", "jw marriott ankara"],
+        coords: "32.8142,39.9114",
+        icon: "fa-hotel"
+    },
+    {
+        name: "Hilton SA Ankara (Kavaklıdere)",
+        aliases: ["hilton", "hilton ankara", "hilton sa"],
+        coords: "32.8621,39.8988",
+        icon: "fa-hotel"
+    },
+    {
+        name: "Swissôtel Ankara (Çankaya)",
+        aliases: ["swissotel", "swiss otel", "swissotel ankara"],
+        coords: "32.8653,39.8753",
+        icon: "fa-hotel"
+    },
+    {
+        name: "Divan Ankara (Çankaya)",
+        aliases: ["divan", "divan otel", "divan ankara"],
+        coords: "32.8606,39.9015",
+        icon: "fa-hotel"
+    },
+    {
+        name: "Mövenpick Hotel Ankara (Söğütözü)",
+        aliases: ["movenpick", "mövenpick"],
+        coords: "32.8116,39.9103",
+        icon: "fa-hotel"
+    },
+    {
+        name: "CPAnkara Hotel (Ankamall)",
+        aliases: ["cpankara", "crowne plaza", "ankamall"],
+        coords: "32.8315,39.9515",
+        icon: "fa-hotel"
+    },
+
+    // Şehirlerarası VIP Rotalar
+    {
+        name: "Bolu / Abant Gölü",
+        aliases: ["bolu", "abant", "abant golu", "yedigoller", "yedigöller", "kartalkaya"],
+        coords: "31.2818,40.6053",
+        icon: "fa-mountain"
+    },
+    {
+        name: "Kapadokya / Nevşehir / Göreme",
+        aliases: ["kapadokya", "nevsehir", "nevşehir", "urgup", "ürgüp", "goreme", "göreme", "uchisar"],
+        coords: "34.8290,38.6431",
+        icon: "fa-map-signs"
+    },
+    {
+        name: "İstanbul (Sabiha Gökçen - SAW)",
+        aliases: ["istanbul", "sabiha", "sabiha gokcen", "sabiha gökçen", "saw", "anadolu yakasi"],
+        coords: "29.3092,40.8986",
+        icon: "fa-city"
+    },
+    {
+        name: "İstanbul (İstanbul Havalimanı - İGA)",
+        aliases: ["iga", "istanbul havalimani", "istanbul havalimanı", "avrupa yakasi"],
+        coords: "28.7279,41.2608",
+        icon: "fa-city"
+    },
+    {
+        name: "Eskişehir Merkez",
+        aliases: ["eskisehir", "eskişehir", "odunpazarı", "odunpazari"],
+        coords: "30.5256,39.7767",
+        icon: "fa-road"
+    },
+    {
+        name: "Konya Merkez",
+        aliases: ["konya", "mevlana", "selcuklu"],
+        coords: "32.4846,37.8746",
+        icon: "fa-road"
+    },
+    {
+        name: "Kayseri / Erciyes",
+        aliases: ["kayseri", "erciyes"],
+        coords: "35.4853,38.7205",
+        icon: "fa-mountain"
+    },
+    {
+        name: "Bursa Merkez",
+        aliases: ["bursa", "uludag", "uludağ"],
+        coords: "29.0610,40.1885",
+        icon: "fa-road"
+    },
+    {
+        name: "Antalya / Alanya",
+        aliases: ["antalya", "alanya", "kemer", "belek", "side"],
+        coords: "30.7133,36.8969",
+        icon: "fa-umbrella-beach"
+    }
+];
+
+function normalizeText(text) {
+    if (!text) return "";
+    return text.toString()
+        .toLowerCase()
+        .trim()
+        .replace(/ğ/g, "g")
+        .replace(/ü/g, "u")
+        .replace(/ş/g, "s")
+        .replace(/ı/g, "i")
+        .replace(/ö/g, "o")
+        .replace(/ç/g, "c");
+}
+
+function findLocationInDb(query) {
+    const q = normalizeText(query);
+    if (!q) return null;
+
+    // 1. Exact or alias match
+    for (const loc of ANKARA_LOCATIONS) {
+        if (normalizeText(loc.name) === q) return loc;
+        for (const alias of loc.aliases) {
+            if (normalizeText(alias) === q) return loc;
+        }
     }
 
-    // 2. Input kutusunun sayfadaki yerini ölç
-    const rect = input.getBoundingClientRect();
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+    // 2. Partial match
+    for (const loc of ANKARA_LOCATIONS) {
+        if (normalizeText(loc.name).includes(q)) return loc;
+        for (const alias of loc.aliases) {
+            if (normalizeText(alias).includes(q) || q.includes(normalizeText(alias))) return loc;
+        }
+    }
 
-    // 3. Listeyi tam oraya yapıştır
-    list.style.position = "absolute";
-    list.style.top = (rect.bottom + scrollTop) + "px"; // Kutunun altı
-    list.style.left = (rect.left + scrollLeft) + "px"; // Kutunun solu
-    list.style.width = rect.width + "px"; // Genişliği kutuyla aynı olsun
-    list.style.zIndex = "9999999"; // En üste çıksın
+    return null;
+}
+
+/* =========================================
+   4. ADRES ARAMA & ÖNERİ SİSTEMİ
+   ========================================= */
+let searchDebounceTimer = null;
+
+function renderSuggestions(places, list, input, coordsInput) {
+    list.innerHTML = "";
+    if (!places || places.length === 0) {
+        list.innerHTML = `<li style="cursor:default; color:#999; padding:12px 16px;">Sonuç bulunamadı</li>`;
+        list.style.display = "block";
+        return;
+    }
+
+    places.forEach(place => {
+        const item = document.createElement("li");
+        const iconClass = place.icon ? place.icon : "fa-map-marker-alt";
+        item.innerHTML = `<i class="fas ${iconClass}"></i> <span>${place.name}</span>`;
+
+        item.addEventListener("mousedown", (e) => {
+            e.preventDefault(); // prevent blur
+            input.value = place.name;
+            coordsInput.value = place.coords;
+            list.style.display = "none";
+        });
+
+        list.appendChild(item);
+    });
+
+    list.style.display = "block";
+}
+
+function showPopularSuggestions(listId, inputId, coordsId) {
+    const list = document.getElementById(listId);
+    const input = document.getElementById(inputId);
+    const coordsInput = document.getElementById(coordsId);
+    if (!list || !input) return;
+
+    // Top popular locations
+    const popularPicks = ANKARA_LOCATIONS.slice(0, 7);
+    renderSuggestions(popularPicks, list, input, coordsInput);
 }
 
 async function searchAddress(query, listId, inputId, coordsId) {
-    if (query.length < 3) return;
-
-    const input = document.getElementById(inputId);
     const list = document.getElementById(listId);
+    const input = document.getElementById(inputId);
+    const coordsInput = document.getElementById(coordsId);
+    if (!list || !input) return;
 
-    // --> KRİTİK HAMLE: Listeyi konumlandır ve göster <--
-    positionList(input, list);
-    list.style.display = "block";
+    const trimmed = query.trim();
+    if (trimmed.length < 2) {
+        showPopularSuggestions(listId, inputId, coordsId);
+        return;
+    }
 
-    list.innerHTML = '<li style="color:#888; padding:15px; background:#fff;"><i class="fas fa-circle-notch fa-spin"></i> Aranıyor...</li>';
+    // 1. Instant local search
+    const qNorm = normalizeText(trimmed);
+    const localMatches = ANKARA_LOCATIONS.filter(loc => {
+        if (normalizeText(loc.name).includes(qNorm)) return true;
+        return loc.aliases.some(alias => normalizeText(alias).includes(qNorm));
+    });
 
-    // HTTPS ve TR Filtreli Arama
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=7&countrycodes=tr&addressdetails=1&email=info@viptrip.com.tr`;
+    renderSuggestions(localMatches.slice(0, 8), list, input, coordsInput);
 
-    try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Hata");
-        const data = await response.json();
-
-        list.innerHTML = "";
-
-        if (data.length === 0) {
-            list.innerHTML = `<li style="cursor:default; color:#999; padding:15px; background:#fff;">Sonuç bulunamadı</li>`;
-            return;
+    // 2. Photon geocoding backup if fewer than 4 local matches
+    if (localMatches.length < 4 && trimmed.length >= 3) {
+        try {
+            const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(trimmed)}&limit=5&lat=39.93&lon=32.85`;
+            const res = await fetch(url);
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.features && data.features.length > 0) {
+                    const extraPlaces = [];
+                    data.features.forEach(f => {
+                        const name = [f.properties.name, f.properties.district, f.properties.city || f.properties.state]
+                            .filter(Boolean).join(", ");
+                        const coords = `${f.geometry.coordinates[0]},${f.geometry.coordinates[1]}`;
+                        if (!localMatches.some(m => m.name === name)) {
+                            extraPlaces.push({
+                                name: name,
+                                coords: coords,
+                                icon: "fa-map-pin"
+                            });
+                        }
+                    });
+                    const combined = [...localMatches, ...extraPlaces].slice(0, 8);
+                    if (input.value.trim() === trimmed) {
+                        renderSuggestions(combined, list, input, coordsInput);
+                    }
+                }
+            }
+        } catch (e) {
+            // Local matches already displayed, silent fallback
         }
-
-        data.forEach(place => {
-            const item = document.createElement("li");
-            let displayName = place.display_name.split(',').slice(0, 4).join(', ');
-
-            let icon = 'fa-map-marker-alt';
-            if (displayName.toLowerCase().includes('havalimanı') || displayName.toLowerCase().includes('airport')) icon = 'fa-plane';
-            else if (displayName.toLowerCase().includes('otel')) icon = 'fa-hotel';
-
-            item.innerHTML = `<i class="fas ${icon}" style="color:#D4AF37; margin-right:10px;"></i> ${displayName}`;
-
-            // Tıklama Olayı
-            item.onclick = function () {
-                document.getElementById(inputId).value = displayName;
-                document.getElementById(coordsId).value = place.lon + "," + place.lat;
-                list.style.display = "none"; // Seçince gizle
-            };
-            list.appendChild(item);
-        });
-
-    } catch (error) {
-        list.innerHTML = `<li style="color:red; padding:15px; background:#fff;">Bağlantı hatası.</li>`;
     }
 }
 
-// Olay Dinleyicileri
+// Event Listeners for search boxes
 ['pickup', 'dropoff'].forEach(type => {
     const input = document.getElementById(`${type}-input`);
     const list = document.getElementById(`${type}-suggestions`);
+    const coordsInput = document.getElementById(`${type}-coords`);
 
-    if (input) {
-        input.addEventListener('input', function () {
-            clearTimeout(typingTimer);
-            const val = this.value;
-            typingTimer = setTimeout(() => {
-                searchAddress(val, `${type}-suggestions`, `${type}-input`, `${type}-coords`);
-            }, 800);
+    if (input && list) {
+        input.addEventListener('focus', function () {
+            if (!this.value.trim()) {
+                showPopularSuggestions(`${type}-suggestions`, `${type}-input`, `${type}-coords`);
+            } else {
+                searchAddress(this.value, `${type}-suggestions`, `${type}-input`, `${type}-coords`);
+            }
         });
 
-        // Sayfa kaydırılırsa veya pencere boyutu değişirse listeyi kapat (Kayma olmasın diye)
-        window.addEventListener('resize', () => { if (list) list.style.display = 'none'; });
-        window.addEventListener('scroll', () => { if (list) list.style.display = 'none'; });
+        input.addEventListener('input', function () {
+            clearTimeout(searchDebounceTimer);
+            const val = this.value;
+            // Clear coords if user edits text
+            coordsInput.value = "";
+            searchDebounceTimer = setTimeout(() => {
+                searchAddress(val, `${type}-suggestions`, `${type}-input`, `${type}-coords`);
+            }, 250);
+        });
 
-        // Dışarı tıklayınca kapat
-        document.addEventListener('click', function (e) {
-            if (e.target !== input && e.target !== list) {
-                if (list) list.style.display = 'none';
-            }
+        input.addEventListener('blur', function () {
+            setTimeout(() => {
+                list.style.display = 'none';
+            }, 200);
         });
     }
 });
 
-/* =========================================
-   4. HESAPLAMA (OSRM API)
-   ========================================= */
-async function calculateDistancePrice() {
-    const pickupCoords = document.getElementById('pickup-coords').value;
-    const dropoffCoords = document.getElementById('dropoff-coords').value;
-    const vehicleType = document.getElementById('vehicle-type').value;
-    const btnSpan = document.querySelector('button[onclick="calculateDistancePrice()"] span');
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('.search-box')) {
+        document.querySelectorAll('.suggestions').forEach(s => s.style.display = 'none');
+    }
+});
 
-    if (!pickupCoords || !dropoffCoords) {
-        alert(translations[currentLang].error_fill);
+/* =========================================
+   5. GÜZERGÂH & FİYAT HESAPLAMA (GARANTİLİ MOTOR)
+   ========================================= */
+function calculateHaversineDistance(lon1, lat1, lon2, lat2) {
+    const R = 6371; // km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const straightKm = R * c;
+    // Türkiye karayolu kıvrım katsayısı: 1.28
+    return Math.max(5, straightKm * 1.28);
+}
+
+async function resolveCoords(inputEl, coordsEl) {
+    if (coordsEl.value && coordsEl.value.includes(",")) {
+        return coordsEl.value;
+    }
+
+    const val = inputEl.value.trim();
+    if (!val) return null;
+
+    // 1. Try local DB match
+    const matched = findLocationInDb(val);
+    if (matched) {
+        coordsEl.value = matched.coords;
+        inputEl.value = matched.name;
+        return matched.coords;
+    }
+
+    // 2. Try online geocoding
+    try {
+        const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(val)}&limit=1&lat=39.93&lon=32.85`;
+        const res = await fetch(url);
+        if (res.ok) {
+            const data = await res.json();
+            if (data && data.features && data.features.length > 0) {
+                const f = data.features[0];
+                const c = `${f.geometry.coordinates[0]},${f.geometry.coordinates[1]}`;
+                coordsEl.value = c;
+                return c;
+            }
+        }
+    } catch (e) {}
+
+    return null;
+}
+
+async function calculateDistancePrice() {
+    const pickupInput = document.getElementById('pickup-input');
+    const dropoffInput = document.getElementById('dropoff-input');
+    const pickupCoordsEl = document.getElementById('pickup-coords');
+    const dropoffCoordsEl = document.getElementById('dropoff-coords');
+    const vehicleType = document.getElementById('vehicle-type').value;
+    const btn = document.querySelector('button[onclick="calculateDistancePrice()"]');
+    const btnSpan = btn ? btn.querySelector('span') : null;
+    const t = translations[currentLang];
+
+    if (!pickupInput.value.trim() || !dropoffInput.value.trim()) {
+        alert(t.error_fill);
         return;
     }
 
-    const originalText = btnSpan.innerText;
-    btnSpan.innerText = translations[currentLang].loading;
+    const originalText = btnSpan ? btnSpan.innerText : "HESAPLA";
+    if (btnSpan) btnSpan.innerText = t.loading;
 
-    const url = `https://router.project-osrm.org/route/v1/driving/${pickupCoords};${dropoffCoords}?overview=false`;
+    // Resolve coordinates automatically if needed
+    const pickupCoords = await resolveCoords(pickupInput, pickupCoordsEl);
+    const dropoffCoords = await resolveCoords(dropoffInput, dropoffCoordsEl);
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        if (data.code !== "Ok") {
-            alert(translations[currentLang].error_route);
-            btnSpan.innerText = originalText;
-            return;
-        }
-
-        const distanceMeters = data.routes[0].distance;
-        const distanceKm = (distanceMeters / 1000).toFixed(1);
-        const durationMin = Math.round(data.routes[0].duration / 60);
-
-        let price = distanceKm * CONFIG.pricePerKm;
-        price = Math.ceil(price / 10) * 10; // 10'un katına yuvarla
-
-        calculationData = {
-            price: price,
-            distance: distanceKm,
-            duration: durationMin,
-            pickup: document.getElementById('pickup-input').value,
-            dropoff: document.getElementById('dropoff-input').value,
-            vehicle: (vehicleType === 'sprinter') ? "Mercedes Sprinter (VIP)" : "Mercedes Vito (VIP)"
-        };
-
-        updateResultUI();
-        btnSpan.innerText = translations[currentLang].btn_calc;
-
-    } catch (error) {
-        console.error("Hesaplama Hatası:", error);
-        alert("Bağlantı hatası");
-        btnSpan.innerText = originalText;
+    if (!pickupCoords || !dropoffCoords) {
+        alert(t.error_route);
+        if (btnSpan) btnSpan.innerText = originalText;
+        return;
     }
+
+    let distanceKm = 0;
+    let durationMin = 0;
+
+    // 1. OSRM API with 3.5-second timeout
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3500);
+
+        const url = `https://router.project-osrm.org/route/v1/driving/${pickupCoords};${dropoffCoords}?overview=false`;
+        const response = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+            const data = await response.json();
+            if (data && data.code === "Ok" && data.routes && data.routes[0]) {
+                const route = data.routes[0];
+                distanceKm = parseFloat((route.distance / 1000).toFixed(1));
+                durationMin = Math.round(route.duration / 60);
+            }
+        }
+    } catch (e) {
+        // Fallback to Haversine calculation below
+    }
+
+    // 2. Reliable Fallback if OSRM failed or returned 0
+    if (!distanceKm || distanceKm <= 0) {
+        const [lon1, lat1] = pickupCoords.split(',').map(Number);
+        const [lon2, lat2] = dropoffCoords.split(',').map(Number);
+        const estDist = calculateHaversineDistance(lon1, lat1, lon2, lat2);
+        distanceKm = parseFloat(estDist.toFixed(1));
+        const avgSpeed = distanceKm > 60 ? 85 : 48;
+        durationMin = Math.max(15, Math.round((distanceKm / avgSpeed) * 60));
+    }
+
+    // 3. Price calculation based on vehicle type
+    const isSprinter = vehicleType === 'sprinter';
+    const rate = isSprinter ? CONFIG.pricePerKmSprinter : CONFIG.pricePerKm;
+    const minPrice = isSprinter ? CONFIG.minPriceSprinter : CONFIG.minPriceVito;
+
+    let rawPrice = distanceKm * rate;
+    let finalPrice = Math.max(minPrice, rawPrice);
+    finalPrice = Math.ceil(finalPrice / 50) * 50; // Round to nearest 50₺
+
+    const vehicleTitle = isSprinter ? "Mercedes Sprinter VIP (7-13 Kişi)" : "Mercedes Vito VIP (1-6 Kişi)";
+
+    calculationData = {
+        price: finalPrice,
+        distance: distanceKm,
+        duration: durationMin,
+        pickup: pickupInput.value,
+        dropoff: dropoffInput.value,
+        vehicle: vehicleTitle
+    };
+
+    updateResultUI();
+    if (btnSpan) btnSpan.innerText = t.btn_calc;
 }
 
 function updateResultUI() {
     const resultBox = document.getElementById('price-result');
     const t = translations[currentLang];
+    if (!resultBox) return;
 
     resultBox.style.display = 'flex';
-    document.getElementById('show-price').innerText = calculationData.price + "₺";
 
-    const infoHTML = `
-        ${t.res_dist}: <b>${calculationData.distance} km</b> | 
-        ${t.res_dur}: <b>${calculationData.duration} dk/min</b>
-    `;
+    document.getElementById('show-price').innerText = calculationData.price.toLocaleString('tr-TR') + "₺";
 
-    document.querySelector('.result-content p').innerHTML = infoHTML;
-    document.getElementById('show-route').innerText = `${calculationData.pickup} -> ${calculationData.dropoff}`;
-    document.querySelector('.whatsapp-book-btn').innerHTML = `<i class="fab fa-whatsapp"></i> ${t.btn_book}`;
+    const distVal = document.getElementById('dist-val');
+    const durVal = document.getElementById('dur-val');
+    const vehVal = document.getElementById('vehicle-val');
+
+    if (distVal) distVal.innerText = `${calculationData.distance} km`;
+    if (durVal) {
+        if (calculationData.duration >= 60) {
+            const h = Math.floor(calculationData.duration / 60);
+            const m = calculationData.duration % 60;
+            durVal.innerText = `${h} sa ${m > 0 ? m + ' dk' : ''}`;
+        } else {
+            durVal.innerText = `${calculationData.duration} dk`;
+        }
+    }
+    if (vehVal) vehVal.innerText = calculationData.vehicle;
+
+    const routeInfo = document.getElementById('show-route');
+    if (routeInfo) {
+        routeInfo.innerHTML = `<strong>${calculationData.pickup}</strong> <i class="fas fa-arrow-right" style="color:#D4AF37; margin:0 6px;"></i> <strong>${calculationData.dropoff}</strong>`;
+    }
+
+    const bookBtn = document.querySelector('.whatsapp-book-btn');
+    if (bookBtn) {
+        bookBtn.innerHTML = `<i class="fab fa-whatsapp"></i> <span>${t.btn_book}</span>`;
+    }
+
+    // Smooth scroll to result
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function selectQuickRoute(pickupName, dropoffName) {
+    const pickupInput = document.getElementById('pickup-input');
+    const dropoffInput = document.getElementById('dropoff-input');
+    const pickupCoords = document.getElementById('pickup-coords');
+    const dropoffCoords = document.getElementById('dropoff-coords');
+
+    const pLoc = findLocationInDb(pickupName);
+    const dLoc = findLocationInDb(dropoffName);
+
+    if (pickupInput && pLoc) {
+        pickupInput.value = pLoc.name;
+        pickupCoords.value = pLoc.coords;
+    }
+    if (dropoffInput && dLoc) {
+        dropoffInput.value = dLoc.name;
+        dropoffCoords.value = dLoc.coords;
+    }
+
+    calculateDistancePrice();
 }
 
 function bookNow() {
     const t = translations[currentLang];
     const message = `
-*${t.wa_msg}*
+*VIPTRIP REZERVASYON TALEBİ* 🌟
 ---------------------------
-📍 *${t.wa_route}:* ${calculationData.pickup} -> ${calculationData.dropoff}
-📏 *${t.res_dist}:* ${calculationData.distance} km
+📍 *${t.wa_route}:* ${calculationData.pickup} ➔ ${calculationData.dropoff}
+📏 *${t.res_dist}:* ${calculationData.distance} km (~${calculationData.duration} dk)
 🚐 *${t.wa_vehicle}:* ${calculationData.vehicle}
 💰 *${t.wa_price}:* ${calculationData.price}₺
 ---------------------------
@@ -421,7 +840,7 @@ function bookNow() {
 }
 
 /* =========================================
-   5. DİL & ARAYÜZ MANTIĞI
+   6. DİL & ARAYÜZ MANTIĞI
    ========================================= */
 function changeLanguage(lang) {
     currentLang = lang;
@@ -437,15 +856,18 @@ function changeLanguage(lang) {
         }
     });
 
-    const pInput = document.getElementById('pickup-input');
-    const dInput = document.getElementById('dropoff-input');
-    if (pInput) pInput.placeholder = t.placeholder_pickup;
-    if (dInput) dInput.placeholder = t.placeholder_dropoff;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.innerText.toLowerCase() === lang) btn.classList.add('active');
+    });
 
-    if (document.getElementById('price-result').style.display === 'flex') updateResultUI();
+    const pickupInput = document.getElementById('pickup-input');
+    const dropoffInput = document.getElementById('dropoff-input');
+    if (pickupInput) pickupInput.placeholder = t.placeholder_pickup;
+    if (dropoffInput) dropoffInput.placeholder = t.placeholder_dropoff;
 }
 
-function toggleMobileMenu() {
+function toggleMenu() {
     document.querySelector('.nav-menu').classList.toggle('active');
     const overlay = document.querySelector('.nav-overlay');
     if (overlay) overlay.classList.toggle('active');
@@ -457,114 +879,39 @@ function closeMenu() {
     if (overlay) overlay.classList.remove('active');
 }
 
+/* =========================================
+   7. HIZLI ROTA KARTLARI (Quick Book)
+   ========================================= */
+function quickBook(packageName) {
+    const message = `*MERHABA VIPTRIP* 🔔%0A%0A` +
+        `Aşağıdaki hizmetiniz için bilgi ve müsaitlik öğrenmek istiyorum:%0A` +
+        `🚀 *Seçilen Paket:* ${packageName}%0A%0A` +
+        `Müsait misiniz?`;
+
+    const url = `https://wa.me/${CONFIG.whatsappPhone}?text=${message}`;
+    window.open(url, '_blank').focus();
+}
+
+/* =========================================
+   8. SAYFA YÜKLENDİĞİNDE ÇALIŞACAKLAR
+   ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Reliable Video Mute Toggles for Static Grid
-    document.querySelectorAll('.mute-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const video = this.closest('.insta-grid-item').querySelector('video');
-            const icon = this.querySelector('i');
-            
-            if(video.muted) {
-                // Mute all other videos first
-                document.querySelectorAll('.insta-grid-item video').forEach(v => {
-                    v.muted = true;
-                });
-                document.querySelectorAll('.mute-btn i').forEach(i => {
-                    i.className = 'fas fa-volume-mute';
-                });
-                
-                // Unmute this one and ensure it's playing
-                video.muted = false;
-                video.play().catch(err => console.log("Play interrupted:", err));
-                icon.className = 'fas fa-volume-up';
-            } else {
-                video.muted = true;
-                icon.className = 'fas fa-volume-mute';
-            }
-        });
-    });
-
-
-
-    let instaMuted = true;
-    if(document.querySelector('.insta-swiper')) {
-        const instaSwiper = new Swiper('.insta-swiper', {
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            spaceBetween: 0,
-            loop: true,
-            loopedSlides: 6,
-            speed: 600,
-            navigation: {
-                nextEl: '.insta-btn-next',
-                prevEl: '.insta-btn-prev',
-            },
-            on: {
-                init: function () {
-                    const activeSlide = this.slides[this.activeIndex];
-                    if(activeSlide) {
-                        const video = activeSlide.querySelector('video');
-                        if (video) {
-                            video.muted = instaMuted;
-                            video.play().catch(e => console.log("Autoplay block on init"));
-                        }
-                    }
-                },
-                slideChangeTransitionStart: function () {
-                    this.slides.forEach(slide => {
-                        const video = slide.querySelector('video');
-                        if (video) {
-                            video.pause();
-                            video.currentTime = 0;
-                        }
-                    });
-                },
-                slideChangeTransitionEnd: function () {
-                    const activeSlide = this.slides[this.activeIndex];
-                    if(activeSlide) {
-                        const video = activeSlide.querySelector('video');
-                        if (video) {
-                            video.muted = instaMuted;
-                            video.play().catch(e => console.log("Autoplay block on change"));
-                        }
-                    }
-                }
-            }
-        });
-
-        const muteToggle = document.getElementById('instaMuteToggle');
-        if(muteToggle) {
-            muteToggle.addEventListener('click', function() {
-                instaMuted = !instaMuted;
-                const icon = this.querySelector('i');
-                if(instaMuted) {
-                    icon.className = 'fas fa-volume-mute';
-                } else {
-                    icon.className = 'fas fa-volume-up';
-                }
-                const activeVideo = document.querySelector('.swiper-slide-active video');
-                if(activeVideo) {
-                    activeVideo.muted = instaMuted;
-                }
-            });
-        }
-    }
-
+    // 1. Dil Tespiti
     const userLang = navigator.language || navigator.userLanguage;
     if (userLang.includes('en')) changeLanguage('en');
     else if (userLang.includes('de')) changeLanguage('de');
     else if (userLang.includes('ru')) changeLanguage('ru');
     else changeLanguage('tr');
 
-    AOS.init({ once: true, offset: 100 });
+    // 2. AOS Animasyonları
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ once: true, offset: 100 });
+    }
 
+    // 3. Header Scroll Efekti
     window.addEventListener('scroll', function () {
         const header = document.querySelector('header');
+        if (!header) return;
         const isMobile = window.innerWidth <= 768;
         if (window.scrollY > 50) {
             header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
@@ -576,103 +923,45 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.padding = isMobile ? '20px' : '30px 50px';
         }
     });
-});
 
-/* --- FAQ AKORDİYON ÇALIŞTIRMA --- */
-document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-        button.classList.toggle('active');
-        const answer = button.nextElementSibling;
-        if (button.classList.contains('active')) {
-            answer.style.maxHeight = answer.scrollHeight + "px";
-        } else {
-            answer.style.maxHeight = 0;
-        }
-    });
-});
-
-/* =========================================
-   6. HIZLI ROTA KARTLARI (Quick Book)
-   ========================================= */
-function quickBook(packageName) {
-    // 1. Mesajı Hazırla
-    const message = `*MERHABA VIPTRIP* 🔔%0A%0A` +
-        `Aşağıdaki hızlı paketiniz için fiyat ve müsaitlik öğrenmek istiyorum:%0A` +
-        `🚀 *Seçilen Paket:* ${packageName}%0A%0A` +
-        `Müsait misiniz?`;
-
-    // 2. WhatsApp'ı Aç
-    const url = `https://wa.me/${CONFIG.whatsappPhone}?text=${message}`;
-    window.open(url, '_blank').focus();
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-
-
-    let instaMuted = true;
-    if(document.querySelector('.insta-swiper')) {
-        const instaSwiper = new Swiper('.insta-swiper', {
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            spaceBetween: 0,
-            loop: true,
-            loopedSlides: 6,
-            speed: 600,
-            navigation: {
-                nextEl: '.insta-btn-next',
-                prevEl: '.insta-btn-prev',
-            },
-            on: {
-                init: function () {
-                    const activeSlide = this.slides[this.activeIndex];
-                    if(activeSlide) {
-                        const video = activeSlide.querySelector('video');
-                        if (video) {
-                            video.muted = instaMuted;
-                            video.play().catch(e => console.log("Autoplay block on init"));
-                        }
-                    }
-                },
-                slideChangeTransitionStart: function () {
-                    this.slides.forEach(slide => {
-                        const video = slide.querySelector('video');
-                        if (video) {
-                            video.pause();
-                            video.currentTime = 0;
-                        }
-                    });
-                },
-                slideChangeTransitionEnd: function () {
-                    const activeSlide = this.slides[this.activeIndex];
-                    if(activeSlide) {
-                        const video = activeSlide.querySelector('video');
-                        if (video) {
-                            video.muted = instaMuted;
-                            video.play().catch(e => console.log("Autoplay block on change"));
-                        }
-                    }
-                }
+    // 4. FAQ Akordiyon
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active');
+            const answer = button.nextElementSibling;
+            if (button.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            } else {
+                answer.style.maxHeight = 0;
             }
         });
+    });
 
-        const muteToggle = document.getElementById('instaMuteToggle');
-        if(muteToggle) {
-            muteToggle.addEventListener('click', function() {
-                instaMuted = !instaMuted;
-                const icon = this.querySelector('i');
-                if(instaMuted) {
-                    icon.className = 'fas fa-volume-mute';
-                } else {
-                    icon.className = 'fas fa-volume-up';
-                }
-                const activeVideo = document.querySelector('.swiper-slide-active video');
-                if(activeVideo) {
-                    activeVideo.muted = instaMuted;
-                }
-            });
-        }
-    }
+    // 5. Instagram Statik Video Kartları Ses Kontrolü
+    document.querySelectorAll('.mute-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
 
+            const video = this.closest('.insta-grid-item').querySelector('video');
+            const icon = this.querySelector('i');
+
+            if (video.muted) {
+                // Mute all other videos first
+                document.querySelectorAll('.insta-grid-item video').forEach(v => {
+                    v.muted = true;
+                });
+                document.querySelectorAll('.mute-btn i').forEach(i => {
+                    i.className = 'fas fa-volume-mute';
+                });
+
+                video.muted = false;
+                video.play().catch(err => console.log("Play interrupted:", err));
+                icon.className = 'fas fa-volume-up';
+            } else {
+                video.muted = true;
+                icon.className = 'fas fa-volume-mute';
+            }
+        });
+    });
 });

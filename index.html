@@ -199,9 +199,11 @@
 
             <div id="price-result" class="price-result-box" style="display: none;">
                 <div class="result-content">
-                    <p>
-                        <span data-lang="res_dist">Mesafe</span>: <span id="dist-val" style="color:#fff">0 km</span> |
-                        <span data-lang="res_dur">Süre</span>: <span id="dur-val" style="color:#fff">0 dk</span>
+                    <div class="result-badge"><i class="fas fa-check-circle"></i> VIP Transfer Teklifi</div>
+                    <p class="result-details">
+                        <span data-lang="res_dist">Mesafe</span>: <strong id="dist-val" style="color:#D4AF37">0 km</strong> | 
+                        <span data-lang="res_dur">Tahmini Süre</span>: <strong id="dur-val" style="color:#D4AF37">0 dk</strong> | 
+                        <span id="vehicle-val" style="color:#fff">Mercedes Vito VIP</span>
                     </p>
                     <h3 id="show-price">0₺</h3>
                     <p class="route-info" id="show-route">...</p>
@@ -217,7 +219,7 @@
                 seçin:</p>
 
             <div class="quick-cards-grid">
-                <div class="quick-card" onclick="quickBook('Esenboğa Havalimanı -> Çankaya/Merkez')">
+                <div class="quick-card" onclick="selectQuickRoute('Esenboğa Havalimanı (ESB)', 'Çankaya / Tunalı Hilmi')">
                     <div class="q-icon"><i class="fas fa-plane-arrival"></i></div>
                     <div class="q-info">
                         <h4>Havalimanı ⇄ Çankaya</h4>
@@ -226,7 +228,7 @@
                     <div class="q-arrow"><i class="fab fa-whatsapp"></i></div>
                 </div>
 
-                <div class="quick-card" onclick="quickBook('Esenboğa Havalimanı -> Otel Transferi')">
+                <div class="quick-card" onclick="selectQuickRoute('Esenboğa Havalimanı (ESB)', 'Sheraton Hotel Ankara (GOP)')">
                     <div class="q-icon"><i class="fas fa-hotel"></i></div>
                     <div class="q-info">
                         <h4>Havalimanı ⇄ Otel</h4>
