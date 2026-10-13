@@ -169,16 +169,14 @@
                 <div class="input-group search-box">
                     <label><i class="fas fa-map-marker-alt"></i> <span data-lang="label_pickup">Nereden</span></label>
                     <input type="text" id="pickup-input" placeholder="Örn: Esenboğa Havalimanı..." autocomplete="off">
-                    <ul class="suggestions" id="pickup-suggestions"></ul>
-                    <input type="hidden" id="pickup-coords">
+                                        <input type="hidden" id="pickup-coords">
                 </div>
 
                 <div class="input-group search-box">
                     <label><i class="fas fa-location-arrow"></i> <span data-lang="label_dropoff">Nereye</span></label>
                     <input type="text" id="dropoff-input" placeholder="Örn: Sheraton Ankara, Çankaya..."
                         autocomplete="off">
-                    <ul class="suggestions" id="dropoff-suggestions"></ul>
-                    <input type="hidden" id="dropoff-coords">
+                                        <input type="hidden" id="dropoff-coords">
                 </div>
 
                 <div class="input-group">
@@ -196,6 +194,20 @@
                 </div>
             </div>
 
+            <!-- Dışarı Açılan Hızlı Rota & Lokasyon Kartları Paneli (Barın Dışında) -->
+            <div id="route-suggestions-panel" class="route-suggestions-panel" style="display: none;">
+                <div class="sugg-panel-header">
+                    <div class="sugg-panel-title">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span id="sugg-panel-title-text">Hızlı Rota & Popüler Lokasyonlar</span>
+                    </div>
+                    <span class="sugg-panel-hint">Hızlı seçim için karta tıklayın</span>
+                    <button type="button" class="sugg-panel-close" onclick="closeSuggestionsPanel()" title="Kapat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="sugg-cards-grid" id="sugg-cards-container"></div>
+            </div>
 
             <div id="price-result" class="price-result-box" style="display: none;">
                 <div class="result-content">
@@ -212,8 +224,7 @@
                     <i class="fab fa-whatsapp"></i> <span data-lang="btn_book">REZERVASYON YAP</span>
                 </button>
             </div>
-            <div class="quick-routes-container"
-                style="margin-top: 0px; padding-top: 20px; position: relative; z-index: 9999;"></div>
+            
 
             <p style="font-size: 0.9rem; color: #888; margin-bottom: 0px; font-weight: 300;">veya popüler rotalardan
                 seçin:</p>

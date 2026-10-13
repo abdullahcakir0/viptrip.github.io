@@ -201,7 +201,7 @@ const translations = {
 
         fleet_title: `ПРЕДСТАВИТЕЛЬСКИЙ <span class="gold-text">КЛАСС</span>`,
         fleet_desc: "Черные автомобили с тонировкой для протокольных встреч.",
-        price_start: "По городу",
+        price_start: "По гороdu",
         btn_examine: "Узнать цену",
         vito_desc: "Дизайн Maybach, конфиденциальность, условия для встреч.",
         sprinter_desc: "Протокольный автомобиль для делегаций.",
@@ -240,24 +240,28 @@ const ANKARA_LOCATIONS = [
     // Havalimanı & Ulaşım Merkezleri
     {
         name: "Esenboğa Havalimanı (ESB)",
+        sub: "VIP Karşılama & Terminal",
         aliases: ["esenboga", "esenboğa", "havalimani", "havalimanı", "airport", "esb"],
         coords: "32.9950,40.1281",
         icon: "fa-plane"
     },
     {
         name: "Ankara YHT Garı (Merkez)",
+        sub: "Merkez Hızlı Tren Garı",
         aliases: ["yht", "yht garı", "ankara garı", "tren garı", "gar", "hızlı tren"],
         coords: "32.8447,39.9362",
         icon: "fa-train"
     },
     {
         name: "AŞTİ Otobüs Terminali",
+        sub: "Şehirlerarası Otogar",
         aliases: ["asti", "aşti", "otogar", "terminal"],
         coords: "32.8128,39.9172",
         icon: "fa-bus"
     },
     {
         name: "Eryaman YHT Garı",
+        sub: "Batı Ankara Tren Garı",
         aliases: ["eryaman yht", "eryaman gar"],
         coords: "32.6517,39.9675",
         icon: "fa-train"
@@ -266,190 +270,186 @@ const ANKARA_LOCATIONS = [
     // Çankaya & Protokol & Merkez
     {
         name: "Çankaya / Tunalı Hilmi",
+        sub: "Merkez & Protokol Rotaları",
         aliases: ["cankaya", "çankaya", "tunali", "tunalı", "tunalı hilmi", "kavaklıdere", "kavaklidere"],
         coords: "32.8597,39.8974",
         icon: "fa-map-pin"
     },
     {
         name: "Kızılay / Bakanlıklar / TBMM",
+        sub: "Şehir Merkezi & Bakanlıklar",
         aliases: ["kizilay", "kızılay", "bakanliklar", "bakanlıklar", "tbmm", "meclis", "sıhhiye", "sihhiye"],
         coords: "32.8543,39.9208",
         icon: "fa-landmark"
     },
     {
         name: "Gaziosmanpaşa (GOP) / Filistin Cad.",
+        sub: "Elçilikler & Rezidans Bölgesi",
         aliases: ["gop", "gaziosmanpasa", "gaziosmanpaşa", "filistin", "ugur mumcu", "uğur mumcu"],
         coords: "32.8710,39.8965",
         icon: "fa-map-pin"
     },
     {
         name: "Çukurambar / Söğütözü (İş Merkezleri)",
+        sub: "Armada, Next Level, Finans",
         aliases: ["cukurambar", "çukurambar", "sogutozu", "söğütözü", "armada", "next level", "the paragon"],
         coords: "32.8122,39.9075",
         icon: "fa-briefcase"
     },
     {
         name: "İncek / Beytepe / Alacaatlı",
+        sub: "Lüks Konut & Villalar",
         aliases: ["incek", "i̇ncek", "beytepe", "alacaatli", "alacaatlı", "incek loft"],
         coords: "32.7214,39.8452",
         icon: "fa-home"
     },
     {
         name: "Çayyolu / Ümitköy / Yaşamkent",
+        sub: "Batı Ankara Konut Bölgesi",
         aliases: ["cayyolu", "çayyolu", "umitkoy", "ümitköy", "yasamkent", "yaşamkent", "mesa koru"],
         coords: "32.7058,39.8872",
         icon: "fa-map-pin"
     },
     {
         name: "Bilkent / ODTÜ / Hacettepe",
+        sub: "Üniversite & Teknokentler",
         aliases: ["bilkent", "odtu", "odtü", "hacettepe", "angora"],
         coords: "32.7533,39.8732",
         icon: "fa-graduation-cap"
     },
     {
         name: "Gölbaşı / Mogan Gölü",
+        sub: "Göl Kenarı & Etkinlik Alanları",
         aliases: ["golbasi", "gölbaşı", "mogan", "eymir"],
         coords: "32.8083,39.7915",
         icon: "fa-water"
     },
     {
         name: "Yenimahalle / Batıkent / Eryaman",
+        sub: "Göksu Parkı & Konut Alanları",
         aliases: ["yenimahalle", "batikent", "batıkent", "eryaman", "göksu", "goksu"],
         coords: "32.7314,39.9647",
         icon: "fa-map-pin"
     },
     {
         name: "Ostim / İvedik OSB",
+        sub: "Sanayi & Ticaret Merkezleri",
         aliases: ["ostim", "ivedik", "osb", "sanayi"],
         coords: "32.7505,39.9722",
         icon: "fa-industry"
     },
     {
-        name: "Keçiören / Etlik Şehir Hastanesi",
-        aliases: ["kecioren", "keçiören", "etlik", "etlik sehir hastanesi", "etlik şehir hastanesi"],
-        coords: "32.8252,39.9714",
-        icon: "fa-hospital"
-    },
-    {
-        name: "Bilkent Şehir Hastanesi",
-        aliases: ["bilkent sehir hastanesi", "bilkent şehir hastanesi", "şehir hastanesi"],
+        name: "Bilkent & Etlik Şehir Hastaneleri",
+        sub: "Sağlık Turizmi & Hastaneler",
+        aliases: ["sehir hastanesi", "şehir hastanesi", "bilkent sehir hastanesi", "etlik sehir hastanesi"],
         coords: "32.7745,39.8970",
         icon: "fa-hospital"
-    },
-    {
-        name: "Etimesgut / Bağlıca / Elvankent",
-        aliases: ["etimesgut", "baglica", "bağlıca", "elvankent"],
-        coords: "32.6841,39.9492",
-        icon: "fa-map-pin"
-    },
-    {
-        name: "Sincan / Yenikent",
-        aliases: ["sincan", "yenikent"],
-        coords: "32.5855,39.9614",
-        icon: "fa-map-pin"
-    },
-    {
-        name: "Ulus / Altındağ / Ankara Kalesi",
-        aliases: ["ulus", "altindag", "altındağ", "kale", "ankara kalesi", "hamamönü", "hamamonu"],
-        coords: "32.8644,39.9419",
-        icon: "fa-landmark"
     },
 
     // 5 Yıldızlı Lüks Oteller
     {
         name: "Sheraton Hotel Ankara (GOP)",
+        sub: "5 Yıldızlı VIP Otel - GOP",
         aliases: ["sheraton", "sheraton ankara", "sheraton otel"],
         coords: "32.8660,39.8943",
         icon: "fa-hotel"
     },
     {
         name: "JW Marriott Hotel Ankara (Söğütözü)",
+        sub: "5 Yıldızlı VIP Otel - Söğütözü",
         aliases: ["jw marriott", "marriott", "jw marriott ankara"],
         coords: "32.8142,39.9114",
         icon: "fa-hotel"
     },
     {
         name: "Hilton SA Ankara (Kavaklıdere)",
+        sub: "5 Yıldızlı Otel - Kavaklıdere",
         aliases: ["hilton", "hilton ankara", "hilton sa"],
         coords: "32.8621,39.8988",
         icon: "fa-hotel"
     },
     {
         name: "Swissôtel Ankara (Çankaya)",
+        sub: "5 Yıldızlı Otel - Çankaya/Yıldız",
         aliases: ["swissotel", "swiss otel", "swissotel ankara"],
         coords: "32.8653,39.8753",
         icon: "fa-hotel"
     },
     {
         name: "Divan Ankara (Çankaya)",
+        sub: "Tunalı Hilmi Caddesi",
         aliases: ["divan", "divan otel", "divan ankara"],
         coords: "32.8606,39.9015",
         icon: "fa-hotel"
     },
     {
         name: "Mövenpick Hotel Ankara (Söğütözü)",
+        sub: "Söğütözü İş Bölgesi",
         aliases: ["movenpick", "mövenpick"],
         coords: "32.8116,39.9103",
-        icon: "fa-hotel"
-    },
-    {
-        name: "CPAnkara Hotel (Ankamall)",
-        aliases: ["cpankara", "crowne plaza", "ankamall"],
-        coords: "32.8315,39.9515",
         icon: "fa-hotel"
     },
 
     // Şehirlerarası VIP Rotalar
     {
         name: "Bolu / Abant Gölü",
+        sub: "Şehirlerarası Özel VIP Tur",
         aliases: ["bolu", "abant", "abant golu", "yedigoller", "yedigöller", "kartalkaya"],
         coords: "31.2818,40.6053",
         icon: "fa-mountain"
     },
     {
         name: "Kapadokya / Nevşehir / Göreme",
+        sub: "Kapadokya VIP Tur & Transfer",
         aliases: ["kapadokya", "nevsehir", "nevşehir", "urgup", "ürgüp", "goreme", "göreme", "uchisar"],
         coords: "34.8290,38.6431",
         icon: "fa-map-signs"
     },
     {
         name: "İstanbul (Sabiha Gökçen - SAW)",
+        sub: "Şehirlerarası VIP Havalimanı",
         aliases: ["istanbul", "sabiha", "sabiha gokcen", "sabiha gökçen", "saw", "anadolu yakasi"],
         coords: "29.3092,40.8986",
         icon: "fa-city"
     },
     {
         name: "İstanbul (İstanbul Havalimanı - İGA)",
+        sub: "Şehirlerarası VIP Havalimanı",
         aliases: ["iga", "istanbul havalimani", "istanbul havalimanı", "avrupa yakasi"],
         coords: "28.7279,41.2608",
         icon: "fa-city"
     },
     {
         name: "Eskişehir Merkez",
+        sub: "Şehirlerarası VIP Transfer",
         aliases: ["eskisehir", "eskişehir", "odunpazarı", "odunpazari"],
         coords: "30.5256,39.7767",
         icon: "fa-road"
     },
     {
         name: "Konya Merkez",
+        sub: "Şehirlerarası VIP Transfer",
         aliases: ["konya", "mevlana", "selcuklu"],
         coords: "32.4846,37.8746",
         icon: "fa-road"
     },
     {
         name: "Kayseri / Erciyes",
+        sub: "Şehirlerarası VIP Kayak & Tur",
         aliases: ["kayseri", "erciyes"],
         coords: "35.4853,38.7205",
         icon: "fa-mountain"
     },
     {
         name: "Bursa Merkez",
+        sub: "Şehirlerarası VIP Transfer",
         aliases: ["bursa", "uludag", "uludağ"],
         coords: "29.0610,40.1885",
         icon: "fa-road"
     },
     {
         name: "Antalya / Alanya",
+        sub: "Akdeniz VIP Transfer",
         aliases: ["antalya", "alanya", "kemer", "belek", "side"],
         coords: "30.7133,36.8969",
         icon: "fa-umbrella-beach"
@@ -473,7 +473,6 @@ function findLocationInDb(query) {
     const q = normalizeText(query);
     if (!q) return null;
 
-    // 1. Exact or alias match
     for (const loc of ANKARA_LOCATIONS) {
         if (normalizeText(loc.name) === q) return loc;
         for (const alias of loc.aliases) {
@@ -481,7 +480,6 @@ function findLocationInDb(query) {
         }
     }
 
-    // 2. Partial match
     for (const loc of ANKARA_LOCATIONS) {
         if (normalizeText(loc.name).includes(q)) return loc;
         for (const alias of loc.aliases) {
@@ -493,72 +491,139 @@ function findLocationInDb(query) {
 }
 
 /* =========================================
-   4. ADRES ARAMA & ÖNERİ SİSTEMİ
+   4. DIŞA AÇILAN HIZLI ROTA & LOKASYON PANELİ
    ========================================= */
+let activeField = null;
 let searchDebounceTimer = null;
 
-function renderSuggestions(places, list, input, coordsInput) {
-    list.innerHTML = "";
+function openSuggestionsPanel(field) {
+    activeField = field;
+    const panel = document.getElementById('route-suggestions-panel');
+    const titleEl = document.getElementById('sugg-panel-title-text');
+    const input = document.getElementById(`${field}-input`);
+    if (!panel) return;
+
+    if (titleEl) {
+        if (field === 'pickup') {
+            titleEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> Nereden? - Popüler Başlangıç Noktaları`;
+        } else {
+            titleEl.innerHTML = `<i class="fas fa-location-arrow"></i> Nereye? - Popüler Varış Rotaları`;
+        }
+    }
+
+    const currentVal = input ? input.value.trim() : "";
+    filterSuggestionsCards(currentVal);
+    panel.style.display = 'block';
+}
+
+function closeSuggestionsPanel() {
+    const panel = document.getElementById('route-suggestions-panel');
+    if (panel) panel.style.display = 'none';
+    activeField = null;
+}
+
+function selectCardLocation(place) {
+    if (!activeField) activeField = 'pickup';
+
+    const input = document.getElementById(`${activeField}-input`);
+    const coordsEl = document.getElementById(`${activeField}-coords`);
+
+    if (input) input.value = place.name;
+    if (coordsEl) coordsEl.value = place.coords;
+
+    const chosenField = activeField;
+    closeSuggestionsPanel();
+
+    // Auto-advance: If pickup was filled and dropoff is empty, focus dropoff
+    if (chosenField === 'pickup') {
+        const dropoffInput = document.getElementById('dropoff-input');
+        if (dropoffInput && !dropoffInput.value.trim()) {
+            setTimeout(() => {
+                dropoffInput.focus();
+            }, 200);
+        }
+    }
+}
+
+function renderCardsInPanel(places) {
+    const container = document.getElementById('sugg-cards-container');
+    if (!container) return;
+
+    container.innerHTML = "";
+
     if (!places || places.length === 0) {
-        list.innerHTML = `<li style="cursor:default; color:#999; padding:12px 16px;">Sonuç bulunamadı</li>`;
-        list.style.display = "block";
+        container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; color: #888; padding: 25px 0;">
+                <i class="fas fa-search" style="font-size: 1.6rem; color: #D4AF37; margin-bottom: 8px; display:block;"></i>
+                <span style="font-size: 0.9rem; color: #ccc;">Sonuç bulunamadı.</span><br>
+                <small style="color: #777;">Yazdığınız konumu doğrudan hesaplamak için <strong>HESAPLA</strong> butonuna basabilirsiniz.</small>
+            </div>
+        `;
         return;
     }
 
     places.forEach(place => {
-        const item = document.createElement("li");
-        const iconClass = place.icon ? place.icon : "fa-map-marker-alt";
-        item.innerHTML = `<i class="fas ${iconClass}"></i> <span>${place.name}</span>`;
+        const card = document.createElement("div");
+        card.className = "sugg-card";
+        const iconClass = place.icon || "fa-map-marker-alt";
+        const subText = place.sub || "Ankara VIP Transfer";
 
-        item.addEventListener("mousedown", (e) => {
-            e.preventDefault(); // prevent blur
-            input.value = place.name;
-            coordsInput.value = place.coords;
-            list.style.display = "none";
+        card.innerHTML = `
+            <div class="sugg-card-icon">
+                <i class="fas ${iconClass}"></i>
+            </div>
+            <div class="sugg-card-info">
+                <span class="sugg-card-name">${place.name}</span>
+                <span class="sugg-card-sub">${subText}</span>
+            </div>
+        `;
+
+        card.addEventListener("click", () => {
+            selectCardLocation(place);
         });
 
-        list.appendChild(item);
+        container.appendChild(card);
     });
-
-    list.style.display = "block";
 }
 
-function showPopularSuggestions(listId, inputId, coordsId) {
-    const list = document.getElementById(listId);
-    const input = document.getElementById(inputId);
-    const coordsInput = document.getElementById(coordsId);
-    if (!list || !input) return;
+async function filterSuggestionsCards(query) {
+    const trimmed = query ? query.trim() : "";
 
-    // Top popular locations
-    const popularPicks = ANKARA_LOCATIONS.slice(0, 7);
-    renderSuggestions(popularPicks, list, input, coordsInput);
-}
-
-async function searchAddress(query, listId, inputId, coordsId) {
-    const list = document.getElementById(listId);
-    const input = document.getElementById(inputId);
-    const coordsInput = document.getElementById(coordsId);
-    if (!list || !input) return;
-
-    const trimmed = query.trim();
+    // If query is empty or 1 char, show top popular choices
     if (trimmed.length < 2) {
-        showPopularSuggestions(listId, inputId, coordsId);
+        let popularSlice;
+        if (activeField === 'pickup') {
+            // Airport, train, main hotels first
+            popularSlice = ANKARA_LOCATIONS.slice(0, 8);
+        } else {
+            // Hotels, Çankaya, intercity destinations
+            popularSlice = [
+                ANKARA_LOCATIONS[4], // Çankaya
+                ANKARA_LOCATIONS[14], // Sheraton
+                ANKARA_LOCATIONS[15], // JW Marriott
+                ANKARA_LOCATIONS[0], // Esenboğa Havalimanı
+                ANKARA_LOCATIONS[5], // Kızılay
+                ANKARA_LOCATIONS[7], // Çukurambar
+                ANKARA_LOCATIONS[20], // Bolu / Abant
+                ANKARA_LOCATIONS[21], // Kapadokya
+            ];
+        }
+        renderCardsInPanel(popularSlice);
         return;
     }
 
-    // 1. Instant local search
     const qNorm = normalizeText(trimmed);
     const localMatches = ANKARA_LOCATIONS.filter(loc => {
         if (normalizeText(loc.name).includes(qNorm)) return true;
         return loc.aliases.some(alias => normalizeText(alias).includes(qNorm));
     });
 
-    renderSuggestions(localMatches.slice(0, 8), list, input, coordsInput);
+    renderCardsInPanel(localMatches);
 
-    // 2. Photon geocoding backup if fewer than 4 local matches
+    // Online photon lookup if local matches < 4
     if (localMatches.length < 4 && trimmed.length >= 3) {
         try {
-            const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(trimmed)}&limit=5&lat=39.93&lon=32.85`;
+            const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(trimmed)}&limit=4&lat=39.93&lon=32.85`;
             const res = await fetch(url);
             if (res.ok) {
                 const data = await res.json();
@@ -571,59 +636,60 @@ async function searchAddress(query, listId, inputId, coordsId) {
                         if (!localMatches.some(m => m.name === name)) {
                             extraPlaces.push({
                                 name: name,
+                                sub: f.properties.district || "Ankara",
                                 coords: coords,
                                 icon: "fa-map-pin"
                             });
                         }
                     });
                     const combined = [...localMatches, ...extraPlaces].slice(0, 8);
-                    if (input.value.trim() === trimmed) {
-                        renderSuggestions(combined, list, input, coordsInput);
+                    const currentInput = document.getElementById(`${activeField}-input`);
+                    if (currentInput && currentInput.value.trim() === trimmed) {
+                        renderCardsInPanel(combined);
                     }
                 }
             }
-        } catch (e) {
-            // Local matches already displayed, silent fallback
-        }
+        } catch (e) {}
     }
 }
 
-// Event Listeners for search boxes
-['pickup', 'dropoff'].forEach(type => {
-    const input = document.getElementById(`${type}-input`);
-    const list = document.getElementById(`${type}-suggestions`);
-    const coordsInput = document.getElementById(`${type}-coords`);
+// Input Event Listeners
+['pickup', 'dropoff'].forEach(field => {
+    const input = document.getElementById(`${field}-input`);
+    const coordsEl = document.getElementById(`${field}-coords`);
 
-    if (input && list) {
+    if (input) {
         input.addEventListener('focus', function () {
-            if (!this.value.trim()) {
-                showPopularSuggestions(`${type}-suggestions`, `${type}-input`, `${type}-coords`);
-            } else {
-                searchAddress(this.value, `${type}-suggestions`, `${type}-input`, `${type}-coords`);
-            }
+            openSuggestionsPanel(field);
         });
 
         input.addEventListener('input', function () {
+            if (coordsEl) coordsEl.value = "";
             clearTimeout(searchDebounceTimer);
             const val = this.value;
-            // Clear coords if user edits text
-            coordsInput.value = "";
             searchDebounceTimer = setTimeout(() => {
-                searchAddress(val, `${type}-suggestions`, `${type}-input`, `${type}-coords`);
-            }, 250);
-        });
-
-        input.addEventListener('blur', function () {
-            setTimeout(() => {
-                list.style.display = 'none';
+                filterSuggestionsCards(val);
             }, 200);
         });
     }
 });
 
+// Close panel when clicking outside booking widget and suggestions panel
 document.addEventListener('click', function (e) {
-    if (!e.target.closest('.search-box')) {
-        document.querySelectorAll('.suggestions').forEach(s => s.style.display = 'none');
+    const widget = document.getElementById('transfer');
+    const panel = document.getElementById('route-suggestions-panel');
+
+    if (widget && panel && panel.style.display !== 'none') {
+        if (!widget.contains(e.target) && !panel.contains(e.target)) {
+            closeSuggestionsPanel();
+        }
+    }
+});
+
+// Close on Escape key
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeSuggestionsPanel();
     }
 });
 
@@ -679,6 +745,8 @@ async function resolveCoords(inputEl, coordsEl) {
 }
 
 async function calculateDistancePrice() {
+    closeSuggestionsPanel();
+
     const pickupInput = document.getElementById('pickup-input');
     const dropoffInput = document.getElementById('dropoff-input');
     const pickupCoordsEl = document.getElementById('pickup-coords');
@@ -804,6 +872,8 @@ function updateResultUI() {
 }
 
 function selectQuickRoute(pickupName, dropoffName) {
+    closeSuggestionsPanel();
+
     const pickupInput = document.getElementById('pickup-input');
     const dropoffInput = document.getElementById('dropoff-input');
     const pickupCoords = document.getElementById('pickup-coords');
