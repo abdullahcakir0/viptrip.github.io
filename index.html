@@ -15,7 +15,7 @@
 
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="3PoFpqe9AVmSTA3jkwHuih2CBRpjdERAu12wkKInn9E" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Ankara VIP transfer, Esenboğa Havalimanı transferi, şoförlü araç kiralama ve Ankara VIP gelin arabası hizmetleri. Mercedes Vito, Sprinter ve S-Class ile 7/24 prestijli ulaşım.">
     <meta name="keywords"
@@ -28,6 +28,13 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://photon.komoot.io" crossorigin>
+    <link rel="preconnect" href="https://router.project-osrm.org" crossorigin>
+    <link rel="preconnect" href="https://routing.openstreetmap.de" crossorigin>
+    <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -150,7 +157,7 @@
 
     <section class="vip-hero" id="home">
         <div class="video-overlay"></div>
-        <video playsinline autoplay loop id="bgvid">
+        <video playsinline autoplay muted loop preload="metadata" id="bgvid" poster="assets/img/vito-dis-on.jpg">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-night-driving-in-a-city-3343-large.mp4"
                 type="video/mp4">
         </video>
@@ -164,59 +171,80 @@
                 Esenboğa Havalimanı'ndan iş toplantılarınıza ve evinize prestijli ulaşım.
             </p>
 
-            <div class="booking-widget" id="transfer">
+            <div class="route-planner" id="transfer">
+                <form class="rp-form" id="rp-form" autocomplete="off" novalidate>
+                    <div class="rp-places">
+                        <div class="rp-field" data-field="pickup">
+                            <label for="pickup-input"><i class="fas fa-circle rp-dot rp-dot--a"></i> <span data-lang="label_pickup">Nereden</span></label>
+                            <div class="rp-input-wrap">
+                                <input type="text" id="pickup-input" placeholder="Örn: Esenboğa Havalimanı..."
+                                    role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="pickup-suggestions"
+                                    spellcheck="false" enterkeyhint="next">
+                                <button type="button" class="rp-icon-btn" id="rp-locate" title="Konumumu kullan" aria-label="Konumumu kullan"><i class="fas fa-crosshairs"></i></button>
+                            </div>
+                            <ul class="rp-suggestions" id="pickup-suggestions" role="listbox" hidden></ul>
+                        </div>
 
-                <div class="input-group search-box">
-                    <label><i class="fas fa-map-marker-alt"></i> <span data-lang="label_pickup">Nereden</span></label>
-                    <input type="text" id="pickup-input" placeholder="Örn: Esenboğa Havalimanı..." autocomplete="off">
-                    <ul class="suggestions" id="pickup-suggestions"></ul>
-                    <input type="hidden" id="pickup-coords">
-                </div>
+                        <button type="button" class="rp-swap" id="rp-swap" title="Yer değiştir" aria-label="Nereden ve nereye yer değiştir"><i class="fas fa-exchange-alt"></i></button>
 
-                <div class="input-group search-box">
-                    <label><i class="fas fa-location-arrow"></i> <span data-lang="label_dropoff">Nereye</span></label>
-                    <input type="text" id="dropoff-input" placeholder="Örn: Sheraton Ankara, Çankaya..."
-                        autocomplete="off">
-                    <ul class="suggestions" id="dropoff-suggestions"></ul>
-                    <input type="hidden" id="dropoff-coords">
-                </div>
+                        <div class="rp-field" data-field="dropoff">
+                            <label for="dropoff-input"><i class="fas fa-map-marker-alt rp-dot rp-dot--b"></i> <span data-lang="label_dropoff">Nereye</span></label>
+                            <div class="rp-input-wrap">
+                                <input type="text" id="dropoff-input" placeholder="Örn: Sheraton Ankara, Çankaya..."
+                                    role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="dropoff-suggestions"
+                                    spellcheck="false" enterkeyhint="go">
+                            </div>
+                            <ul class="rp-suggestions" id="dropoff-suggestions" role="listbox" hidden></ul>
+                        </div>
+                    </div>
 
-                <div class="input-group">
-                    <label><i class="fas fa-shuttle-van"></i> <span data-lang="label_vehicle">Araç Tipi</span></label>
-                    <select id="vehicle-type">
-                        <option value="vito">Vito VIP (1-6 Kişi)</option>
-                        <option value="sprinter">Sprinter VIP (7-13 Kişi)</option>
-                    </select>
-                </div>
+                    <fieldset class="rp-vehicle">
+                        <legend class="rp-sr" data-lang="label_vehicle">Araç Tipi</legend>
+                        <label class="rp-vehicle-opt">
+                            <input type="radio" name="rp-vehicle" value="vito" checked>
+                            <span><i class="fas fa-shuttle-van"></i> Vito <small>1-6</small></span>
+                        </label>
+                        <label class="rp-vehicle-opt">
+                            <input type="radio" name="rp-vehicle" value="sprinter">
+                            <span><i class="fas fa-bus"></i> Sprinter <small>7-13</small></span>
+                        </label>
+                    </fieldset>
 
-                <div class="input-group btn-group">
-                    <button class="vip-btn" onclick="calculateDistancePrice()">
-                        <span data-lang="btn_calc">HESAPLA</span> <i class="fas fa-calculator"></i>
+                    <button type="submit" class="rp-submit" id="rp-submit">
+                        <span data-lang="btn_calc">HESAPLA</span> <i class="fas fa-arrow-right"></i>
                     </button>
+                </form>
+
+                <p class="rp-error" id="rp-error" role="alert" hidden></p>
+
+                <div class="rp-result" id="price-result" hidden aria-live="polite">
+                    <div class="rp-map" id="rp-map" role="img" aria-label="Güzergah haritası"></div>
+                    <div class="rp-summary">
+                        <div class="rp-badge"><i class="fas fa-check-circle"></i> VIP Transfer Teklifi</div>
+                        <div class="rp-route">
+                            <span class="rp-route-pt"><i class="fas fa-circle rp-dot--a"></i> <span id="rp-route-from"></span></span>
+                            <span class="rp-route-pt"><i class="fas fa-map-marker-alt rp-dot--b"></i> <span id="rp-route-to"></span></span>
+                        </div>
+                        <dl class="rp-stats">
+                            <div><dt data-lang="res_dist">Mesafe</dt><dd id="dist-val">…</dd></div>
+                            <div><dt data-lang="res_dur">Tahmini Süre</dt><dd id="dur-val">…</dd></div>
+                            <div class="rp-stats-wide"><dt data-lang="label_vehicle">Araç Tipi</dt><dd id="vehicle-val">Mercedes Vito VIP</dd></div>
+                        </dl>
+                        <div class="rp-price-row">
+                            <div>
+                                <span class="rp-price-label" data-lang="res_total">Tahmini Tutar</span>
+                                <strong class="rp-price" id="show-price">—</strong>
+                            </div>
+                            <button type="button" class="rp-book" onclick="bookNow()">
+                                <i class="fab fa-whatsapp"></i> <span data-lang="btn_book">REZERVASYON YAP</span>
+                            </button>
+                        </div>
+                        <p class="rp-note" id="rp-note"></p>
+                    </div>
                 </div>
             </div>
 
-            
-
-            <div id="price-result" class="price-result-box" style="display: none;">
-                <div class="result-content">
-                    <div class="result-badge"><i class="fas fa-check-circle"></i> VIP Transfer Teklifi</div>
-                    <p class="result-details">
-                        <span data-lang="res_dist">Mesafe</span>: <strong id="dist-val" style="color:#D4AF37">0 km</strong> | 
-                        <span data-lang="res_dur">Tahmini Süre</span>: <strong id="dur-val" style="color:#D4AF37">0 dk</strong> | 
-                        <span id="vehicle-val" style="color:#fff">Mercedes Vito VIP</span>
-                    </p>
-                    <h3 id="show-price">0₺</h3>
-                    <p class="route-info" id="show-route">...</p>
-                </div>
-                <button class="whatsapp-book-btn" onclick="bookNow()">
-                    <i class="fab fa-whatsapp"></i> <span data-lang="btn_book">REZERVASYON YAP</span>
-                </button>
-            </div>
-            
-
-            <p style="font-size: 0.9rem; color: #888; margin-bottom: 0px; font-weight: 300;">veya popüler rotalardan
-                seçin:</p>
+            <p class="quick-cards-title">veya popüler rotalardan seçin:</p>
 
             <div class="quick-cards-grid">
                 <div class="quick-card" onclick="selectQuickRoute('Esenboğa Havalimanı (ESB)', 'Çankaya / Tunalı Hilmi')">
@@ -225,7 +253,7 @@
                         <h4>Havalimanı ⇄ Çankaya</h4>
                         <span>Protokol Karşılama</span>
                     </div>
-                    <div class="q-arrow"><i class="fab fa-whatsapp"></i></div>
+                    <div class="q-arrow q-arrow--calc"><i class="fas fa-route"></i></div>
                 </div>
 
                 <div class="quick-card" onclick="selectQuickRoute('Esenboğa Havalimanı (ESB)', 'Sheraton Hotel Ankara (GOP)')">
@@ -234,7 +262,7 @@
                         <h4>Havalimanı ⇄ Otel</h4>
                         <span>Konforlu Ulaşım</span>
                     </div>
-                    <div class="q-arrow"><i class="fab fa-whatsapp"></i></div>
+                    <div class="q-arrow q-arrow--calc"><i class="fas fa-route"></i></div>
                 </div>
 
                 <div class="quick-card" onclick="quickBook('Günlük Şoförlü Araç Tahsis')">
@@ -276,7 +304,8 @@
                         oluyoruz.</p>
                 </div>
             </div>
-        </section>
+            </div>
+    </section>
 
     <section class="fleet-section" id="araclar">
         <div class="container">
@@ -346,7 +375,8 @@
                 </div>
 
             </div>
-        </section>
+            </div>
+    </section>
 
     <section class="blog-section" id="blog">
         <div class="container">
@@ -409,7 +439,8 @@
                     </div>
                 </article>
             </div>
-        </section>
+            </div>
+    </section>
 
     <section class="faq-section">
         <div class="container">
@@ -441,7 +472,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+            </div>
+    </section>
 
     <section class="locations-section" style="background:#000; padding:50px 0; border-top:1px solid #222;">
         <div class="container">
@@ -458,7 +490,8 @@
                 <a href="sehirlerarasi-vip-transfer" class="loc-tag">Bodrum Transfer</a>
                 <a href="sehirlerarasi-vip-transfer" class="loc-tag">Bolu / Abant Transfer</a>
             </div>
-        </section>
+            </div>
+    </section>
 
     <section class="insta-section">
         <div class="container">
@@ -586,6 +619,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
+    <script src="route-planner.js"></script>
 
     <div class="mobile-bottom-nav">
         <a href="tel:+905453359706" class="nav-btn call-btn"><i class="fas fa-phone-alt"></i> ARA</a>
