@@ -151,23 +151,70 @@
         };
     }
 
+    const NOMINATIM = "https://nominatim.openstreetmap.org";
+    const NOM_ICONS = { aeroway: "fa-plane", railway: "fa-train", tourism: "fa-hotel", amenity: "fa-map-marker-alt", shop: "fa-shopping-bag", highway: "fa-road", place: "fa-map-pin", building: "fa-building" };
+
+    function nominatimToPlace(r) {
+        const a = r.address || {};
+        const main = r.name || [a.road, a.house_number].filter(Boolean).join(' ') || (r.display_name || '').split(',')[0];
+        const sub = [r.name ? a.road : null, a.suburb || a.neighbourhood || a.quarter, a.town || a.city_district || a.county, a.city || a.province || a.state]
+            .filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i && v !== main);
+        return {
+            label: main,
+            sub: sub.slice(0, 3).join(', '),
+            coords: [+(+r.lon).toFixed(6), +(+r.lat).toFixed(6)],
+            icon: PHOTON_ICONS[r.type] || NOM_ICONS[r.category] || "fa-map-marker-alt"
+        };
+    }
+
+    function dedupe(list) {
+        const seen = new Set();
+        return list.filter(p => {
+            if (!p || !p.label) return false;
+            const k = norm(p.label + '|' + (p.sub || '').split(',')[0]);
+            if (seen.has(k)) return false;
+            seen.add(k);
+            return true;
+        });
+    }
+
+    // Nominatim kullanım kuralı: saniyede en fazla 1 istek
+    let lastNominatim = 0;
+    function nominatimSearch(query, signal) {
+        const wait = Math.max(0, lastNominatim + 1000 - Date.now());
+        return new Promise((res, rej) => {
+            const timer = setTimeout(() => {
+                if (signal && signal.aborted) return rej(new Error('abort'));
+                lastNominatim = Date.now();
+                const url = `${NOMINATIM}/search?format=jsonv2&addressdetails=1&limit=6&countrycodes=tr&accept-language=tr` +
+                    `&viewbox=32.30,40.25,33.40,39.60&q=${encodeURIComponent(query)}&email=info@viptrip.com.tr`;
+                fetchJSON(url, { signal, timeout: 5000 }).then(d => res((d || []).map(nominatimToPlace)), rej);
+            }, wait);
+            if (signal) signal.addEventListener('abort', () => { clearTimeout(timer); rej(new Error('abort')); }, { once: true });
+        });
+    }
+
+    function photonSearch(query, signal) {
+        const url = `${PHOTON}/api/?q=${encodeURIComponent(query)}&limit=7&lat=${ANKARA_CENTER[0]}&lon=${ANKARA_CENTER[1]}&bbox=${TR_BBOX}`;
+        return fetchJSON(url, { signal, timeout: 6000 }).then(d => (d.features || []).map(photonToPlace));
+    }
+
+    /* İki sağlayıcı paralel çalışır; hangisi önce dönerse liste hemen güncellenir,
+       diğeri gelince sonuçlar birleştirilir. */
     const photonCache = new Map();
-    function searchRemote(query, signal) {
+    function searchRemote(query, signal, onPartial) {
         const key = norm(query);
         if (photonCache.has(key)) return Promise.resolve(photonCache.get(key));
-        const url = `${PHOTON}/api/?q=${encodeURIComponent(query)}&limit=7&lat=${ANKARA_CENTER[0]}&lon=${ANKARA_CENTER[1]}&bbox=${TR_BBOX}`;
-        return fetchJSON(url, { signal, timeout: 5000 }).then(data => {
-            const seen = new Set();
-            const places = (data.features || []).map(photonToPlace).filter(p => {
-                if (!p.label) return false;
-                const k = norm(p.label + '|' + p.sub);
-                if (seen.has(k)) return false;
-                seen.add(k);
-                return true;
+        const parts = { nom: null, pho: null };
+        const combined = () => dedupe([...(parts.nom || []), ...(parts.pho || [])]);
+        const track = (name, p) => p.then(r => { parts[name] = r; if (onPartial) onPartial(combined()); return r; });
+        return Promise.allSettled([track('nom', nominatimSearch(query, signal)), track('pho', photonSearch(query, signal))])
+            .then(results => {
+                if (results.every(r => r.status === 'rejected')) throw new Error('search-failed');
+                const final = combined();
+                photonCache.set(key, final);
+                return final;
             });
-            photonCache.set(key, places);
-            return places;
-        });
     }
 
     /* ---------- 4. ROTA (PARALEL OSRM + ÖNBELLEK) ---------- */
@@ -345,10 +392,11 @@
             timer = setTimeout(() => {
                 ctrl = new AbortController();
                 const mySignal = ctrl.signal;
-                searchRemote(q, mySignal)
-                    .then(remote => { if (!mySignal.aborted && input.value.trim() === q) render(q, merge(local, remote), false); })
-                    .catch(() => { if (!mySignal.aborted && input.value.trim() === q) render(q, local, false); });
-            }, 140);
+                const live = () => !mySignal.aborted && input.value.trim() === q;
+                searchRemote(q, mySignal, partial => { if (live()) render(q, merge(local, partial), true); })
+                    .then(remote => { if (live()) render(q, merge(local, remote), false); })
+                    .catch(() => { if (live()) render(q, local, false); });
+            }, 250);
         }
 
         function merge(local, remote) {
