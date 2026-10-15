@@ -172,6 +172,7 @@ nav.nav-menu a:hover {
 /* --- HERO BÖLÜMÜ --- */
 .vip-hero {
     position: relative;
+    background: #000;
     min-height: 100vh;
     height: auto;
     padding: 120px 20px 60px 20px;
