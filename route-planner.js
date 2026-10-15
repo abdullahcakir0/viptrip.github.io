@@ -284,9 +284,9 @@
         const map = L.map(el, { zoomControl: false, attributionControl: true, scrollWheelZoom: false, tap: false })
             .setView(ANKARA_CENTER, 11);
         L.control.zoom({ position: 'bottomright' }).addTo(map);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            subdomains: 'abcd', maxZoom: 19, detectRetina: true,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> &copy; <a href="https://carto.com/" target="_blank" rel="noopener">CARTO</a>'
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
         }).addTo(map);
         mapState.map = map;
         mapState.layer = L.layerGroup().addTo(map);

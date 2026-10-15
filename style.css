@@ -2608,6 +2608,11 @@ label .rp-dot--b { font-size: 0.8rem; }
 .rp-map--off { display: none; }
 .rp-map--off + .rp-summary { grid-column: 1 / -1; }
 
+.rp-map .leaflet-tile-pane {
+    /* OSM karolarını sitenin koyu temasına uydur */
+    filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.92) saturate(0.6);
+}
+
 .rp-map .leaflet-control-attribution {
     background: rgba(0, 0, 0, 0.55);
     color: #999;
