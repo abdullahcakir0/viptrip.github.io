@@ -1739,6 +1739,7 @@ form,
 
 .blog-header .header-nav a {
     color: #ccc;
+    white-space: nowrap;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
@@ -1831,23 +1832,11 @@ form,
     font-size: 0.85rem;
 }
 
-/* --- MOBİL RESPONSIVE --- */
-@media (max-width: 768px) {
-    .blog-hero {
-        height: 45vh;
-        min-height: 320px;
-    }
-
-    .blog-hero .hero-text h1 {
-        font-size: 1.8rem;
-    }
-
-    .blog-hero .hero-text {
-        padding: 0 15px 30px 15px;
-    }
-
+/* --- MOBİL / TABLET MENÜ ---
+   Menü tek satıra ~1013px'te sığıyor; altında hamburger menüye geçilir. */
+@media (max-width: 1024px) {
     .blog-header {
-        padding: 12px 20px;
+        padding: 12px 24px;
         backdrop-filter: none;
     }
 
@@ -1952,6 +1941,22 @@ form,
 
     .blog-nav-overlay.active {
         display: block;
+    }
+}
+
+/* --- MOBİL RESPONSIVE --- */
+@media (max-width: 768px) {
+    .blog-hero {
+        height: 45vh;
+        min-height: 320px;
+    }
+
+    .blog-hero .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .blog-hero .hero-text {
+        padding: 0 15px 30px 15px;
     }
 
     .blog-body {
