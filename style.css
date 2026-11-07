@@ -3224,8 +3224,9 @@ html.has-annc.annc-collapsed .blog-header { top: 0; }
     .annc-cta { padding: 3px 10px; font-size: 0.7rem; }
 }
 
-@media (max-width: 380px) {
-    .annc-cta { display: none; }
+@media (max-width: 400px) {
+    .annc-cta-text { display: none; }
+    .annc-cta { padding: 4px 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
