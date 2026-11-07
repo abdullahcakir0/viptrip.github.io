@@ -3115,3 +3115,120 @@ label .rp-dot--b { font-size: 0.8rem; }
     .wa-form-grid { grid-template-columns: 1fr; }
     .promo-box, .wa-form { padding: 22px 18px; }
 }
+
+/* =========================================================
+   DUYURU ŞERİDİ (2027 erken rezervasyon)
+   ========================================================= */
+:root {
+    --annc-h: 40px;
+}
+
+.annc-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--annc-h);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #b8932a 0%, #D4AF37 50%, #b8932a 100%);
+    color: #000;
+    transition: transform 0.3s ease;
+}
+
+.annc-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
+    padding: 0 48px 0 16px;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.annc-link strong { font-weight: 800; }
+
+.annc-link > .fa-calendar-check { font-size: 0.95rem; }
+
+.annc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #000;
+    color: #D4AF37;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+.annc-link:hover .annc-cta { background: #1a1a1a; }
+
+.annc-short { display: none; }
+
+.annc-close {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #000;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.annc-close:hover { background: rgba(0, 0, 0, 0.12); }
+
+.annc-link:focus-visible,
+.annc-close:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: -4px;
+}
+
+/* Şerit varken header ve içerik şerit kadar aşağıda başlar */
+html.has-annc body { padding-top: var(--annc-h); }
+html.has-annc .blog-header { top: var(--annc-h); transition: top 0.3s ease; }
+
+/* Aşağı kaydırınca şerit gizlenir, header en üste çıkar */
+html.has-annc.annc-collapsed .annc-bar { transform: translateY(-100%); }
+html.has-annc.annc-collapsed .blog-header { top: 0; }
+
+@media (max-width: 768px) {
+    :root { --annc-h: 38px; }
+    .annc-long { display: none; }
+    .annc-short {
+        display: inline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .annc-link {
+        gap: 8px;
+        padding: 0 40px 0 12px;
+        font-size: 0.78rem;
+    }
+    .annc-link > .fa-calendar-check { display: none; }
+    .annc-cta { padding: 3px 10px; font-size: 0.7rem; }
+}
+
+@media (max-width: 380px) {
+    .annc-cta { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .annc-bar,
+    html.has-annc .blog-header { transition: none; }
+}

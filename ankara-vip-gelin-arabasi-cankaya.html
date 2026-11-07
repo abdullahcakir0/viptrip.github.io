@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://viptrip.com.tr/ankara-vip-gelin-arabasi-cankaya">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261108b">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <script type="application/ld+json">
 {
@@ -41,6 +41,41 @@
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDD5Q2S9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- 2027 erken rezervasyon duyuru şeridi -->
+    <div class="annc-bar" id="annc-bar" role="region" aria-label="Duyuru">
+        <a class="annc-link" href="https://wa.me/905453359706?text=Merhaba%2C%202027%20d%C3%BC%C4%9F%C3%BCn%C3%BCm%20i%C3%A7in%20gelin%20arabas%C4%B1%20erken%20rezervasyonu%20yapmak%20istiyorum.%20D%C3%BC%C4%9F%C3%BCn%20tarihi%3A%20...%20D%C3%BC%C4%9F%C3%BCn%20salonu/b%C3%B6lge%3A%20..." target="_blank" rel="noopener">
+            <i class="fas fa-calendar-check" aria-hidden="true"></i>
+            <span class="annc-long">2027 düğün sezonu için <strong>gelin arabası erken rezervasyonu</strong> başladı · Tarihinizi kapora ile ayırtın</span>
+            <span class="annc-short"><strong>2027 gelin arabası</strong> erken rezervasyon başladı</span>
+            <span class="annc-cta">Tarihimi Ayırt <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+        <button type="button" class="annc-close" aria-label="Duyuruyu kapat">&times;</button>
+    </div>
+    <script>
+    (function () {
+        var KEY = 'viptrip_annc_2027_erken';
+        var bar = document.getElementById('annc-bar');
+        var hidden = false;
+        try { hidden = localStorage.getItem(KEY) === '1'; } catch (e) {}
+        if (hidden) { bar.parentNode.removeChild(bar); return; }
+        document.documentElement.classList.add('has-annc');
+        bar.querySelector('.annc-close').addEventListener('click', function () {
+            document.documentElement.classList.remove('has-annc', 'annc-collapsed');
+            bar.parentNode.removeChild(bar);
+            try { localStorage.setItem(KEY, '1'); } catch (e) {}
+        });
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () {
+                document.documentElement.classList.toggle('annc-collapsed', window.scrollY > 80);
+                ticking = false;
+            });
+        }, { passive: true });
+    })();
+    </script>
+
     <header class="blog-header">
         <a href="/" class="logo">VIPTRIP<span class="dot">.</span></a>
         <nav class="header-nav">
