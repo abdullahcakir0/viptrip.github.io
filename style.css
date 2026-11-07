@@ -2901,3 +2901,221 @@ label .rp-dot--b { font-size: 0.8rem; }
         justify-content: center;
     }
 }
+
+/* =========================================================
+   KIŞ HİZMETLERİ · KAMPANYA KUTULARI · TEKLİF FORMU
+   ========================================================= */
+.blog-body .btn-whatsapp,
+.wa-form .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25d366;
+    color: #fff;
+    padding: 13px 28px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.blog-body .btn-whatsapp:hover {
+    background: #128C7E;
+    color: #fff;
+    transform: translateY(-2px);
+    border-bottom-color: transparent;
+}
+
+/* Erken rezervasyon kutusu */
+.promo-box {
+    position: relative;
+    margin: 0 0 35px;
+    padding: 28px 30px;
+    border-radius: 14px;
+    background: radial-gradient(120% 140% at 100% 0%, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0) 55%), #121212;
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+.promo-box .promo-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #D4AF37;
+    color: #000;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.blog-body .promo-box h3 {
+    margin: 12px 0 8px;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.blog-body .promo-box p {
+    margin-bottom: 18px;
+    color: #c9c9c9;
+}
+
+/* Bağlantı notu */
+.blog-body .season-note {
+    padding: 14px 18px;
+    border-left: 3px solid #D4AF37;
+    background: #121212;
+    border-radius: 0 10px 10px 0;
+    color: #c9c9c9;
+}
+
+.blog-body .season-note i {
+    color: #D4AF37;
+    margin-right: 6px;
+}
+
+/* WhatsApp teklif formu */
+.wa-form {
+    margin: 35px 0;
+    padding: 28px 30px;
+    border-radius: 14px;
+    background: #111;
+    border: 1px solid #2a2a2a;
+}
+
+.blog-body .wa-form h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.blog-body .wa-form h3 i { color: #D4AF37; margin-right: 6px; }
+
+.wa-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+    margin-bottom: 20px;
+}
+
+.wa-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #8f8f8f;
+}
+
+.wa-form .wa-form-wide { grid-column: 1 / -1; }
+
+.wa-form input,
+.wa-form select,
+.wa-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 9px;
+    border: 1px solid #333;
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 500;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.wa-form select {
+    background-image: linear-gradient(45deg, transparent 50%, #D4AF37 50%), linear-gradient(135deg, #D4AF37 50%, transparent 50%);
+    background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+    background-size: 5px 5px;
+    background-repeat: no-repeat;
+}
+
+.wa-form input:focus,
+.wa-form select:focus,
+.wa-form textarea:focus {
+    outline: none;
+    border-color: #D4AF37;
+}
+
+.wa-form input[type="date"] { color-scheme: dark; }
+
+/* Ana sayfa kış şeridi */
+.season-strip {
+    margin-top: 28px;
+}
+
+.season-strip-title {
+    margin: 0 0 12px;
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 300;
+}
+
+.season-strip-title i { color: #D4AF37; margin-right: 6px; }
+
+.season-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.season-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: rgba(17, 17, 17, 0.85);
+    border: 1px solid #2a2a2a;
+    color: #fff;
+    text-align: left;
+    text-decoration: none;
+    transition: border-color 0.25s, transform 0.25s, background 0.25s;
+}
+
+.season-card > i {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(212, 175, 55, 0.12);
+    color: #D4AF37;
+    font-size: 1.05rem;
+}
+
+.season-card span { display: flex; flex-direction: column; min-width: 0; }
+.season-card strong { font-size: 0.92rem; font-weight: 700; }
+.season-card small { font-size: 0.75rem; color: #9a9a9a; }
+
+.season-card:hover {
+    border-color: #D4AF37;
+    transform: translateY(-2px);
+    background: #151515;
+}
+
+.season-card--gold {
+    border-color: rgba(212, 175, 55, 0.6);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.16), rgba(17, 17, 17, 0.9));
+}
+
+@media (max-width: 1024px) {
+    .season-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .season-grid { grid-template-columns: 1fr; }
+    .wa-form-grid { grid-template-columns: 1fr; }
+    .promo-box, .wa-form { padding: 22px 18px; }
+}

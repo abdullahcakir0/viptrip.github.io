@@ -8,7 +8,7 @@
    </url>
    <url>
       <loc>https://viptrip.com.tr/ankara-bolu-transfer</loc>
-      <lastmod>2026-04-30</lastmod>
+      <lastmod>2026-11-08</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -20,7 +20,7 @@
    </url>
    <url>
       <loc>https://viptrip.com.tr/ankara-kapadokya-transfer</loc>
-      <lastmod>2026-04-30</lastmod>
+      <lastmod>2026-11-08</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -230,7 +230,7 @@
    </url>
    <url>
       <loc>https://viptrip.com.tr/kurumsal-transfer</loc>
-      <lastmod>2026-04-30</lastmod>
+      <lastmod>2026-11-08</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -248,7 +248,7 @@
    </url>
    <url>
       <loc>https://viptrip.com.tr/ankara-vip-gelin-arabasi</loc>
-      <lastmod>2026-04-30</lastmod>
+      <lastmod>2026-11-08</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.95</priority>
    </url>
@@ -257,5 +257,29 @@
       <lastmod>2026-05-18</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://viptrip.com.tr/ankara-kayak-transferi</loc>
+      <lastmod>2026-11-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://viptrip.com.tr/ankara-sehir-hastanesi-transfer</loc>
+      <lastmod>2026-11-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://viptrip.com.tr/yilbasi-soforlu-arac-ankara</loc>
+      <lastmod>2026-11-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://viptrip.com.tr/ozel-gun-arac-kiralama</loc>
+      <lastmod>2026-11-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
    </url>
 </urlset>

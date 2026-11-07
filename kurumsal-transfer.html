@@ -101,6 +101,8 @@
                     <li><a href="#kimler">Kimler İçin?</a></li>
                     <li><a href="#standartlar">Protokol Standartlarımız</a></li>
                     <li><a href="#hizmetler">Kurumsal Hizmet Türleri</a></li>
+                    <li><a href="#aylik-tahsis">Aylık Şoförlü Araç Tahsisi</a></li>
+                    <li><a href="#teklif">Kurumsal Teklif Formu</a></li>
                     <li><a href="#sss">Sıkça Sorulan Sorular</a></li>
                 </ol>
             </div>
@@ -159,11 +161,51 @@
             <h3><i class="fas fa-plane-arrival" style="color:#D4AF37; margin-right:8px;"></i> Havalimanı Heyet Karşılama</h3>
             <p>Esenboğa Havalimanı'nda CIP tabelası ile karşılama, bagaj yardımı ve <a href="esenboga-havalimani-transfer">VIP transfer</a> ile otel veya toplantı noktasına teslimat.</p>
 
-            <h3><i class="fas fa-calendar-day" style="color:#D4AF37; margin-right:8px;"></i> Fuar & Kongre Transferi</h3>
-            <p>Ankara'daki konferans merkezleri, fuar alanları ve otellere toplu veya bireysel kurumsal transfer. Birden fazla araç ile konvoy organizasyonu yapılabilir.</p>
+            <h3 id="kongre"><i class="fas fa-calendar-day" style="color:#D4AF37; margin-right:8px;"></i> Kongre, Fuar & Heyet Transferi</h3>
+            <p>Ankara'daki kongre merkezleri, fuar alanları ve otellere toplu veya bireysel kurumsal transfer. Katılımcıların havalimanında karşılanması, otel–kongre merkezi servisleri ve program boyunca araç tahsisi tek elden planlanır. Birden fazla araç ile konvoy organizasyonu yapılabilir. Etkinlik ajansları ve oteller için sezon boyu tedarikçi anlaşması yapıyoruz; ayrıntılar için <a href="blog-ankara-kongre-fuar-transfer">kongre ve fuar transfer yazımıza</a> göz atabilirsiniz.</p>
 
             <h3><i class="fas fa-clock" style="color:#D4AF37; margin-right:8px;"></i> Günlük / Saatlik Tahsis</h3>
             <p>Tüm gün veya belirli saatler için <a href="soforlu-arac-kiralama">şoförlü araç tahsis</a> hizmeti. Birden fazla noktaya uğrayacak kurumsal programlar için ideal.</p>
+
+            <h3 id="aylik-tahsis"><i class="fas fa-calendar-alt" style="color:#D4AF37; margin-right:8px;"></i> Aylık Şoförlü Araç Tahsisi</h3>
+            <p>Yöneticileriniz, misafirleriniz ya da ekibiniz için her gün aynı araç ve aynı şoför. <strong>Aylık sabit ücretle</strong> bir Mercedes Vito VIP, Sprinter veya S-Class şoförüyle birlikte kurumunuza tahsis edilir. Yakıt, bakım, sigorta ve şoför yönetimi bizde; ay sonunda tek fatura sizde.</p>
+            <ul class="checklist">
+                <li><i class="fas fa-check-circle"></i> Büyükelçilikler, uluslararası kuruluşlar ve temsilcilikler</li>
+                <li><i class="fas fa-check-circle"></i> Bakanlıklarla çalışan firmalar ve holding merkezleri</li>
+                <li><i class="fas fa-check-circle"></i> Ankara'da proje yürüten inşaat ve enerji şirketleri</li>
+                <li><i class="fas fa-check-circle"></i> Uzun süreli Ankara'da kalan yabancı yöneticiler</li>
+            </ul>
+            <p>Uzun dönem kiralama hakkında ayrıntılar için <a href="blog-ankara-uzun-donem-soforlu-arac">uzun dönem şoförlü araç yazımıza</a> bakabilirsiniz.</p>
+
+            <div class="wa-form" id="teklif">
+                <h3><i class="fas fa-file-signature"></i> Kurumsal Teklif İsteyin</h3>
+                <p>Formu doldurun, bilgileriniz WhatsApp mesajı olarak hazırlansın. Gönder'e bastığınızda mesaj WhatsApp'ta açılır.</p>
+                <form onsubmit="event.preventDefault(); var f=this; var m='Merhaba, kurumsal teklif almak istiyorum.%0AFirma: '+encodeURIComponent(f.firma.value)+'%0AHizmet: '+encodeURIComponent(f.hizmet.value)+'%0AAraç: '+encodeURIComponent(f.arac.value)+'%0ABaşlangıç: '+encodeURIComponent(f.baslangic.value)+'%0ANot: '+encodeURIComponent(f.not.value); window.open('https://wa.me/905453359706?text='+m,'_blank','noopener');">
+                    <div class="wa-form-grid">
+                        <label>Firma / Kurum<input name="firma" required placeholder="Firma adı"></label>
+                        <label>Hizmet
+                            <select name="hizmet">
+                                <option>Aylık şoförlü araç tahsisi</option>
+                                <option>Kongre / fuar / heyet transferi</option>
+                                <option>Havalimanı karşılama anlaşması</option>
+                                <option>Yıl sonu etkinliği toplu transfer</option>
+                                <option>Diğer</option>
+                            </select>
+                        </label>
+                        <label>Araç
+                            <select name="arac">
+                                <option>Mercedes Vito VIP</option>
+                                <option>Mercedes Sprinter VIP</option>
+                                <option>Mercedes S-Class</option>
+                                <option>Birden fazla araç</option>
+                            </select>
+                        </label>
+                        <label>Başlangıç tarihi<input name="baslangic" type="date"></label>
+                        <label class="wa-form-wide">Not<textarea name="not" rows="2" placeholder="Süre, kişi sayısı, güzergâh..."></textarea></label>
+                    </div>
+                    <button type="submit" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp ile Gönder</button>
+                </form>
+            </div>
 
             <div class="cta-box">
                 <h3>🏢 Kurumsal Anlaşma Teklifi Alın</h3>
@@ -187,6 +229,10 @@
                 <div class="faq-item">
                     <button class="faq-question"><span>Birden fazla araç tahsis edebilir misiniz?</span><i class="fas fa-chevron-down"></i></button>
                     <div class="faq-answer"><p>Evet, heyet transferlerinde birden fazla Vito, Sprinter ve S-Class araç tahsis edebiliriz. Konvoy organizasyonu yapılır.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question"><span>Aylık şoförlü araç tahsisi nasıl fiyatlandırılır?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer"><p>Fiyat; araç tipi, günlük çalışma saati ve aylık tahmini kilometreye göre belirlenir. Teklif formunu doldurmanız durumunda size kurumunuza özel aylık fiyat sunuyoruz.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question"><span>Yabancı uyruklu misafirler için hizmet var mı?</span><i class="fas fa-chevron-down"></i></button>
