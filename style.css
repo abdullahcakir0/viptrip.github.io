@@ -16,15 +16,22 @@
     /* Kutuların şişmesini engeller */
 }
 
+/* Yatay taşmayı sayfa seviyesinde engeller.
+   "clip" kaydırma kutusu oluşturmaz; eski tarayıcılar "hidden" kullanır. */
 html,
 body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden !important;
-    /* Yatay kaydırmayı yasaklar */
-    position: relative;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
+}
+
+@supports (overflow-x: clip) {
+    html,
+    body {
+        overflow-x: clip;
+    }
 }
 
 /* Resimlerin ekrandan taşmasını önler */
@@ -33,13 +40,12 @@ img {
     height: auto;
 }
 
-/* AOS Animasyonlarının yarattığı boşluğu kapatır */
+/* Not: Eskiden burada tüm section/div/footer'lara "overflow-x: hidden" veriliyordu.
+   Bu, her bölümü kendi içinde kaydırılabilir yapıp sayfa kaydırmasını
+   bölümlere takılı bırakıyordu. Yatay taşma artık html/body'de "clip" ile engelleniyor. */
 section,
-div,
 footer {
     max-width: 100vw;
-    /* Hiçbir kutu ekran genişliğini geçemesin */
-    overflow-x: hidden;
 }
 
 /* --- TEMEL AYARLAR --- */
@@ -47,15 +53,6 @@ footer {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* --- YATAY KAYMAYI ENGELLEME KODU --- */
-html,
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden !important;
-    position: relative;
 }
 
 html {
@@ -67,7 +64,6 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #000;
     color: #fff;
-    overflow-x: hidden;
 }
 
 /* --- HEADER & NAVİGASYON --- */
@@ -3065,7 +3061,7 @@ label .rp-dot--b { font-size: 0.8rem; }
 
 .season-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
 }
 
@@ -3111,7 +3107,7 @@ label .rp-dot--b { font-size: 0.8rem; }
 }
 
 @media (max-width: 1024px) {
-    .season-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .season-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 @media (max-width: 600px) {
