@@ -1783,21 +1783,25 @@ form,
     margin: 20px 0;
 }
 
+/* Satır içi metin akışı korunur: kalın yazı ve bağlantılar ayrı sütunlara bölünmez */
 .checklist li {
-    padding: 10px 0;
+    position: relative;
+    padding: 10px 0 10px 32px;
     border-bottom: 1px solid #1a1a1a;
-    display: flex;
-    align-items: center;
-    gap: 12px;
     color: #ccc;
 }
 
-.checklist li i {
+.checklist li > i:first-child {
+    position: absolute;
+    left: 0;
+    top: calc(10px + 0.45em);
     color: #D4AF37;
     font-size: 1rem;
     width: 20px;
     text-align: center;
 }
+
+.checklist li strong { margin-right: 4px; }
 
 /* --- STATS ROW --- */
 .stats-row {
