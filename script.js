@@ -46,7 +46,7 @@ const translations = {
         blog_desc: "VIP transfer, gelin arabası ve Ankara rehberi.",
         btn_read: "Devamını Oku",
 
-        footer_desc: "Ankara'nın lider protokol ve VIP transfer firması. Operasyonlarımız Ayka Travel güvencesiyle yürütülmektedir.",
+        footer_desc: "Ankara'nın lider protokol ve VIP transfer firması. Operasyonlarımız Özkılıç Turizm güvencesiyle yürütülmektedir.",
         footer_quick: "Hızlı Erişim",
         footer_routes: "Popüler Rotalar",
         footer_contact: "İletişim & Ofis",
@@ -200,7 +200,7 @@ const translations = {
         blog_desc: "Business, life, and history guide in the Capital.",
         btn_read: "Read More",
 
-        footer_desc: "Ankara's leading protocol and VIP transfer company. Operations powered by Ayka Travel.",
+        footer_desc: "Ankara's leading protocol and VIP transfer company. Operations powered by Özkılıç Turizm.",
         footer_quick: "Quick Links",
         footer_routes: "Popular Routes",
         footer_contact: "Contact & Office",
@@ -354,7 +354,7 @@ const translations = {
         blog_desc: "Geschäfts-, Lebens- und Geschichtsführer in der Hauptstadt.",
         btn_read: "Weiterlesen",
 
-        footer_desc: "Ankaras führendes Protokoll- und VIP-Transferunternehmen. Powered by Ayka Travel.",
+        footer_desc: "Ankaras führendes Protokoll- und VIP-Transferunternehmen. Powered by Özkılıç Turizm.",
         footer_quick: "Schnelllinks",
         footer_routes: "Beliebte Routen",
         footer_contact: "Kontakt & Büro",
@@ -508,7 +508,7 @@ const translations = {
         blog_desc: "Бизнес, жизнь и история столицы.",
         btn_read: "Читать далее",
 
-        footer_desc: "Ведущая компания протокольного и VIP-трансфера в Анкаре. Powered by Ayka Travel.",
+        footer_desc: "Ведущая компания протокольного и VIP-трансфера в Анкаре. Powered by Özkılıç Turizm.",
         footer_quick: "Ссылки",
         footer_routes: "Популярные маршруты",
         footer_contact: "Офис",
