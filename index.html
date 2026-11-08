@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <link rel="stylesheet" href="style.css?v=20261108c">
+    <link rel="stylesheet" href="style.css?v=20261108d">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
 
     <script type="application/ld+json">
@@ -140,14 +140,14 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- 2027 erken rezervasyon duyuru şeridi -->
-    <div class="annc-bar" id="annc-bar" role="region" aria-label="Duyuru">
+    <div class="annc-bar" id="annc-bar" role="region" aria-label="Duyuru" data-lang-attr="aria-label:annc_aria">
         <a class="annc-link" href="https://wa.me/905453359706?text=Merhaba%2C%202027%20d%C3%BC%C4%9F%C3%BCn%C3%BCm%20i%C3%A7in%20gelin%20arabas%C4%B1%20erken%20rezervasyonu%20yapmak%20istiyorum.%20D%C3%BC%C4%9F%C3%BCn%20tarihi%3A%20...%20D%C3%BC%C4%9F%C3%BCn%20salonu/b%C3%B6lge%3A%20..." target="_blank" rel="noopener">
             <i class="fas fa-calendar-check" aria-hidden="true"></i>
-            <span class="annc-long">2027 düğün sezonu için <strong>gelin arabası erken rezervasyonu</strong> başladı · Tarihinizi kapora ile ayırtın</span>
-            <span class="annc-short"><strong>2027 gelin arabası</strong> erken rezervasyon başladı</span>
-            <span class="annc-cta"><span class="annc-cta-text">Tarihimi Ayırt</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            <span class="annc-long" data-lang="annc_long">2027 düğün sezonu için <strong>gelin arabası erken rezervasyonu</strong> başladı · Tarihinizi kapora ile ayırtın</span>
+            <span class="annc-short" data-lang="annc_short"><strong>2027 gelin arabası</strong> erken rezervasyon başladı</span>
+            <span class="annc-cta"><span class="annc-cta-text" data-lang="annc_cta">Tarihimi Ayırt</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
         </a>
-        <button type="button" class="annc-close" aria-label="Duyuruyu kapat">&times;</button>
+        <button type="button" class="annc-close" aria-label="Duyuruyu kapat" data-lang-attr="aria-label:annc_close">&times;</button>
     </div>
     <script>
     (function () {
@@ -181,12 +181,12 @@
         </div>
         <nav class="header-nav">
             <button class="blog-nav-close" onclick="document.querySelector('.header-nav').classList.remove('active'); document.querySelector('.blog-nav-overlay').classList.remove('active');"><i class="fas fa-times"></i></button>
-            <a href="/">Ana Sayfa</a>
-            <a href="ankara-vip-transfer">VIP Transfer</a>
-            <a href="ankara-vip-gelin-arabasi">Ankara VIP Gelin Arabası</a>
-            <a href="hizmet-bolgeleri">Bölgeler</a>
-            <a href="blog">Blog</a>
-            <a href="/#transfer" class="btn-header-cta">Transfer Ayarla</a>
+            <a href="/" data-lang="nav_home">Ana Sayfa</a>
+            <a href="ankara-vip-transfer" data-lang="nav_transfer">VIP Transfer</a>
+            <a href="ankara-vip-gelin-arabasi" data-lang="nav_wedding">Ankara VIP Gelin Arabası</a>
+            <a href="hizmet-bolgeleri" data-lang="nav_regions">Bölgeler</a>
+            <a href="blog" data-lang="nav_blog">Blog</a>
+            <a href="/#transfer" class="btn-header-cta" data-lang="nav_cta">Transfer Ayarla</a>
         </nav>
     </header>
     <div class="blog-nav-overlay" onclick="document.querySelector('.header-nav').classList.remove('active'); this.classList.remove('active');"></div>
@@ -196,6 +196,7 @@
 
         <div class="vip-content" data-aos="fade-up" data-aos-duration="1000">
             <h1 class="vip-title" data-lang="hero_title">
+                <span class="vip-eyebrow">Ankara VIP Transfer &amp; Gelin Arabası</span>
                 ANKARA'DA <span class="gold-text">PROTOKOL</span> KONFORU
             </h1>
 
@@ -209,20 +210,20 @@
                         <div class="rp-field" data-field="pickup">
                             <label for="pickup-input"><i class="fas fa-circle rp-dot rp-dot--a"></i> <span data-lang="label_pickup">Nereden</span></label>
                             <div class="rp-input-wrap">
-                                <input type="text" id="pickup-input" placeholder="Örn: Esenboğa Havalimanı..."
+                                <input type="text" id="pickup-input" placeholder="Örn: Esenboğa Havalimanı..." data-lang="placeholder_pickup"
                                     role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="pickup-suggestions"
                                     spellcheck="false" enterkeyhint="next">
-                                <button type="button" class="rp-icon-btn" id="rp-locate" title="Konumumu kullan" aria-label="Konumumu kullan"><i class="fas fa-crosshairs"></i></button>
+                                <button type="button" class="rp-icon-btn" id="rp-locate" title="Konumumu kullan" aria-label="Konumumu kullan" data-lang-attr="title:rp_locate;aria-label:rp_locate"><i class="fas fa-crosshairs"></i></button>
                             </div>
                             <ul class="rp-suggestions" id="pickup-suggestions" role="listbox" hidden></ul>
                         </div>
 
-                        <button type="button" class="rp-swap" id="rp-swap" title="Yer değiştir" aria-label="Nereden ve nereye yer değiştir"><i class="fas fa-exchange-alt"></i></button>
+                        <button type="button" class="rp-swap" id="rp-swap" title="Yer değiştir" aria-label="Nereden ve nereye yer değiştir" data-lang-attr="title:rp_swap_short;aria-label:rp_swap"><i class="fas fa-exchange-alt"></i></button>
 
                         <div class="rp-field" data-field="dropoff">
                             <label for="dropoff-input"><i class="fas fa-map-marker-alt rp-dot rp-dot--b"></i> <span data-lang="label_dropoff">Nereye</span></label>
                             <div class="rp-input-wrap">
-                                <input type="text" id="dropoff-input" placeholder="Örn: Sheraton Ankara, Çankaya..."
+                                <input type="text" id="dropoff-input" placeholder="Örn: Sheraton Ankara, Çankaya..." data-lang="placeholder_dropoff"
                                     role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="dropoff-suggestions"
                                     spellcheck="false" enterkeyhint="go">
                             </div>
@@ -234,11 +235,11 @@
                         <legend class="rp-sr" data-lang="label_vehicle">Araç Tipi</legend>
                         <label class="rp-vehicle-opt">
                             <input type="radio" name="rp-vehicle" value="vito" checked>
-                            <span><i class="fas fa-shuttle-van"></i> Vito <small>1-6</small></span>
+                            <span><i class="fas fa-shuttle-van"></i> Vito <small>1-6 <span data-lang="pax">kişi</span></small></span>
                         </label>
                         <label class="rp-vehicle-opt">
                             <input type="radio" name="rp-vehicle" value="sprinter">
-                            <span><i class="fas fa-bus"></i> Sprinter <small>7-13</small></span>
+                            <span><i class="fas fa-bus"></i> Sprinter <small>7-13 <span data-lang="pax">kişi</span></small></span>
                         </label>
                     </fieldset>
 
@@ -250,9 +251,9 @@
                 <p class="rp-error" id="rp-error" role="alert" hidden></p>
 
                 <div class="rp-result" id="price-result" hidden aria-live="polite">
-                    <div class="rp-map" id="rp-map" role="img" aria-label="Güzergah haritası"></div>
+                    <div class="rp-map" id="rp-map" role="img" aria-label="Güzergah haritası" data-lang-attr="aria-label:rp_map"></div>
                     <div class="rp-summary">
-                        <div class="rp-badge"><i class="fas fa-check-circle"></i> VIP Transfer Teklifi</div>
+                        <div class="rp-badge"><i class="fas fa-check-circle"></i> <span data-lang="rp_badge">VIP Transfer Teklifi</span></div>
                         <div class="rp-route">
                             <span class="rp-route-pt"><i class="fas fa-circle rp-dot--a"></i> <span id="rp-route-from"></span></span>
                             <span class="rp-route-pt"><i class="fas fa-map-marker-alt rp-dot--b"></i> <span id="rp-route-to"></span></span>
@@ -276,14 +277,14 @@
                 </div>
             </div>
 
-            <p class="quick-cards-title">veya popüler rotalardan seçin:</p>
+            <p class="quick-cards-title" data-lang="quick_title">veya popüler rotalardan seçin:</p>
 
             <div class="quick-cards-grid">
                 <div class="quick-card" onclick="selectQuickRoute('Esenboğa Havalimanı (ESB)', 'Çankaya / Tunalı Hilmi')">
                     <div class="q-icon"><i class="fas fa-plane-arrival"></i></div>
                     <div class="q-info">
-                        <h4>Havalimanı ⇄ Çankaya</h4>
-                        <span>Protokol Karşılama</span>
+                        <h4 data-lang="q1_title">Havalimanı ⇄ Çankaya</h4>
+                        <span data-lang="q1_sub">Protokol Karşılama</span>
                     </div>
                     <div class="q-arrow q-arrow--calc"><i class="fas fa-route"></i></div>
                 </div>
@@ -291,8 +292,8 @@
                 <div class="quick-card" onclick="selectQuickRoute('Esenboğa Havalimanı (ESB)', 'Sheraton Hotel Ankara (GOP)')">
                     <div class="q-icon"><i class="fas fa-hotel"></i></div>
                     <div class="q-info">
-                        <h4>Havalimanı ⇄ Otel</h4>
-                        <span>Konforlu Ulaşım</span>
+                        <h4 data-lang="q2_title">Havalimanı ⇄ Otel</h4>
+                        <span data-lang="q2_sub">Konforlu Ulaşım</span>
                     </div>
                     <div class="q-arrow q-arrow--calc"><i class="fas fa-route"></i></div>
                 </div>
@@ -300,19 +301,19 @@
                 <div class="quick-card" onclick="quickBook('Günlük Şoförlü Araç Tahsis')">
                     <div class="q-icon"><i class="fas fa-user-tie"></i></div>
                     <div class="q-info">
-                        <h4>Günlük Tahsis</h4>
-                        <span>Şoförlü Araç Kiralama</span>
+                        <h4 data-lang="q3_title">Günlük Tahsis</h4>
+                        <span data-lang="q3_sub">Şoförlü Araç Kiralama</span>
                     </div>
                     <div class="q-arrow"><i class="fab fa-whatsapp"></i></div>
                 </div>
             </div>
 
             <div class="season-strip">
-                <p class="season-strip-title"><i class="fas fa-snowflake"></i> Kış Hizmetleri</p>
+                <p class="season-strip-title"><i class="fas fa-snowflake"></i> <span data-lang="season_title">Kış Hizmetleri</span></p>
                 <div class="season-grid">
-                    <a href="ankara-kayak-transferi" class="season-card"><i class="fas fa-skiing"></i><span><strong>Kayak Transferi</strong><small>Kartalkaya · Ilgaz · Erciyes</small></span></a>
-                    <a href="yilbasi-soforlu-arac-ankara" class="season-card"><i class="fas fa-glass-cheers"></i><span><strong>Yılbaşı Gecesi</strong><small>Şoförlü araç · Yıl sonu etkinlikleri</small></span></a>
-                    <a href="ankara-vip-gelin-arabasi" class="season-card season-card--gold"><i class="fas fa-calendar-check"></i><span><strong>2027 Gelin Arabası</strong><small>Erken rezervasyon başladı</small></span></a>
+                    <a href="ankara-kayak-transferi" class="season-card"><i class="fas fa-skiing"></i><span><strong data-lang="s1_title">Kayak Transferi</strong><small>Kartalkaya · Ilgaz · Erciyes</small></span></a>
+                    <a href="yilbasi-soforlu-arac-ankara" class="season-card"><i class="fas fa-glass-cheers"></i><span><strong data-lang="s2_title">Yılbaşı Gecesi</strong><small data-lang="s2_sub">Şoförlü araç · Yıl sonu etkinlikleri</small></span></a>
+                    <a href="ankara-vip-gelin-arabasi" class="season-card season-card--gold"><i class="fas fa-calendar-check"></i><span><strong data-lang="s3_title">2027 Gelin Arabası</strong><small data-lang="s3_sub">Erken rezervasyon başladı</small></span></a>
                 </div>
             </div>
         </div>
@@ -361,17 +362,16 @@
                 <div class="vehicle-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-image">
                         <img src="assets/img/vito.jpeg" alt="Ankara Vito Kiralama">
-                        <div class="price-tag"><span data-lang="price_start">Şehir İçi</span> <strong>Fiyat
-                                Alın</strong></div>
+                        <div class="price-tag"><span data-lang="price_city">Şehir İçi</span> <strong data-lang="price_quote">Fiyat Alın</strong></div>
                     </div>
                     <div class="card-details">
                         <h3>Mercedes Vito VIP</h3>
                         <p class="desc" data-lang="vito_desc">Maybach dizayn, gizlilik camı, toplantı düzeni ve makam
                             perdesi.</p>
                         <div class="features">
-                            <span><i class="fas fa-user-tie"></i> 6 Kişi</span>
-                            <span><i class="fas fa-suitcase"></i> 6 Bavul</span>
-                            <span><i class="fas fa-wifi"></i> WiFi & Priz</span>
+                            <span><i class="fas fa-user-tie"></i> <span data-lang="f_pax6">6 Kişi</span></span>
+                            <span><i class="fas fa-suitcase"></i> <span data-lang="f_bag6">6 Bavul</span></span>
+                            <span><i class="fas fa-wifi"></i> <span data-lang="f_wifi">WiFi &amp; Priz</span></span>
                         </div>
                         <a href="#transfer" class="book-btn" data-lang="btn_examine">Fiyat Al</a>
                     </div>
@@ -380,17 +380,16 @@
                 <div class="vehicle-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-image">
                         <img src="assets/img/sprinter.jpeg" alt="Ankara Sprinter Kiralama">
-                        <div class="price-tag"><span data-lang="price_start">Heyet Transferi</span> <strong>Fiyat
-                                Alın</strong></div>
+                        <div class="price-tag"><span data-lang="price_group">Heyet Transferi</span> <strong data-lang="price_quote">Fiyat Alın</strong></div>
                     </div>
                     <div class="card-details">
                         <h3>Mercedes Sprinter</h3>
                         <p class="desc" data-lang="sprinter_desc">Heyetler ve geniş aileler için deri koltuklu protokol
                             aracı.</p>
                         <div class="features">
-                            <span><i class="fas fa-users"></i> 13 Kişi</span>
-                            <span><i class="fas fa-suitcase"></i> 15 Bavul</span>
-                            <span><i class="fas fa-tv"></i> TV & Buzdolabı</span>
+                            <span><i class="fas fa-users"></i> <span data-lang="f_pax13">13 Kişi</span></span>
+                            <span><i class="fas fa-suitcase"></i> <span data-lang="f_bag15">15 Bavul</span></span>
+                            <span><i class="fas fa-tv"></i> <span data-lang="f_tv">TV &amp; Buzdolabı</span></span>
                         </div>
                         <a href="#transfer" class="book-btn" data-lang="btn_examine">Fiyat Al</a>
                     </div>
@@ -399,17 +398,16 @@
                 <div class="vehicle-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-image">
                         <img src="assets/img/sclass.jpeg" alt="Ankara Makam Aracı">
-                        <div class="price-tag"><span data-lang="price_start">Makam Aracı</span> <strong>Fiyat
-                                Alın</strong></div>
+                        <div class="price-tag"><span data-lang="price_exec">Makam Aracı</span> <strong data-lang="price_quote">Fiyat Alın</strong></div>
                     </div>
                     <div class="card-details">
                         <h3>Mercedes S-Class</h3>
                         <p class="desc" data-lang="sclass_desc">Yabancı misafirler, büyükelçiler ve özel günler için
                             zirve nokta.</p>
                         <div class="features">
-                            <span><i class="fas fa-user-tie"></i> 3 Kişi</span>
-                            <span><i class="fas fa-suitcase"></i> 2 Bavul</span>
-                            <span><i class="fas fa-star"></i> Protokol</span>
+                            <span><i class="fas fa-user-tie"></i> <span data-lang="f_pax3">3 Kişi</span></span>
+                            <span><i class="fas fa-suitcase"></i> <span data-lang="f_bag2">2 Bavul</span></span>
+                            <span><i class="fas fa-star"></i> <span data-lang="f_protocol">Protokol</span></span>
                         </div>
                         <a href="#transfer" class="book-btn" data-lang="btn_examine">Fiyat Al</a>
                     </div>
@@ -428,13 +426,13 @@
 
             <!-- Kategori Filtreleri -->
             <div class="blog-categories" data-aos="fade-up" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:40px;">
-                <a href="ankara-vip-gelin-arabasi" class="cat-btn active" style="background:#D4AF37; color:#000; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #D4AF37;">Ankara VIP Gelin Arabası</a>
-                <a href="ankara-vip-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">Ankara VIP Transfer</a>
-                <a href="esenboga-cankaya-vip-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">Esenboğa Çankaya Transfer</a>
-                <a href="esenboga-havalimani-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">✈️ Havalimanı</a>
-                <a href="sehirlerarasi-vip-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">🛣️ Şehirlerarası</a>
-                <a href="kurumsal-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">🏛️ Kurumsal</a>
-                <a href="soforlu-arac-kiralama" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;">🔑 Kiralama</a>
+                <a href="ankara-vip-gelin-arabasi" class="cat-btn active" style="background:#D4AF37; color:#000; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #D4AF37;" data-lang="cat_wedding">Ankara VIP Gelin Arabası</a>
+                <a href="ankara-vip-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;" data-lang="cat_transfer">Ankara VIP Transfer</a>
+                <a href="esenboga-cankaya-vip-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;" data-lang="cat_esb_cankaya">Esenboğa Çankaya Transfer</a>
+                <a href="esenboga-havalimani-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;" data-lang="cat_airport">✈️ Havalimanı</a>
+                <a href="sehirlerarasi-vip-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;" data-lang="cat_intercity">🛣️ Şehirlerarası</a>
+                <a href="kurumsal-transfer" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;" data-lang="cat_corporate">🏛️ Kurumsal</a>
+                <a href="soforlu-arac-kiralama" class="cat-btn" style="background:transparent; color:#ccc; padding:10px 24px; border-radius:25px; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.3s; border:1px solid #333;" data-lang="cat_rental">🔑 Kiralama</a>
             </div>
 
             <div class="blog-grid">
@@ -442,11 +440,11 @@
                 <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="blog-img">
                         <img src="assets/img/gelin-arabasi-hero.png" alt="Ankara VIP Gelin Arabası Kiralama">
-                        <span class="category">Düğün</span>
+                        <span class="category" data-lang="card1_tag">Düğün</span>
                     </div>
                     <div class="blog-content">
-                        <h3>Ankara VIP Gelin Arabası</h3>
-                        <p>Mercedes Vito Maybach ile şoför, yakıt ve süsleme dahil Ankara VIP gelin arabası paketleri.</p>
+                        <h3 data-lang="card1_title">Ankara VIP Gelin Arabası</h3>
+                        <p data-lang="card1_desc">Mercedes Vito Maybach ile şoför, yakıt ve süsleme dahil Ankara VIP gelin arabası paketleri.</p>
                         <a href="ankara-vip-gelin-arabasi" class="read-more"><span data-lang="btn_read">Detaylı Bilgi</span>
                             <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -456,11 +454,11 @@
                 <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="blog-img">
                         <img src="assets/img/vito-dis-on.jpg" alt="Ankara VIP Transfer Hizmeti">
-                        <span class="category">Transfer</span>
+                        <span class="category" data-lang="card2_tag">Transfer</span>
                     </div>
                     <div class="blog-content">
-                        <h3>Ankara VIP Transfer</h3>
-                        <p>Esenboğa Havalimanı, Çankaya, otel ve şehirlerarası rotalarda 7/24 Ankara VIP transfer hizmeti.</p>
+                        <h3 data-lang="card2_title">Ankara VIP Transfer</h3>
+                        <p data-lang="card2_desc">Esenboğa Havalimanı, Çankaya, otel ve şehirlerarası rotalarda 7/24 Ankara VIP transfer hizmeti.</p>
                         <a href="ankara-vip-transfer" class="read-more"><span data-lang="btn_read">Detaylı Bilgi</span>
                             <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -470,11 +468,11 @@
                 <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="blog-img">
                         <img src="assets/img/vito-kapi-acik.jpg" alt="Esenboğa Havalimanı VIP Transfer">
-                        <span class="category">Havalimanı</span>
+                        <span class="category" data-lang="card3_tag">Havalimanı</span>
                     </div>
                     <div class="blog-content">
-                        <h3>Esenboğa Havalimanı Transfer</h3>
-                        <p>CIP karşılama, uçuş takibi ve isim tabelası ile VIP havalimanı transferi.</p>
+                        <h3 data-lang="card3_title">Ankara Havalimanı Transfer</h3>
+                        <p data-lang="card3_desc">Esenboğa Havalimanı'ndan CIP karşılama, uçuş takibi ve isim tabelası ile VIP havalimanı transferi.</p>
                         <a href="esenboga-havalimani-transfer" class="read-more"><span data-lang="btn_read">Detaylı Bilgi</span>
                             <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -486,30 +484,29 @@
     <section class="faq-section">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>MERAK <span class="gold-text">EDİLENLER</span></h2>
-                <p>Transfer sürecinizle ilgili sıkça sorulan sorular.</p>
+                <h2 data-lang="faq_title">MERAK <span class="gold-text">EDİLENLER</span></h2>
+                <p data-lang="faq_desc">Transfer sürecinizle ilgili sıkça sorulan sorular.</p>
             </div>
             <div class="faq-container" data-aos="fade-up">
                 <div class="faq-item">
-                    <button class="faq-question"><span>Fatura kesiyor musunuz?</span><i
+                    <button class="faq-question"><span data-lang="faq1_q">Fatura kesiyor musunuz?</span><i
                             class="fas fa-chevron-down"></i></button>
                     <div class="faq-answer">
-                        <p>Evet, tüm transferlerimiz faturalıdır. Şirketiniz adına %20 KDV dahil fatura kesilir.</p>
+                        <p data-lang="faq1_a">Evet, tüm transferlerimiz faturalıdır. Şirketiniz adına %20 KDV dahil fatura kesilir.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question"><span>Rötar olursa ne olur?</span><i
+                    <button class="faq-question"><span data-lang="faq2_q">Rötar olursa ne olur?</span><i
                             class="fas fa-chevron-down"></i></button>
                     <div class="faq-answer">
-                        <p>Uçağınızı takip ediyoruz. Rötar durumunda şoförümüz ek ücret almadan sizi bekler.</p>
+                        <p data-lang="faq2_a">Uçağınızı takip ediyoruz. Rötar durumunda şoförümüz ek ücret almadan sizi bekler.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question"><span>Araçta sigara içiliyor mu?</span><i
+                    <button class="faq-question"><span data-lang="faq3_q">Araçta sigara içiliyor mu?</span><i
                             class="fas fa-chevron-down"></i></button>
                     <div class="faq-answer">
-                        <p>Hijyen kuralları gereği araçlarımızda sigara içilmemektedir. Ancak isteğiniz üzerine mola
-                            verilebilir.</p>
+                        <p data-lang="faq3_a">Hijyen kuralları gereği araçlarımızda sigara içilmemektedir. Ancak isteğiniz üzerine mola verilebilir.</p>
                     </div>
                 </div>
             </div>
@@ -518,18 +515,18 @@
 
     <section class="locations-section" style="background:#000; padding:50px 0; border-top:1px solid #222;">
         <div class="container">
-            <h4 style="color:#D4AF37; margin-bottom:20px; text-align:center;">Hizmetlerimiz & Güzergahlar</h4>
+            <h4 style="color:#D4AF37; margin-bottom:20px; text-align:center;" data-lang="loc_title">Hizmetlerimiz &amp; Güzergahlar</h4>
             <div class="location-links" style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px;">
-                <a href="ankara-vip-transfer" class="loc-tag">Ankara VIP Transfer</a>
-                <a href="ankara-vip-gelin-arabasi" class="loc-tag">VIP Gelin Arabası</a>
-                <a href="esenboga-havalimani-transfer" class="loc-tag">Esenboğa Transfer</a>
-                <a href="kurumsal-transfer" class="loc-tag">Kurumsal Transfer</a>
-                <a href="soforlu-arac-kiralama" class="loc-tag">Şoförlü Araç Kiralama</a>
-                <a href="sehirlerarasi-vip-transfer" class="loc-tag">İstanbul Transfer</a>
-                <a href="sehirlerarasi-vip-transfer" class="loc-tag">Kapadokya Transfer</a>
-                <a href="sehirlerarasi-vip-transfer" class="loc-tag">Antalya Transfer</a>
-                <a href="sehirlerarasi-vip-transfer" class="loc-tag">Bodrum Transfer</a>
-                <a href="sehirlerarasi-vip-transfer" class="loc-tag">Bolu / Abant Transfer</a>
+                <a href="ankara-vip-transfer" class="loc-tag" data-lang="loc_prices">Ankara VIP Transfer Fiyatları</a>
+                <a href="ankara-vip-gelin-arabasi" class="loc-tag" data-lang="loc_wedding">VIP Gelin Arabası</a>
+                <a href="esenboga-havalimani-transfer" class="loc-tag" data-lang="loc_airport">Ankara Havalimanı Transfer</a>
+                <a href="kurumsal-transfer" class="loc-tag" data-lang="loc_corp">Kurumsal Transfer</a>
+                <a href="soforlu-arac-kiralama" class="loc-tag" data-lang="loc_chauffeur">Ankara Şoförlü Araç Kiralama</a>
+                <a href="ankara-istanbul-transfer" class="loc-tag" data-lang="loc_ist">İstanbul Transfer</a>
+                <a href="ankara-kapadokya-transfer" class="loc-tag" data-lang="loc_kap">Kapadokya Transfer</a>
+                <a href="sehirlerarasi-vip-transfer" class="loc-tag" data-lang="loc_ant">Antalya Transfer</a>
+                <a href="sehirlerarasi-vip-transfer" class="loc-tag" data-lang="loc_bod">Bodrum Transfer</a>
+                <a href="ankara-bolu-transfer" class="loc-tag" data-lang="loc_bolu">Bolu / Abant Transfer</a>
             </div>
             </div>
     </section>
@@ -537,8 +534,8 @@
     <section class="insta-section">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>INSTAGRAM'DA <span class="gold-text">BİZ</span></h2>
-                <p>Referanslarımız ve araçlarımız: <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-link">@viptrip.tr</a></p>
+                <h2 data-lang="insta_title">INSTAGRAM'DA <span class="gold-text">BİZ</span></h2>
+                <p><span data-lang="insta_desc">Referanslarımız ve araçlarımız:</span> <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-link">@viptrip.tr</a></p>
             </div>
             
             <div class="insta-grid" data-aos="fade-up">
@@ -546,48 +543,48 @@
                 <div class="insta-grid-item">
                     <video src="assets/video/video1.mp4" autoplay loop muted playsinline></video>
                     <div class="insta-grid-overlay">
-                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> İncele</a>
-                        <button class="mute-btn" title="Sesi Aç/Kapat"><i class="fas fa-volume-mute"></i></button>
+                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> <span data-lang="insta_btn">İncele</span></a>
+                        <button class="mute-btn" title="Sesi Aç/Kapat" data-lang-attr="title:insta_mute;aria-label:insta_mute"><i class="fas fa-volume-mute"></i></button>
                     </div>
                 </div>
                 <!-- Video 2 -->
                 <div class="insta-grid-item">
                     <video src="assets/video/video2.mp4" autoplay loop muted playsinline></video>
                     <div class="insta-grid-overlay">
-                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> İncele</a>
-                        <button class="mute-btn" title="Sesi Aç/Kapat"><i class="fas fa-volume-mute"></i></button>
+                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> <span data-lang="insta_btn">İncele</span></a>
+                        <button class="mute-btn" title="Sesi Aç/Kapat" data-lang-attr="title:insta_mute;aria-label:insta_mute"><i class="fas fa-volume-mute"></i></button>
                     </div>
                 </div>
                 <!-- Video 3 -->
                 <div class="insta-grid-item">
                     <video src="assets/video/video3.mp4" autoplay loop muted playsinline></video>
                     <div class="insta-grid-overlay">
-                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> İncele</a>
-                        <button class="mute-btn" title="Sesi Aç/Kapat"><i class="fas fa-volume-mute"></i></button>
+                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> <span data-lang="insta_btn">İncele</span></a>
+                        <button class="mute-btn" title="Sesi Aç/Kapat" data-lang-attr="title:insta_mute;aria-label:insta_mute"><i class="fas fa-volume-mute"></i></button>
                     </div>
                 </div>
                 <!-- Video 4 -->
                 <div class="insta-grid-item">
                     <video src="assets/video/video4.mp4" autoplay loop muted playsinline></video>
                     <div class="insta-grid-overlay">
-                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> İncele</a>
-                        <button class="mute-btn" title="Sesi Aç/Kapat"><i class="fas fa-volume-mute"></i></button>
+                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> <span data-lang="insta_btn">İncele</span></a>
+                        <button class="mute-btn" title="Sesi Aç/Kapat" data-lang-attr="title:insta_mute;aria-label:insta_mute"><i class="fas fa-volume-mute"></i></button>
                     </div>
                 </div>
                 <!-- Video 5 -->
                 <div class="insta-grid-item">
                     <video src="assets/video/video5.mp4" autoplay loop muted playsinline></video>
                     <div class="insta-grid-overlay">
-                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> İncele</a>
-                        <button class="mute-btn" title="Sesi Aç/Kapat"><i class="fas fa-volume-mute"></i></button>
+                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> <span data-lang="insta_btn">İncele</span></a>
+                        <button class="mute-btn" title="Sesi Aç/Kapat" data-lang-attr="title:insta_mute;aria-label:insta_mute"><i class="fas fa-volume-mute"></i></button>
                     </div>
                 </div>
                 <!-- Video 6 -->
                 <div class="insta-grid-item">
                     <video src="assets/video/video6.mp4" autoplay loop muted playsinline></video>
                     <div class="insta-grid-overlay">
-                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> İncele</a>
-                        <button class="mute-btn" title="Sesi Aç/Kapat"><i class="fas fa-volume-mute"></i></button>
+                        <a href="https://www.instagram.com/viptrip.tr" target="_blank" class="insta-btn"><i class="fab fa-instagram"></i> <span data-lang="insta_btn">İncele</span></a>
+                        <button class="mute-btn" title="Sesi Aç/Kapat" data-lang-attr="title:insta_mute;aria-label:insta_mute"><i class="fas fa-volume-mute"></i></button>
                     </div>
                 </div>
             </div>
@@ -617,32 +614,32 @@
             <div class="footer-col">
                 <h4 data-lang="footer_quick">Hızlı Erişim</h4>
                 <ul>
-                    <li><a href="#home">Ana Sayfa</a></li>
-                    <li><a href="#araclar">Araç Filosu</a></li>
-                    <li><a href="#transfer">Fiyat Hesapla</a></li>
-                    <li><a href="ankara-vip-gelin-arabasi">Ankara VIP Gelin Arabası</a></li>
-                    <li><a href="ankara-vip-gelin-arabasi-cankaya">Çankaya VIP Gelin Arabası</a></li>
-                    <li><a href="ankara-vip-gelin-arabasi-incek">İncek VIP Gelin Arabası</a></li>
-                    <li><a href="ankara-vip-gelin-arabasi-golbasi">Gölbaşı VIP Gelin Arabası</a></li>
-                    <li><a href="ankara-vip-transfer">Ankara VIP Transfer</a></li>
-                    <li><a href="esenboga-cankaya-vip-transfer">Esenboğa Çankaya VIP Transfer</a></li>
-                    <li><a href="esenboga-havalimani-transfer">Esenboğa Transfer</a></li>
-                    <li><a href="kurumsal-transfer">Kurumsal Transfer</a></li>
-                    <li><a href="soforlu-arac-kiralama">Şoförlü Araç Kiralama</a></li>
-                    <li><a href="ankara-kayak-transferi">Ankara Kayak Transferi</a></li>
-                    <li><a href="yilbasi-soforlu-arac-ankara">Yılbaşı Şoförlü Araç</a></li>
-                    <li><a href="ozel-gun-arac-kiralama">Özel Gün Araç Kiralama</a></li>
+                    <li><a href="#home" data-lang="fq_home">Ana Sayfa</a></li>
+                    <li><a href="#araclar" data-lang="fq_fleet">Araç Filosu</a></li>
+                    <li><a href="#transfer" data-lang="fq_calc">Fiyat Hesapla</a></li>
+                    <li><a href="ankara-vip-gelin-arabasi" data-lang="nav_wedding">Ankara VIP Gelin Arabası</a></li>
+                    <li><a href="ankara-vip-gelin-arabasi-cankaya" data-lang="fq_w_cankaya">Çankaya VIP Gelin Arabası</a></li>
+                    <li><a href="ankara-vip-gelin-arabasi-incek" data-lang="fq_w_incek">İncek VIP Gelin Arabası</a></li>
+                    <li><a href="ankara-vip-gelin-arabasi-golbasi" data-lang="fq_w_golbasi">Gölbaşı VIP Gelin Arabası</a></li>
+                    <li><a href="ankara-vip-transfer" data-lang="loc_prices">Ankara VIP Transfer Fiyatları</a></li>
+                    <li><a href="esenboga-cankaya-vip-transfer" data-lang="fq_esb_cankaya">Esenboğa Çankaya VIP Transfer</a></li>
+                    <li><a href="esenboga-havalimani-transfer" data-lang="loc_airport">Ankara Havalimanı Transfer</a></li>
+                    <li><a href="kurumsal-transfer" data-lang="loc_corp">Kurumsal Transfer</a></li>
+                    <li><a href="soforlu-arac-kiralama" data-lang="loc_chauffeur">Ankara Şoförlü Araç Kiralama</a></li>
+                    <li><a href="ankara-kayak-transferi" data-lang="fq_ski">Ankara Kayak Transferi</a></li>
+                    <li><a href="yilbasi-soforlu-arac-ankara" data-lang="fq_nye">Yılbaşı Şoförlü Araç</a></li>
+                    <li><a href="ozel-gun-arac-kiralama" data-lang="fq_special">Özel Gün Araç Kiralama</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4 data-lang="footer_routes">Popüler Rotalar</h4>
                 <ul>
-                    <li><a href="#transfer">Esenboğa - Çankaya</a></li>
-                    <li><a href="#transfer">Esenboğa - Kızılay</a></li>
-                    <li><a href="#transfer">Esenboğa - Ümitköy</a></li>
-                    <li><a href="#transfer">Ankara - Kapadokya</a></li>
-                    <li><a href="#transfer">Ankara - Bolu/Abant</a></li>
+                    <li><a href="esenboga-cankaya-vip-transfer" data-lang="r1">Esenboğa - Çankaya</a></li>
+                    <li><a href="esenboga-havalimani-transfer#rotalar" data-lang="r2">Esenboğa - Kızılay</a></li>
+                    <li><a href="esenboga-havalimani-transfer#rotalar" data-lang="r3">Esenboğa - Ümitköy</a></li>
+                    <li><a href="ankara-kapadokya-transfer" data-lang="r4">Ankara - Kapadokya</a></li>
+                    <li><a href="ankara-bolu-transfer" data-lang="r5">Ankara - Bolu/Abant</a></li>
                 </ul>
             </div>
 
@@ -657,16 +654,16 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 VipTrip. Powered by <strong>Özkılıç Turizm</strong> | <a href="mesafeli-satis-sozlesmesi.html" style="color:#888; text-decoration:none;">Mesafeli Satış Sözleşmesi</a> | <span data-lang="footer_rights">Tüm hakları saklıdır.</span></p>
+            <p>&copy; 2026 VipTrip. Powered by <strong>Özkılıç Turizm</strong> | <a href="mesafeli-satis-sozlesmesi.html" style="color:#888; text-decoration:none;" data-lang="fb_terms">Mesafeli Satış Sözleşmesi</a> | <span data-lang="footer_rights">Tüm hakları saklıdır.</span></p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js?v=20261015c"></script>
-    <script src="route-planner.js?v=20261015c"></script>
+    <script src="script.js?v=20261108d"></script>
+    <script src="route-planner.js?v=20261108d"></script>
 
     <div class="mobile-bottom-nav">
-        <a href="tel:+905453359706" class="nav-btn call-btn"><i class="fas fa-phone-alt"></i> ARA</a>
+        <a href="tel:+905453359706" class="nav-btn call-btn"><i class="fas fa-phone-alt"></i> <span data-lang="bn_call">ARA</span></a>
         <a href="https://wa.me/905453359706" class="nav-btn wp-btn"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
     </div>
 

@@ -2422,9 +2422,6 @@ label .rp-dot--b { font-size: 0.8rem; }
     color: #8a8a8a;
 }
 
-.rp-vehicle-opt small::after {
-    content: " kişi";
-}
 
 .rp-vehicle-opt input:checked + span {
     background: #111;
@@ -3237,4 +3234,65 @@ html.has-annc.annc-collapsed .blog-header { top: 0; }
 @media (prefers-reduced-motion: reduce) {
     .annc-bar,
     html.has-annc .blog-header { transition: none; }
+}
+
+/* =========================================================
+   FİYAT TABLOLARI · ANA SAYFA BAŞLIK ÜST YAZISI
+   ========================================================= */
+.route-table-wrap {
+    margin: 25px 0 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #222;
+    border-radius: 12px;
+}
+
+.route-table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+.route-table th,
+.route-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #1d1d1d;
+    white-space: nowrap;
+}
+
+.route-table th {
+    background: #141414;
+    color: #D4AF37;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.route-table td { color: #c9c9c9; }
+.route-table td:first-child { color: #fff; font-weight: 600; white-space: normal; min-width: 200px; }
+.route-table td strong { color: #D4AF37; }
+.route-table tbody tr:last-child td { border-bottom: none; }
+.route-table tbody tr:hover td { background: #121212; }
+
+.blog-body .table-note {
+    font-size: 0.82rem;
+    color: #8a8a8a;
+    line-height: 1.6;
+}
+
+.vip-eyebrow {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #D4AF37;
+}
+
+@media (max-width: 768px) {
+    .vip-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; margin-bottom: 8px; }
 }

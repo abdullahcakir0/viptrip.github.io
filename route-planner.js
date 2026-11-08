@@ -53,10 +53,10 @@
 
     /* ---------- 2. YARDIMCILAR ---------- */
     const I18N = {
-        tr: { searching: "Aranıyor…", no_result: "Sonuç bulunamadı", my_location: "Mevcut Konumum", locating: "Konum alınıyor…", loc_denied: "Konum izni verilmedi.", calc_wait: "Rota hesaplanıyor…", estimate_note: "Tahmini sabit fiyat · Otoyol, köprü ve bekleme dahil değildir.", vehicle: "Araç", vito: "Mercedes Vito VIP (1-6 Kişi)", sprinter: "Mercedes Sprinter VIP (7-13 Kişi)", approx: "yaklaşık", min: "dk", hour: "sa", same_place: "Nereden ve nereye aynı olamaz." },
-        en: { searching: "Searching…", no_result: "No results", my_location: "My Current Location", locating: "Getting location…", loc_denied: "Location permission denied.", calc_wait: "Calculating route…", estimate_note: "Estimated fixed price · Tolls and waiting not included.", vehicle: "Vehicle", vito: "Mercedes Vito VIP (1-6 Pax)", sprinter: "Mercedes Sprinter VIP (7-13 Pax)", approx: "approx.", min: "min", hour: "h", same_place: "Pick-up and drop-off cannot be the same." },
-        de: { searching: "Suche…", no_result: "Keine Ergebnisse", my_location: "Mein Standort", locating: "Standort wird ermittelt…", loc_denied: "Standortzugriff verweigert.", calc_wait: "Route wird berechnet…", estimate_note: "Geschätzter Festpreis · Maut und Wartezeit nicht inbegriffen.", vehicle: "Fahrzeug", vito: "Mercedes Vito VIP (1-6 Pers.)", sprinter: "Mercedes Sprinter VIP (7-13 Pers.)", approx: "ca.", min: "Min.", hour: "Std.", same_place: "Start und Ziel dürfen nicht gleich sein." },
-        ru: { searching: "Поиск…", no_result: "Ничего не найдено", my_location: "Моё местоположение", locating: "Определяем местоположение…", loc_denied: "Доступ к геолокации запрещён.", calc_wait: "Расчёт маршрута…", estimate_note: "Ориентировочная фиксированная цена · Платные дороги не включены.", vehicle: "Авто", vito: "Mercedes Vito VIP (1-6 чел.)", sprinter: "Mercedes Sprinter VIP (7-13 чел.)", approx: "≈", min: "мин", hour: "ч", same_place: "Пункты отправления и назначения совпадают." }
+        tr: { searching: "Aranıyor…", no_result: "Sonuç bulunamadı", my_location: "Mevcut Konumum", locating: "Konum alınıyor…", loc_denied: "Konum izni verilmedi.", calc_wait: "Rota hesaplanıyor…", estimate_note: "Tahmini sabit fiyat · Otoyol, köprü ve bekleme dahil değildir.", vehicle: "Araç", vito: "Mercedes Vito VIP (1-6 Kişi)", sprinter: "Mercedes Sprinter VIP (7-13 Kişi)", approx: "yaklaşık", min: "dk", hour: "sa", same_place: "Nereden ve nereye aynı olamaz.", popular: "VipTrip · Popüler" },
+        en: { searching: "Searching…", no_result: "No results", my_location: "My Current Location", locating: "Getting location…", loc_denied: "Location permission denied.", calc_wait: "Calculating route…", estimate_note: "Estimated fixed price · Tolls and waiting not included.", vehicle: "Vehicle", vito: "Mercedes Vito VIP (1-6 Pax)", sprinter: "Mercedes Sprinter VIP (7-13 Pax)", approx: "approx.", min: "min", hour: "h", same_place: "Pick-up and drop-off cannot be the same.", popular: "VipTrip · Popular" },
+        de: { searching: "Suche…", no_result: "Keine Ergebnisse", my_location: "Mein Standort", locating: "Standort wird ermittelt…", loc_denied: "Standortzugriff verweigert.", calc_wait: "Route wird berechnet…", estimate_note: "Geschätzter Festpreis · Maut und Wartezeit nicht inbegriffen.", vehicle: "Fahrzeug", vito: "Mercedes Vito VIP (1-6 Pers.)", sprinter: "Mercedes Sprinter VIP (7-13 Pers.)", approx: "ca.", min: "Min.", hour: "Std.", same_place: "Start und Ziel dürfen nicht gleich sein.", popular: "VipTrip · Beliebt" },
+        ru: { searching: "Поиск…", no_result: "Ничего не найдено", my_location: "Моё местоположение", locating: "Определяем местоположение…", loc_denied: "Доступ к геолокации запрещён.", calc_wait: "Расчёт маршрута…", estimate_note: "Ориентировочная фиксированная цена · Платные дороги не включены.", vehicle: "Авто", vito: "Mercedes Vito VIP (1-6 чел.)", sprinter: "Mercedes Sprinter VIP (7-13 чел.)", approx: "≈", min: "мин", hour: "ч", same_place: "Пункты отправления и назначения совпадают.", popular: "VipTrip · Популярное" }
     };
 
     const lang = () => (typeof currentLang !== 'undefined' && I18N[currentLang]) ? currentLang : 'tr';
@@ -117,7 +117,7 @@
             if (best) scored.push({ loc, best });
         }
         return scored.sort((a, b) => b.best - a.best).slice(0, limit)
-            .map(({ loc }) => ({ label: loc.name, sub: "VipTrip · Popüler", coords: loc.coords, icon: loc.icon, local: true }));
+            .map(({ loc }) => ({ label: loc.name, sub: t('popular'), coords: loc.coords, icon: loc.icon, local: true }));
     }
 
     function bestLocalMatch(query) {
