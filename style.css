@@ -3301,3 +3301,8 @@ html.has-annc.annc-collapsed .blog-header { top: 0; }
 @media (max-width: 768px) {
     .vip-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; margin-bottom: 8px; }
 }
+
+/* Çok dar telefonlarda uzun başlık kelimeleri (ör. Rusça) ekrana sığsın */
+@media (max-width: 360px) {
+    .vip-title { font-size: 1.8rem; overflow-wrap: anywhere; }
+}
