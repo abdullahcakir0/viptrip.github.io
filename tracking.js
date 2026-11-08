@@ -42,6 +42,9 @@
 
     function textOf(el) {
         var t = (el && (el.innerText || el.textContent) || '').replace(/\s+/g, ' ').trim();
+        if (!t && el && el.getAttribute) t = el.getAttribute('aria-label') || el.getAttribute('title') || '';
+        if (!t && el && el.querySelector && el.querySelector('.fa-whatsapp')) t = 'WhatsApp ikonu';
+        if (!t && el && el.querySelector && el.querySelector('.fa-phone, .fa-phone-alt')) t = 'Telefon ikonu';
         return t.slice(0, 60);
     }
 
