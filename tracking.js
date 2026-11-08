@@ -80,7 +80,9 @@
     // 2) JavaScript ile açılan WhatsApp pencereleri (rezervasyon butonu, hızlı kartlar, teklif formu)
     var lastClicked = null;
     document.addEventListener('click', function (e) { lastClicked = e.target; }, true);
-    document.addEventListener('submit', function (e) { lastClicked = e.target; }, true);
+    document.addEventListener('submit', function (e) {
+        lastClicked = e.submitter || (e.target.querySelector && e.target.querySelector('[type="submit"]')) || e.target;
+    }, true);
 
     var originalOpen = window.open;
     window.open = function (url) {
