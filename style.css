@@ -2400,7 +2400,7 @@ label .rp-dot--b { font-size: 0.8rem; }
     pointer-events: none;
 }
 
-.rp-vehicle-opt span {
+.rp-vehicle-opt > span {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2415,7 +2415,7 @@ label .rp-dot--b { font-size: 0.8rem; }
     transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
-.rp-vehicle-opt span i {
+.rp-vehicle-opt > span i {
     font-size: 1rem;
     color: #9a7b14;
 }
@@ -2833,7 +2833,7 @@ label .rp-dot--b { font-size: 0.8rem; }
 
     .rp-vehicle { justify-content: stretch; }
     .rp-vehicle-opt { flex: 1; }
-    .rp-vehicle-opt span { width: 100%; }
+    .rp-vehicle-opt > span { width: 100%; }
 }
 
 /* --- Mobil --- */
