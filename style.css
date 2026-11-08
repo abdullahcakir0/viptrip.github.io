@@ -3267,10 +3267,9 @@ html.has-annc.annc-collapsed .blog-header { top: 0; }
 .route-table th {
     background: #141414;
     color: #D4AF37;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .route-table td { color: #c9c9c9; }
